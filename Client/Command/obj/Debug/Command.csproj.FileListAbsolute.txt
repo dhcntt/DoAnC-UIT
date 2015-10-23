@@ -1,0 +1,7 @@
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Command.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Command.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Enum.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Enum.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\obj\Debug\Command.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\obj\Debug\Command.pdb

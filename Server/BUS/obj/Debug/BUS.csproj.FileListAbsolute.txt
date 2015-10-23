@@ -1,0 +1,7 @@
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\BUS.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\BUS.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\DAO.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\DAO.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.pdb

@@ -1,0 +1,5 @@
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Enum\bin\Debug\Enum.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Enum\bin\Debug\Enum.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Enum\obj\Debug\Enum.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Enum\obj\Debug\Enum.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Enum\obj\Debug\Enum.csprojResolveAssemblyReference.cache

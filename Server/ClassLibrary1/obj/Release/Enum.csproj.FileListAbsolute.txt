@@ -1,0 +1,15 @@
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\ClassLibrary1\bin\Release\ClassLibrary1.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\ClassLibrary1\bin\Release\ClassLibrary1.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\ClassLibrary1\obj\Release\ClassLibrary1.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\ClassLibrary1\obj\Release\ClassLibrary1.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\ClassLibrary1\obj\Release\Enum.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\ClassLibrary1\bin\Release\ClassLibrary1.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\ClassLibrary1\bin\Release\ClassLibrary1.pdb
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\ClassLibrary1\obj\Release\Enum.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\ClassLibrary1\obj\Release\ClassLibrary1.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\ClassLibrary1\obj\Release\ClassLibrary1.pdb
+D:\Projects\Server_UIT\ClassLibrary1\bin\Release\ClassLibrary1.dll
+D:\Projects\Server_UIT\ClassLibrary1\bin\Release\ClassLibrary1.pdb
+D:\Projects\Server_UIT\ClassLibrary1\obj\Release\Enum.csprojResolveAssemblyReference.cache
+D:\Projects\Server_UIT\ClassLibrary1\obj\Release\ClassLibrary1.dll
+D:\Projects\Server_UIT\ClassLibrary1\obj\Release\ClassLibrary1.pdb

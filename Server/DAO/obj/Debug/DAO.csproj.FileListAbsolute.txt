@@ -1,0 +1,6 @@
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\bin\Debug\DAO.dll.config
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\bin\Debug\DAO.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\bin\Debug\DAO.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Debug\DAO.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Debug\DAO.pdb
