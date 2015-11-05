@@ -105,5 +105,10 @@ namespace Client_UIT
             
             return Result;
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

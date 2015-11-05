@@ -104,6 +104,7 @@
             this.Controls.Add(this.txt_password);
             this.Name = "Dangnhap";
             this.Text = "Dangnhap";
+            this.Load += new System.EventHandler(this.Dangnhap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

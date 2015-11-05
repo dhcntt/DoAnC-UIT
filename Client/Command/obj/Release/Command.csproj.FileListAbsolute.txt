@@ -22,3 +22,10 @@ D:\Projects\DoAnC-\Command\obj\Release\Command.dll
 D:\Projects\DoAnC-\Command\obj\Release\Command.pdb
 =======
 >>>>>>> f9323e39cdf9d6f6df6f0bd551b0690ce32f9358
+F:\HK5\Githup\DoAnC-UIT\Client\Command\bin\Release\Command.dll
+F:\HK5\Githup\DoAnC-UIT\Client\Command\bin\Release\Command.pdb
+F:\HK5\Githup\DoAnC-UIT\Client\Command\bin\Release\Enum.dll
+F:\HK5\Githup\DoAnC-UIT\Client\Command\bin\Release\Enum.pdb
+F:\HK5\Githup\DoAnC-UIT\Client\Command\obj\Release\Command.csprojResolveAssemblyReference.cache
+F:\HK5\Githup\DoAnC-UIT\Client\Command\obj\Release\Command.dll
+F:\HK5\Githup\DoAnC-UIT\Client\Command\obj\Release\Command.pdb

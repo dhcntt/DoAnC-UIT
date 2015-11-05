@@ -20,3 +20,11 @@ D:\Projects\Server_UIT\DAO\bin\Release\DTO.pdb
 D:\Projects\Server_UIT\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
 D:\Projects\Server_UIT\DAO\obj\Release\DAO.dll
 D:\Projects\Server_UIT\DAO\obj\Release\DAO.pdb
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Release\DAO.dll.config
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Release\DAO.dll
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Release\DAO.pdb
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Release\DTO.dll
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Release\DTO.pdb
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Release\DAO.dll
+F:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Release\DAO.pdb

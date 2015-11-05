@@ -15,3 +15,8 @@ D:\Projects\DoAnC-\Enum\obj\Release\Enum.dll
 D:\Projects\DoAnC-\Enum\obj\Release\Enum.pdb
 =======
 >>>>>>> f9323e39cdf9d6f6df6f0bd551b0690ce32f9358
+F:\HK5\Githup\DoAnC-UIT\Client\Enum\obj\Release\Enum.csprojResolveAssemblyReference.cache
+F:\HK5\Githup\DoAnC-UIT\Client\Enum\obj\Release\Enum.dll
+F:\HK5\Githup\DoAnC-UIT\Client\Enum\obj\Release\Enum.pdb
+F:\HK5\Githup\DoAnC-UIT\Client\Enum\bin\Release\Enum.dll
+F:\HK5\Githup\DoAnC-UIT\Client\Enum\bin\Release\Enum.pdb
