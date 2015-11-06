@@ -49,5 +49,56 @@ namespace Client_UIT
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void pib_mini_MouseLeave(object sender, EventArgs e)
+        {
+            this.ptb_mini.BackgroundImage = global::Client_UIT.Properties.Resources.minimize1;
+        }
+
+        private void pib_mini_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.ptb_mini.BackgroundImage = global::Client_UIT.Properties.Resources.minimize2;
+        }
+
+        private void ptb_canel_MouseLeave(object sender, EventArgs e)
+        {
+            this.ptb_canel.BackgroundImage = global::Client_UIT.Properties.Resources.close;
+        }
+
+        private void ptb_canel_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.ptb_canel.BackgroundImage = global::Client_UIT.Properties.Resources.close1;
+        }
+
+        private void ptb_null_MouseDown(object sender, MouseEventArgs e)
+        {
+            timer1.Start();
+            setpoint();
+        }
+
+        private void ptb_null_MouseUp(object sender, MouseEventArgs e)
+        {
+            timer1.Stop();
+        }
+        Point _form = new Point(0, 0);
+        Point current_form = new Point(0, 0);
+        Point curs = new Point(0, 0);
+        void setpoint()
+        {
+            _form = this.Location;
+            curs = Cursor.Position;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            current_form.X = _form.X - curs.X + Cursor.Position.X;
+            current_form.Y = _form.Y - curs.Y + Cursor.Position.Y;
+            this.Location = new Point(current_form.X, current_form.Y);
+        }
+
+        private void ptb_null_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

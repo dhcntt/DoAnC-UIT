@@ -43,10 +43,13 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnSave = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.ptb_mini = new System.Windows.Forms.PictureBox();
+            this.ptb_canel = new System.Windows.Forms.PictureBox();
+            this.ptb_null = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_mini)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_canel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_null)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -196,28 +199,51 @@
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // ptb_mini
             // 
-            this.pictureBox1.BackgroundImage = global::Client_UIT.Properties.Resources.close;
-            this.pictureBox1.Image = global::Client_UIT.Properties.Resources.minimize1;
-            this.pictureBox1.Location = new System.Drawing.Point(280, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 29);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.ptb_mini.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_mini.BackgroundImage = global::Client_UIT.Properties.Resources.close;
+            this.ptb_mini.Image = global::Client_UIT.Properties.Resources.minimize1;
+            this.ptb_mini.Location = new System.Drawing.Point(280, 0);
+            this.ptb_mini.Name = "ptb_mini";
+            this.ptb_mini.Size = new System.Drawing.Size(35, 29);
+            this.ptb_mini.TabIndex = 5;
+            this.ptb_mini.TabStop = false;
+            this.ptb_mini.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.ptb_mini.MouseLeave += new System.EventHandler(this.pib_mini_MouseLeave);
+            this.ptb_mini.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pib_mini_MouseMove);
             // 
-            // pictureBox2
+            // ptb_canel
             // 
-            this.pictureBox2.BackgroundImage = global::Client_UIT.Properties.Resources.minimize1;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pictureBox2.Image = global::Client_UIT.Properties.Resources.close;
-            this.pictureBox2.Location = new System.Drawing.Point(321, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(36, 28);
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.ptb_canel.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_canel.BackgroundImage = global::Client_UIT.Properties.Resources.minimize1;
+            this.ptb_canel.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.ptb_canel.Image = global::Client_UIT.Properties.Resources.close;
+            this.ptb_canel.Location = new System.Drawing.Point(321, 1);
+            this.ptb_canel.Name = "ptb_canel";
+            this.ptb_canel.Size = new System.Drawing.Size(36, 28);
+            this.ptb_canel.TabIndex = 6;
+            this.ptb_canel.TabStop = false;
+            this.ptb_canel.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.ptb_canel.MouseLeave += new System.EventHandler(this.ptb_canel_MouseLeave);
+            this.ptb_canel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ptb_canel_MouseMove);
+            // 
+            // ptb_null
+            // 
+            this.ptb_null.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_null.Location = new System.Drawing.Point(0, 0);
+            this.ptb_null.Name = "ptb_null";
+            this.ptb_null.Size = new System.Drawing.Size(357, 49);
+            this.ptb_null.TabIndex = 7;
+            this.ptb_null.TabStop = false;
+            this.ptb_null.Click += new System.EventHandler(this.ptb_null_Click);
+            this.ptb_null.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ptb_null_MouseDown);
+            this.ptb_null.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ptb_null_MouseUp);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Persional_Ìmormation
             // 
@@ -227,8 +253,8 @@
             this.BackgroundImage = global::Client_UIT.Properties.Resources.form;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(356, 557);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.ptb_canel);
+            this.Controls.Add(this.ptb_mini);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.txtboxDiaChi);
@@ -242,14 +268,16 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.ptb_null);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Persional_Ìmormation";
             this.Text = "Persional_Ìmormation";
             this.Load += new System.EventHandler(this.Persional_Ìmormation_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_mini)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_canel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_null)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +299,9 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox ptb_mini;
+        private System.Windows.Forms.PictureBox ptb_canel;
+        private System.Windows.Forms.PictureBox ptb_null;
+        private System.Windows.Forms.Timer timer1;
     }
 }
