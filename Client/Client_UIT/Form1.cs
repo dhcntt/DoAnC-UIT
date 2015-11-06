@@ -134,5 +134,12 @@ namespace Client_UIT
         {
 
         }
+
+        private void lbThongTin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Persional_Ìmormation thongtin = new Persional_Ìmormation();
+            thongtin.Show();
+            
+        }
     }
 }

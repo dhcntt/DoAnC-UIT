@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.flp_listFriend = new System.Windows.Forms.FlowLayoutPanel();
             this.bbt_addfriend = new System.Windows.Forms.Button();
+            this.lbThongTin = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_minimize)).BeginInit();
@@ -147,12 +148,24 @@
             this.bbt_addfriend.UseVisualStyleBackColor = true;
             this.bbt_addfriend.Click += new System.EventHandler(this.bbt_addfriend_Click);
             // 
+            // lbThongTin
+            // 
+            this.lbThongTin.AutoSize = true;
+            this.lbThongTin.Location = new System.Drawing.Point(28, 185);
+            this.lbThongTin.Name = "lbThongTin";
+            this.lbThongTin.Size = new System.Drawing.Size(52, 13);
+            this.lbThongTin.TabIndex = 23;
+            this.lbThongTin.TabStop = true;
+            this.lbThongTin.Text = "Thông tin";
+            this.lbThongTin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbThongTin_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(400, 584);
+            this.Controls.Add(this.lbThongTin);
             this.Controls.Add(this.bbt_addfriend);
             this.Controls.Add(this.flp_listFriend);
             this.Controls.Add(this.label2);
@@ -187,6 +200,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flp_listFriend;
         private System.Windows.Forms.Button bbt_addfriend;
+        private System.Windows.Forms.LinkLabel lbThongTin;
     }
 }
 

@@ -54,3 +54,4 @@ F:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Release\Client_UIT.Messeage.resour
 F:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Release\Client_UIT.Properties.Resources.resources
 F:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Release\Client_UIT.Register.resources
 F:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Release\Client_UIT.csproj.GenerateResource.Cache
+F:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Release\Client_UIT.Persional_Ìmormation.resources
