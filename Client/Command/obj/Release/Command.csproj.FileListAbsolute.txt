@@ -1,0 +1,7 @@
+D:\DoAnC-\Client\Command\bin\Release\Command.dll
+D:\DoAnC-\Client\Command\bin\Release\Command.pdb
+D:\DoAnC-\Client\Command\bin\Release\Enum.dll
+D:\DoAnC-\Client\Command\bin\Release\Enum.pdb
+D:\DoAnC-\Client\Command\obj\Release\Command.csprojResolveAssemblyReference.cache
+D:\DoAnC-\Client\Command\obj\Release\Command.dll
+D:\DoAnC-\Client\Command\obj\Release\Command.pdb

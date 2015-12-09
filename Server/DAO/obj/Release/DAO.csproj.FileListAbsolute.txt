@@ -1,0 +1,30 @@
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\bin\Release\DAO.dll.config
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\bin\Release\DAO.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\bin\Release\DAO.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Release\DAO.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Release\DAO.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\bin\Release\DAO.dll.config
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\bin\Release\DAO.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\bin\Release\DAO.pdb
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\bin\Release\DTO.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\bin\Release\DTO.pdb
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\obj\Release\DAO.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\DAO\obj\Release\DAO.pdb
+D:\Projects\Server_UIT\DAO\bin\Release\DAO.dll.config
+D:\Projects\Server_UIT\DAO\bin\Release\DAO.dll
+D:\Projects\Server_UIT\DAO\bin\Release\DAO.pdb
+D:\Projects\Server_UIT\DAO\bin\Release\DTO.dll
+D:\Projects\Server_UIT\DAO\bin\Release\DTO.pdb
+D:\Projects\Server_UIT\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
+D:\Projects\Server_UIT\DAO\obj\Release\DAO.dll
+D:\Projects\Server_UIT\DAO\obj\Release\DAO.pdb
+D:\DoAnC-\Server\DAO\bin\Release\DAO.dll.config
+D:\DoAnC-\Server\DAO\bin\Release\DAO.dll
+D:\DoAnC-\Server\DAO\bin\Release\DAO.pdb
+D:\DoAnC-\Server\DAO\bin\Release\DTO.dll
+D:\DoAnC-\Server\DAO\bin\Release\DTO.pdb
+D:\DoAnC-\Server\DAO\obj\Release\DAO.csprojResolveAssemblyReference.cache
+D:\DoAnC-\Server\DAO\obj\Release\DAO.dll
+D:\DoAnC-\Server\DAO\obj\Release\DAO.pdb

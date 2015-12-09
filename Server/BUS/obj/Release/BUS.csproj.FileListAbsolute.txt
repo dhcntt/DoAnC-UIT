@@ -1,0 +1,34 @@
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Release\BUS.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Release\BUS.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Release\DAO.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Release\DAO.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Release\BUS.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Release\BUS.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Release\BUS.pdb
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\bin\Release\BUS.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\bin\Release\BUS.pdb
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\bin\Release\DAO.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\bin\Release\DTO.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\bin\Release\DAO.pdb
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\bin\Release\DTO.pdb
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\obj\Release\BUS.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\obj\Release\BUS.dll
+C:\Users\nam\Documents\VisualStudio2013\Projects\Server_UIT\BUS\obj\Release\BUS.pdb
+D:\Projects\Server_UIT\BUS\bin\Release\BUS.dll
+D:\Projects\Server_UIT\BUS\bin\Release\BUS.pdb
+D:\Projects\Server_UIT\BUS\bin\Release\DAO.dll
+D:\Projects\Server_UIT\BUS\bin\Release\DTO.dll
+D:\Projects\Server_UIT\BUS\bin\Release\DAO.pdb
+D:\Projects\Server_UIT\BUS\bin\Release\DTO.pdb
+D:\Projects\Server_UIT\BUS\obj\Release\BUS.csprojResolveAssemblyReference.cache
+D:\Projects\Server_UIT\BUS\obj\Release\BUS.dll
+D:\Projects\Server_UIT\BUS\obj\Release\BUS.pdb
+D:\DoAnC-\Server\BUS\bin\Release\BUS.dll
+D:\DoAnC-\Server\BUS\bin\Release\BUS.pdb
+D:\DoAnC-\Server\BUS\bin\Release\DAO.dll
+D:\DoAnC-\Server\BUS\bin\Release\DTO.dll
+D:\DoAnC-\Server\BUS\bin\Release\DAO.pdb
+D:\DoAnC-\Server\BUS\bin\Release\DTO.pdb
+D:\DoAnC-\Server\BUS\obj\Release\BUS.csprojResolveAssemblyReference.cache
+D:\DoAnC-\Server\BUS\obj\Release\BUS.dll
+D:\DoAnC-\Server\BUS\obj\Release\BUS.pdb
