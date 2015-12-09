@@ -122,10 +122,7 @@
             this.Controls.Add(this.rTB_content);
             this.Name = "Chat";
             this.Text = "Chat";
-<<<<<<< HEAD
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Chat_FormClosed);
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             this.ResumeLayout(false);
 
         }

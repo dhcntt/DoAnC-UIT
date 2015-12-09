@@ -4,7 +4,6 @@ C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\bin\Debug\DAO.
 C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Debug\DAO.dll
 C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\DAO\obj\Debug\DAO.pdb
-<<<<<<< HEAD
 D:\DoAnC-\Server\DAO\bin\Debug\DAO.dll.config
 D:\DoAnC-\Server\DAO\bin\Debug\DAO.dll
 D:\DoAnC-\Server\DAO\bin\Debug\DAO.pdb
@@ -13,5 +12,3 @@ D:\DoAnC-\Server\DAO\bin\Debug\DTO.pdb
 D:\DoAnC-\Server\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 D:\DoAnC-\Server\DAO\obj\Debug\DAO.dll
 D:\DoAnC-\Server\DAO\obj\Debug\DAO.pdb
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e

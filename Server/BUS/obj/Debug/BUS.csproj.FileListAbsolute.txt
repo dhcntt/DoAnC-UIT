@@ -5,7 +5,6 @@ C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\DAO.
 C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
 C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.dll
 C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.pdb
-<<<<<<< HEAD
 D:\DoAnC-\Server\BUS\bin\Debug\BUS.dll
 D:\DoAnC-\Server\BUS\bin\Debug\BUS.pdb
 D:\DoAnC-\Server\BUS\bin\Debug\DAO.dll
@@ -15,5 +14,3 @@ D:\DoAnC-\Server\BUS\bin\Debug\DTO.pdb
 D:\DoAnC-\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
 D:\DoAnC-\Server\BUS\obj\Debug\BUS.dll
 D:\DoAnC-\Server\BUS\obj\Debug\BUS.pdb
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e

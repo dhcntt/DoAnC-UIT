@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using DTO;
-<<<<<<< HEAD
-=======
-//abc
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
 
 namespace DAO
 {
@@ -17,11 +13,7 @@ namespace DAO
     {
         public static SqlConnection KetnoiCSDL()
         {
-<<<<<<< HEAD
             SqlConnection con = new SqlConnection("Data Source=WINDOW;Initial Catalog=Server;Integrated Security=True");
-=======
-            SqlConnection con = new SqlConnection("Data Source=HOAHUYNH;Initial Catalog=Server;Integrated Security=True");
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             return con;
         }
     }
@@ -99,7 +91,6 @@ namespace DAO
             da.Fill(dt);
             return dt;
         }
-<<<<<<< HEAD
         public static DataTable FindFriend(string _userPrimaryTemp)
         {
             SqlConnection con = SQLConnectionData.KetnoiCSDL();
@@ -176,7 +167,5 @@ namespace DAO
             cmd.ExecuteNonQuery();
             con.Close();
         }
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }

@@ -10,17 +10,13 @@ using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-<<<<<<< HEAD
 using System.Threading;
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
 using System.Drawing;
 using System.Windows.Forms;
 using Enum;
 
 namespace Client_UIT
 {
-<<<<<<< HEAD
     public class Notice_List
     {
         public int _stt;
@@ -40,8 +36,6 @@ namespace Client_UIT
             _type = type;
         }
     }
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     public class ClientManager
     {
         private IPAddress _ipAdress;//địa chỉ Ip client
@@ -63,7 +57,6 @@ namespace Client_UIT
             set { _userName = value; }
         }
         public Form1 _frmMain;
-<<<<<<< HEAD
         public static List<Chat> listFormChat = new List<Chat>();
         public Dangnhap dangnhapForm = null;
         public FindFriend ff_Form = null;
@@ -72,13 +65,6 @@ namespace Client_UIT
         private NetworkStream stream;//dùng để nhận và gởi tin
         private BackgroundWorker bw_receive;//thread dùng để nhận tin nhắn từ
         BinaryFormatter bf = new BinaryFormatter();
-=======
-        public Chat chatForm = null;
-        public Dangnhap dangnhapForm = null;
-        public Socket socket;//kết nối giữa client-server
-        private NetworkStream stream;//dùng để nhận và gởi tin
-        private BackgroundWorker bw_receive;//thread dùng để nhận tin nhắn từ
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         public ClientManager(Dangnhap _dangnhap,Socket _temp)
         {
             dangnhapForm = _dangnhap;
@@ -91,7 +77,6 @@ namespace Client_UIT
             bw_receive.RunWorkerAsync();
 
         }
-<<<<<<< HEAD
         void ReadBigData(NetworkStream stream,int lenght,ref byte[] dataPicture)
         {
             byte[] bytes=new byte[1024];
@@ -130,12 +115,6 @@ namespace Client_UIT
             byte[] buffer = new byte[4];
             byte[] data = null;
             string usernameTemp;
-=======
-        public void bw_receive_DoWork(object sender, DoWorkEventArgs e)
-        {
-            byte[] buffer = new byte[4];
-
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             while (socket.Connected)
             {
                 try
@@ -163,7 +142,6 @@ namespace Client_UIT
                         BinaryFormatter bf = new BinaryFormatter();
                         Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
                         temp = (Font)bf.Deserialize(s);
-<<<<<<< HEAD
                         Chat chatForm = null;
                         _frmMain.Invoke(new Action(delegate()
                             {
@@ -219,23 +197,6 @@ namespace Client_UIT
                     }
                     if (cmt == CommandType_.LoginSuccess)
                     {
-=======
-                        _frmMain.Invoke(new Action(delegate()
-                            {
-                                if (chatForm == null || chatForm.IsDisposed)
-                                {
-                                    chatForm = new Chat(this);
-                                    chatForm.Text = "Server";
-                                    chatForm.Show();
-                                }
-                            }));
-
-                        chatForm.Receive(cmdMetaData, temp);
-                    }//end message
-                    if (cmt == CommandType_.LoginSuccess)
-                    {
-                        byte[] data;
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                         byte[] dataPicture;
                         //đọc tên username
                         stream.Read(buffer, 0, 4);
@@ -243,21 +204,14 @@ namespace Client_UIT
                         data = new byte[lenght];
                         stream.Read(data, 0, lenght);
                         string username = Encoding.ASCII.GetString(data);
-<<<<<<< HEAD
                         this._userName = username;
 
 
-=======
-                        this._userName=username;
-                        
-                        
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                         //đọc avatar
                         Image image;
                         stream.Read(buffer, 0, 4);
                         lenght = BitConverter.ToInt32(buffer, 0);
                         dataPicture = new byte[lenght];
-<<<<<<< HEAD
                         ReadBigData(stream, lenght, ref dataPicture);
                         MemoryStream mem = new MemoryStream(dataPicture);
                         image = Image.FromStream(mem);
@@ -362,56 +316,6 @@ namespace Client_UIT
                     {
                         ff_Form.Notfound();
                     }
-=======
-                        stream.Read(dataPicture, 0, lenght);
-                        MemoryStream mem = new MemoryStream(dataPicture);
-                        image = Image.FromStream(mem);
-                        
-
-                        //Đăng nhập thành công
-                        //Khởi tạo form chính
-                        dangnhapForm.Invoke(new Action(delegate()
-                        {
-
-                            {
-                                _frmMain = new Form1(dangnhapForm, this._userName, image);
-                                _frmMain.Text = "Server";
-                                _frmMain.Show();
-                                dangnhapForm.Hide();
-                            }
-                        }));
-                        //load list friend
-                        //đọc thông tin list Friend
-
-                        //--Đọc số lượng friend của user 
-                        stream.Read(buffer, 0, 4);
-                        int _CountTemp;
-                        _CountTemp = BitConverter.ToInt32(buffer, 0);
-                        for (int i = 0; i < _CountTemp;i++ )
-                        {
-                            stream.Read(buffer, 0, 4);
-                           lenght = BitConverter.ToInt32(buffer, 0);
-                            data = new byte[lenght];
-                            stream.Read(data, 0, lenght);
-                            string usernameFriend = Encoding.ASCII.GetString(data);
-                            
-
-
-                            //đọc avatar
-                            Image _avatarFriend;
-                            stream.Read(buffer, 0, 4);
-                            lenght = BitConverter.ToInt32(buffer, 0);
-                            dataPicture = new byte[lenght];
-                            stream.Read(dataPicture, 0, lenght);
-                            MemoryStream memTemp = new MemoryStream(dataPicture);
-                            _avatarFriend = Image.FromStream(memTemp);
-                            _frmMain.update_listFriend(usernameFriend, _avatarFriend);
-
-                        }
-                           
-                        
-                    }//End LoginSuccess
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                     if (cmt == CommandType_.NameExists)
                     {
                         MessageCustom.Show("Tài khoản bạn đã được đang nhập bởi người khác!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
@@ -420,11 +324,7 @@ namespace Client_UIT
                     {
                         MessageCustom.Show("Tài khoản hoặc mật khẩu không đúng!", "Error", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                     }
-<<<<<<< HEAD
                     if (cmt == CommandType_.RegisterFailure)
-=======
-                    if(cmt==CommandType_.RegisterFailure)
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                     {
                         MessageCustom.Show("Tài khoản hoặc tên người dùng đã tồn tại!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                     }
@@ -432,7 +332,6 @@ namespace Client_UIT
                     {
                         MessageCustom.Show("Đăng kí thành công!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                     }
-<<<<<<< HEAD
                     if (cmt == CommandType_.Online)
                     {
                         stream.Read(buffer, 0, 4);
@@ -518,16 +417,11 @@ namespace Client_UIT
                     {
                         ff_Form.AddNoticeSuccess();
                     }
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                 }
                 catch
                 {
                     MessageCustom.Show("Server đang bảo trì !", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-<<<<<<< HEAD
                     socket.Close();
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                 }
             }//end while
         }
@@ -541,7 +435,6 @@ namespace Client_UIT
                 bwSender.RunWorkerAsync(cmd);
             }
         }
-<<<<<<< HEAD
         System.Threading.Semaphore semaphor = new System.Threading.Semaphore(1, 1);
         private void bwSender_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -740,34 +633,6 @@ namespace Client_UIT
                 }
             }
             semaphor.Release();
-=======
-        private void bwSender_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Command cmd = (Command)e.Argument;
-            if (cmd.commandBody == null || cmd.commandBody == "")
-                cmd.commandBody = "\n";
-            byte[] metaBuffer = Encoding.ASCII.GetBytes(cmd.commandBody);
-            byte[] buffer = new byte[4];
-            buffer = BitConverter.GetBytes((int)CommandType_.Message);//gởi tin nhắn là đăng kí thất bại
-            stream.Write(buffer, 0, 4);
-            stream.Flush();
-            buffer = BitConverter.GetBytes(metaBuffer.Length);
-            stream.Write(buffer, 0, 4);
-            this.stream.Flush();
-            this.stream.Write(metaBuffer, 0, cmd.commandBody.Length);
-            this.stream.Flush();
-            MemoryStream s = new MemoryStream();
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(s, cmd.Fontsyle);
-            metaBuffer = new byte[1024];
-            metaBuffer = s.ToArray();
-            buffer = BitConverter.GetBytes(metaBuffer.Length);
-            stream.Write(buffer, 0, 4);
-            this.stream.Flush();
-            stream.Write(metaBuffer, 0, metaBuffer.Length);
-            this.stream.Flush();
-
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         }
     }
 }

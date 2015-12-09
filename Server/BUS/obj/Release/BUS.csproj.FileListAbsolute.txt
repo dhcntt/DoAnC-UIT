@@ -23,7 +23,6 @@ D:\Projects\Server_UIT\BUS\bin\Release\DTO.pdb
 D:\Projects\Server_UIT\BUS\obj\Release\BUS.csprojResolveAssemblyReference.cache
 D:\Projects\Server_UIT\BUS\obj\Release\BUS.dll
 D:\Projects\Server_UIT\BUS\obj\Release\BUS.pdb
-<<<<<<< HEAD
 D:\DoAnC-\Server\BUS\bin\Release\BUS.dll
 D:\DoAnC-\Server\BUS\bin\Release\BUS.pdb
 D:\DoAnC-\Server\BUS\bin\Release\DAO.dll
@@ -33,14 +32,3 @@ D:\DoAnC-\Server\BUS\bin\Release\DTO.pdb
 D:\DoAnC-\Server\BUS\obj\Release\BUS.csprojResolveAssemblyReference.cache
 D:\DoAnC-\Server\BUS\obj\Release\BUS.dll
 D:\DoAnC-\Server\BUS\obj\Release\BUS.pdb
-=======
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Release\BUS.dll
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Release\BUS.pdb
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Release\DAO.dll
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Release\DTO.dll
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Release\DAO.pdb
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Release\DTO.pdb
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Release\BUS.csprojResolveAssemblyReference.cache
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Release\BUS.dll
-F:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Release\BUS.pdb
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e

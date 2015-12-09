@@ -60,7 +60,6 @@ namespace DTO
             _image = image;
         }
     }
-<<<<<<< HEAD
     public class FRIEND_DTO
     {
         private string _userPrimary;
@@ -136,6 +135,4 @@ namespace DTO
             _time = _Time;
         }
     }
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
 }

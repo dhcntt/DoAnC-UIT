@@ -18,11 +18,7 @@ namespace Server_UIT
         }
         void Dang_nhap()
         {
-<<<<<<< HEAD
             if (txt_dangnhap.Text == "zzsuzuki95" && txt_password.Text == "quocnam")
-=======
-            if (txt_dangnhap.Text == "" && txt_password.Text == "")
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             {
                 Form1 server = new Form1(this, txt_dangnhap.Text);
                 server.Show();
@@ -59,13 +55,5 @@ namespace Server_UIT
                 Dang_nhap();
             }
         }
-<<<<<<< HEAD
-=======
-
-        private void Dangnhap_Load(object sender, EventArgs e)
-        {
-
-        }
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }

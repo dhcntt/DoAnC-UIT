@@ -105,13 +105,5 @@ namespace Client_UIT
             
             return Result;
         }
-<<<<<<< HEAD
-=======
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }

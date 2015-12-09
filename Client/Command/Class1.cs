@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using Enum;
 using System.Drawing;
-<<<<<<< HEAD
 using System.Data;
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
 namespace _Command
 {
     //đây là 1 toàn bộ nội dung của 1 tin nhắn được gửi đi hoặc nhận lại  giữa client -server
@@ -34,7 +31,6 @@ namespace _Command
             get { return fontsyle; }
             set { fontsyle = value; }
         }
-<<<<<<< HEAD
         private string _username;
 
         public string Username
@@ -119,10 +115,6 @@ namespace _Command
             _cmdType = type;
         }
         public Command(CommandType_ type, string metaData,int a=0)
-=======
-        // 2 contructor
-        public Command(CommandType_ type, string metaData)
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         {
             this._cmdType = type;
             this._commandBody = metaData;
@@ -134,7 +126,6 @@ namespace _Command
             this._commandBody = metaData;
             this.fontsyle = fonttemp;
         }
-<<<<<<< HEAD
         public Command(CommandType_ type, string _UserPrimary, string _UserReference, string _Type="", string _Content=" ", string _Time=" ")
         {
             this._cmdType = type;
@@ -175,7 +166,5 @@ namespace _Command
             _image = image;
             _dt = dt;
         }
-=======
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }

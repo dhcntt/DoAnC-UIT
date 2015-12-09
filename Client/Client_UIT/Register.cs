@@ -35,13 +35,8 @@ namespace Client_UIT
             }
             else
             {
-<<<<<<< HEAD
                 try
                 {
-=======
-               try
-               { 
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                     NetworkStream stream = new NetworkStream(socket);
                     byte[] buffer = new byte[4];
                     //sen command type
@@ -81,19 +76,11 @@ namespace Client_UIT
                     stream.Write(data, 0, txt_email.Text.Length);
                     stream.Flush();
 
-<<<<<<< HEAD
                 }
                 catch
                 {
                     MessageBox.Show("Server đang bảo trì,không thể đăng kí!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-=======
-               }
-               catch
-               {
-                   MessageBox.Show("Server đang bảo trì,không thể đăng kí!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               }
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             }
         }
 
@@ -141,11 +128,7 @@ namespace Client_UIT
         {
             this.ptb_canel_rgt.BackgroundImage = global::Client_UIT.Properties.Resources.close1;
         }
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
 
         private void ptb_dk_rgt_Paint_1(object sender, PaintEventArgs e)
         {
@@ -198,16 +181,9 @@ namespace Client_UIT
 
         private void ptb_dk_rgt_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             bbt_register_Click(sender, e);
         }
 
 
-=======
-            bbt_register_Click(sender,e);
-        }
-
-       
->>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }
