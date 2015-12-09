@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Client_UIT
 {
+<<<<<<< HEAD
     public class FriendList
     {
         private bool _status;
@@ -96,6 +97,16 @@ namespace Client_UIT
                 ptb_status.Image = global::Client_UIT.Properties.Resources.offline;
             if (TextStatus == "")
                 this.txt_username.Location = new Point(40, 14);
+=======
+    //1 user control trong danh sách bạn
+    public partial class Friend : UserControl
+    {
+        public Friend(string _userFriend, Image _imageTemp)
+        {
+            InitializeComponent();
+            txt_username.Text = _userFriend;
+            ptb_avatar.Image = _imageTemp;
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         }
     }
 }

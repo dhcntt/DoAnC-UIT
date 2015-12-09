@@ -7,8 +7,16 @@ D:\Projects\Server_UIT\DTO\bin\Release\DTO.pdb
 D:\Projects\Server_UIT\DTO\obj\Release\DTO.csprojResolveAssemblyReference.cache
 D:\Projects\Server_UIT\DTO\obj\Release\DTO.dll
 D:\Projects\Server_UIT\DTO\obj\Release\DTO.pdb
+<<<<<<< HEAD
 D:\DoAnC-\Server\DTO\bin\Release\DTO.dll
 D:\DoAnC-\Server\DTO\bin\Release\DTO.pdb
 D:\DoAnC-\Server\DTO\obj\Release\DTO.dll
 D:\DoAnC-\Server\DTO\obj\Release\DTO.pdb
 D:\DoAnC-\Server\DTO\obj\Release\DTO.csprojResolveAssemblyReference.cache
+=======
+F:\HK5\Githup\DoAnC-UIT\Server\DTO\bin\Release\DTO.dll
+F:\HK5\Githup\DoAnC-UIT\Server\DTO\bin\Release\DTO.pdb
+F:\HK5\Githup\DoAnC-UIT\Server\DTO\obj\Release\DTO.csprojResolveAssemblyReference.cache
+F:\HK5\Githup\DoAnC-UIT\Server\DTO\obj\Release\DTO.dll
+F:\HK5\Githup\DoAnC-UIT\Server\DTO\obj\Release\DTO.pdb
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e

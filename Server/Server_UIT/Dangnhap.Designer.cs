@@ -104,6 +104,10 @@
             this.Controls.Add(this.txt_password);
             this.Name = "Dangnhap";
             this.Text = "Dangnhap";
+<<<<<<< HEAD
+=======
+            this.Load += new System.EventHandler(this.Dangnhap_Load);
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,7 +11,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+<<<<<<< HEAD
 using _Command;
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
 
 namespace Client_UIT
 {
@@ -19,18 +22,27 @@ namespace Client_UIT
     {
         Dangnhap _dangnhapForm;
         string _userName;
+<<<<<<< HEAD
         ClientManager client;
         public  List<FriendList> listFriend;
         public Form1(Dangnhap _dangnhapTemp, string _userTemp, Image _imageTemp, ClientManager ClientTemp)
+=======
+        public Form1(Dangnhap _dangnhapTemp, string _userTemp,Image _imageTemp)
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         {
 
             InitializeComponent();
             _dangnhapForm = _dangnhapTemp;
             _userName = _userTemp;
+<<<<<<< HEAD
             client = ClientTemp;
             lbl_user.Text = _userName;
             ptb_avatar.Image = _imageTemp;
 
+=======
+            lbl_user.Text = _userName;
+            ptb_avatar.Image = _imageTemp;
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -40,7 +52,11 @@ namespace Client_UIT
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             timer1.Start();
+<<<<<<< HEAD
             setpoint();
+=======
+                setpoint();
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -108,6 +124,7 @@ namespace Client_UIT
 
         private void ptb_avatar_Click_1(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             //OpenFileDialog ofd = new OpenFileDialog();
             //ofd.Filter = "png file (*.png)|*.png";
             //if(ofd.ShowDialog()==DialogResult.OK)
@@ -117,12 +134,22 @@ namespace Client_UIT
             //}
             Personal_information ps_if = new Personal_information();
             ps_if.Show();
+=======
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "png file (*.png)|*.png";
+            if(ofd.ShowDialog()==DialogResult.OK)
+            {
+                ptb_avatar.Image = Image.FromFile(ofd.FileName);
+                
+            }
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         }
         /// <summary>
         /// Friend
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+<<<<<<< HEAD
         public delegate void UpDate_listFriend_delegate( bool kt);
         public void update_listFriend(bool kt)
         {
@@ -171,6 +198,32 @@ namespace Client_UIT
             client.Notice_frm = frm_notice;
             Command cmd = new Command(Enum.CommandType_.LoadNotice);
             client.SendCommand(cmd);
+=======
+        public delegate void UpDate_listFriend_delegate(string _userFriend,Image _imageTemp);
+        public void update_listFriend(string _userFriend,Image _imageTemp)
+        {
+            if(flp_listFriend.InvokeRequired)
+            {
+                this.Invoke(new UpDate_listFriend_delegate(update_listFriend),_userFriend,_imageTemp);
+            }
+            else
+            {
+                Friend _friendTemp=new Friend( _userFriend,_imageTemp);
+                flp_listFriend.Controls.Add(_friendTemp);
+            }
+        }
+        
+        private void bbt_addfriend_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbThongTin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Persional_Ìmormation thongtin = new Persional_Ìmormation();
+            thongtin.Show();
+            
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         }
     }
 }

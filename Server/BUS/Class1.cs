@@ -32,6 +32,7 @@ namespace BUS
         {
             return FRIEND.Loadds(_userNameTemp);
         }
+<<<<<<< HEAD
         public static DataTable FindFriend(string _userNameTemp)
         {
             return FRIEND.FindFriend(_userNameTemp);
@@ -52,5 +53,7 @@ namespace BUS
         {
             NOTICE.Delete_notice(_userPrimary, _userReference);
         }
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }

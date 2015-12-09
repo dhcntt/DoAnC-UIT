@@ -116,6 +116,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\..\Client\Command\Command.csproj">
       <Project>{77d64971-6851-456d-be06-b98efbcf8508}</Project>
       <Name>Command</Name>
@@ -124,10 +125,23 @@
       <Project>{c182e804-f738-4e87-ac38-304dc1a14233}</Project>
       <Name>Enum</Name>
     </ProjectReference>
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     <ProjectReference Include="..\BUS\BUS.csproj">
       <Project>{daef37f7-77ff-419e-93de-1c8a6c2dee27}</Project>
       <Name>BUS</Name>
     </ProjectReference>
+<<<<<<< HEAD
+=======
+    <ProjectReference Include="..\ClassLibrary1\Enum.csproj">
+      <Project>{e1744e92-4968-476e-b3c4-d64a1c3ab8a9}</Project>
+      <Name>Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Command\Command.csproj">
+      <Project>{a6a86880-e167-4c14-baed-1478abc35754}</Project>
+      <Name>Command</Name>
+    </ProjectReference>
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{0aacc2e1-b639-492a-90c5-44aa6be675c1}</Project>
       <Name>DTO</Name>

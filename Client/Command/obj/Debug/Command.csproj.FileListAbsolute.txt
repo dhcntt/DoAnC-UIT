@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\DoAnC-\Client\Command\bin\Debug\Command.dll
 D:\DoAnC-\Client\Command\bin\Debug\Command.pdb
 D:\DoAnC-\Client\Command\bin\Debug\Enum.dll
@@ -5,3 +6,12 @@ D:\DoAnC-\Client\Command\bin\Debug\Enum.pdb
 D:\DoAnC-\Client\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
 D:\DoAnC-\Client\Command\obj\Debug\Command.dll
 D:\DoAnC-\Client\Command\obj\Debug\Command.pdb
+=======
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Command.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Command.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Enum.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\bin\Debug\Enum.pdb
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\obj\Debug\Command.dll
+C:\Users\nam\Documents\Visual Studio 2013\Projects\Client_UIT\Command\obj\Debug\Command.pdb
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e

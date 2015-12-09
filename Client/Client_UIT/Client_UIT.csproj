@@ -60,24 +60,30 @@
     <Compile Include="Dangnhap.Designer.cs">
       <DependentUpon>Dangnhap.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="FindFriend.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FindFriend.Designer.cs">
       <DependentUpon>FindFriend.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Form_Notice.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Notice.Designer.cs">
       <DependentUpon>Form_Notice.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     <Compile Include="Friend.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,7 @@
     <Compile Include="Messeage.Designer.cs">
       <DependentUpon>Messeage.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Notice.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +114,13 @@
     </Compile>
     <Compile Include="Personal information.Designer.cs">
       <DependentUpon>Personal information.cs</DependentUpon>
+=======
+    <Compile Include="Persional Ìmormation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Persional Ìmormation.Designer.cs">
+      <DependentUpon>Persional Ìmormation.cs</DependentUpon>
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +139,7 @@
     <EmbeddedResource Include="Dangnhap.resx">
       <DependentUpon>Dangnhap.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="FindFriend.resx">
       <DependentUpon>FindFriend.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +149,11 @@
     <EmbeddedResource Include="Form_Notice.resx">
       <DependentUpon>Form_Notice.cs</DependentUpon>
     </EmbeddedResource>
+=======
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     <EmbeddedResource Include="Friend.resx">
       <DependentUpon>Friend.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,11 +163,16 @@
     <EmbeddedResource Include="Messeage.resx">
       <DependentUpon>Messeage.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Notice.resx">
       <DependentUpon>Notice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Personal information.resx">
       <DependentUpon>Personal information.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Persional Ìmormation.resx">
+      <DependentUpon>Persional Ìmormation.cs</DependentUpon>
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -176,6 +201,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <ProjectReference Include="..\Command\Command.csproj">
+      <Project>{77d64971-6851-456d-be06-b98efbcf8508}</Project>
+      <Name>Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Enum\Enum.csproj">
+      <Project>{c182e804-f738-4e87-ac38-304dc1a14233}</Project>
+      <Name>Enum</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +265,7 @@
     <None Include="Resources\form123.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Resources\offline.png" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +292,15 @@
       <Project>{c182e804-f738-4e87-ac38-304dc1a14233}</Project>
       <Name>Enum</Name>
     </ProjectReference>
+=======
+    <None Include="Resources\Form_DK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bbt_dk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bbt_dk1.png" />
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

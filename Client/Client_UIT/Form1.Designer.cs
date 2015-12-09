@@ -40,8 +40,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.flp_listFriend = new System.Windows.Forms.FlowLayoutPanel();
             this.bbt_addfriend = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.txt_findFriend = new Client_UIT.TextBoxCustom();
             this.bbt_notice = new System.Windows.Forms.Button();
+=======
+            this.lbThongTin = new System.Windows.Forms.LinkLabel();
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_minimize)).BeginInit();
@@ -136,19 +140,30 @@
             this.flp_listFriend.Location = new System.Drawing.Point(153, 222);
             this.flp_listFriend.Margin = new System.Windows.Forms.Padding(0);
             this.flp_listFriend.Name = "flp_listFriend";
+<<<<<<< HEAD
             this.flp_listFriend.Size = new System.Drawing.Size(246, 327);
+=======
+            this.flp_listFriend.Size = new System.Drawing.Size(246, 360);
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             this.flp_listFriend.TabIndex = 21;
             // 
             // bbt_addfriend
             // 
+<<<<<<< HEAD
             this.bbt_addfriend.Location = new System.Drawing.Point(365, 183);
             this.bbt_addfriend.Name = "bbt_addfriend";
             this.bbt_addfriend.Size = new System.Drawing.Size(34, 23);
+=======
+            this.bbt_addfriend.Location = new System.Drawing.Point(291, 185);
+            this.bbt_addfriend.Name = "bbt_addfriend";
+            this.bbt_addfriend.Size = new System.Drawing.Size(75, 23);
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             this.bbt_addfriend.TabIndex = 22;
             this.bbt_addfriend.Text = "button1";
             this.bbt_addfriend.UseVisualStyleBackColor = true;
             this.bbt_addfriend.Click += new System.EventHandler(this.bbt_addfriend_Click);
             // 
+<<<<<<< HEAD
             // txt_findFriend
             // 
             this.txt_findFriend.Bpassword = false;
@@ -172,6 +187,18 @@
             this.bbt_notice.Text = "button3";
             this.bbt_notice.UseVisualStyleBackColor = true;
             this.bbt_notice.Click += new System.EventHandler(this.bbt_notice_Click);
+=======
+            // lbThongTin
+            // 
+            this.lbThongTin.AutoSize = true;
+            this.lbThongTin.Location = new System.Drawing.Point(28, 185);
+            this.lbThongTin.Name = "lbThongTin";
+            this.lbThongTin.Size = new System.Drawing.Size(52, 13);
+            this.lbThongTin.TabIndex = 23;
+            this.lbThongTin.TabStop = true;
+            this.lbThongTin.Text = "Thông tin";
+            this.lbThongTin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbThongTin_LinkClicked);
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             // 
             // Form1
             // 
@@ -179,9 +206,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(400, 584);
+<<<<<<< HEAD
             this.Controls.Add(this.bbt_notice);
             this.Controls.Add(this.txt_findFriend);
             this.Controls.Add(this.bbt_addfriend);
+=======
+            this.Controls.Add(this.lbThongTin);
+            this.Controls.Add(this.bbt_addfriend);
+            this.Controls.Add(this.flp_listFriend);
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ptb_avatar);
             this.Controls.Add(this.ptb_minimize);
@@ -189,12 +222,18 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_user);
             this.Controls.Add(this.label1);
+<<<<<<< HEAD
             this.Controls.Add(this.flp_listFriend);
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+<<<<<<< HEAD
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_minimize)).EndInit();
@@ -216,8 +255,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flp_listFriend;
         private System.Windows.Forms.Button bbt_addfriend;
+<<<<<<< HEAD
         private TextBoxCustom txt_findFriend;
         private System.Windows.Forms.Button bbt_notice;
+=======
+        private System.Windows.Forms.LinkLabel lbThongTin;
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }
 

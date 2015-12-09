@@ -15,7 +15,10 @@ namespace Server_UIT
     {
         public ClientManager _cm;//clientmanager giữ kết nối giữa tab showlient này với socket
         public string _username;//tên của showclient
+<<<<<<< HEAD
         public bool Online;//trạng thái online hay offline của client này
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         public ShowClient(ClientManager cm,string username="",string IP_port="")
         {
             InitializeComponent();
@@ -23,7 +26,10 @@ namespace Server_UIT
             _username = username;
             lbl_ip_port.Text = IP_port;
             _cm = cm;
+<<<<<<< HEAD
             Online = false;
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
         }
         protected override void OnControlAdded(ControlEventArgs e)
         {

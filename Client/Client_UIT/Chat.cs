@@ -17,6 +17,7 @@ namespace Client_UIT
     {
         public ClientManager _client;
         Font _fontMessage;
+<<<<<<< HEAD
        // public string _usernameMain;
         public string _usernameReference;
         public Chat(ClientManager ClientTemp,string userReferrence)
@@ -25,6 +26,12 @@ namespace Client_UIT
             _client = ClientTemp;
             //_usernameMain = usermain;
             _usernameReference = userReferrence;
+=======
+        public Chat(ClientManager ClientTemp)
+        {
+            InitializeComponent();
+            _client = ClientTemp;
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
             _fontMessage = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);
         }
 
@@ -37,6 +44,7 @@ namespace Client_UIT
                     Messeage ms = new Messeage(_client.userName, rTB_content.Text, _fontMessage);
                     flp_messeage.Controls.Add(ms);
                     _fontMessage = rTB_content.Font;
+<<<<<<< HEAD
                     if (_usernameReference == "Server")
                     {
                         Command cmd = new Command(Enum.CommandType_.Message, rTB_content.Text, _fontMessage);
@@ -48,6 +56,11 @@ namespace Client_UIT
                         _client.SendCommand(cmd);
                     }
                     rTB_content.Text = "";
+=======
+                    Command cmd = new Command(Enum.CommandType_.Message, rTB_content.Text, _fontMessage);
+                    rTB_content.Text = "";
+                    _client.SendCommand(cmd);
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                 }
             }
             else
@@ -78,16 +91,23 @@ namespace Client_UIT
             {
                 if (_content != "")
                 {
+<<<<<<< HEAD
                     Messeage ms = new Messeage(_usernameReference, _content,temp);
+=======
+                    Messeage ms = new Messeage("Server", _content,temp);
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
                     flp_messeage.Controls.Add(ms);
                 }
             }
         }
+<<<<<<< HEAD
 
         private void Chat_FormClosed(object sender, FormClosedEventArgs e)
         {
             var formchat=ClientManager.IsShow(_usernameReference);
             ClientManager.listFormChat.Remove(formchat);
         }
+=======
+>>>>>>> 254841375a781fe47587c9cc588e7372e753005e
     }
 }
