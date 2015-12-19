@@ -26,11 +26,23 @@ namespace Client_UIT
             //int a=2;
            
         }
+        BackgroundWorker backgroundWorker;
         void Click_dangnhap()
         {
-            this.txt_dangnhap._lost();
+            panel1.Visible = false;
+            panel2.Visible = true;
+            progressBar1.Maximum = 100;
+            progressBar1.Step = 1;
+            progressBar1.Value = 0;
+            //backgroundWorker = new BackgroundWorker();
+            //backgroundWorker.DoWork+=backgroundWorker_DoWork;
+            //backgroundWorker.WorkerReportsProgress = true;
+            //backgroundWorker.WorkerSupportsCancellation = true;
+            //backgroundWorker.ProgressChanged+=backgroundWorker_ProgressChanged;
+            //backgroundWorker.RunWorkerAsync();
             this.txt_password._lost();
-            if (txt_dangnhap.NullText == false || txt_password.NullText == false)
+            this.txt_dangnhap._lost();
+            if (txt_password.NullText == false || txt_dangnhap.NullText == false)
             {
                 MessageCustom.Show("Vui lòng nhập tài khoản và mật khẩu \n chính xác  để đăng nhập! ","Thông báo đăng nhập",new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                 
@@ -52,6 +64,7 @@ namespace Client_UIT
                     buffer = BitConverter.GetBytes((int)CommandType_.Login);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
+
                     buffer = BitConverter.GetBytes(txt_dangnhap.Text.Length);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
@@ -59,6 +72,7 @@ namespace Client_UIT
                     data = Encoding.ASCII.GetBytes(txt_dangnhap.Text);
                     stream.Write(data, 0, txt_dangnhap.Text.Length);
                     stream.Flush();
+
                     buffer = BitConverter.GetBytes(txt_password.Text.Length);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
@@ -70,7 +84,27 @@ namespace Client_UIT
                 catch
                 {
                     MessageCustom.Show("Server đang bảo trì. \nVui lòng đăng nhập lại sau. ", "Thông báo đăng nhập", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                    panel1.Visible = true;
+                    panel2.Visible = false;
                 }
+            }
+        }
+        public void KillThreard()
+        {
+            backgroundWorker.CancelAsync();
+            backgroundWorker.Dispose();
+        }
+        public delegate void ChangPanel_delegate();
+        public void ChangePanel()
+        {
+            if (panel1.InvokeRequired && panel2.InvokeRequired)
+            {
+                this.Invoke(new ChangPanel_delegate(ChangePanel));
+            }
+            else
+            {
+                panel2.Visible = false;
+                panel1.Visible = true;
             }
         }
         /// <summary>
@@ -78,6 +112,25 @@ namespace Client_UIT
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //var backgroundWorker = sender as BackgroundWorker;
+            for (int j = 0; j < 100000; j++)
+            {
+                //Calculate(j);
+                backgroundWorker.ReportProgress((j * 100) / 100000);
+            }
+        }
+
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // TODO: do something with final calculation.
+        }
         private void ptb_dangnhap_Click(object sender, EventArgs e)
         {
             
@@ -223,7 +276,7 @@ namespace Client_UIT
         {
             if (e.KeyChar == (char)Keys.Tab)
             {
-               txt_password.Focus();
+               txt_dangnhap.Focus();
             }
             if (e.KeyChar == (char)Keys.Enter)
             {

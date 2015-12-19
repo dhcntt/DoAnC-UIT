@@ -7,38 +7,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Client_UIT
 {
     public partial class Personal_information : Form
     {
-        public Personal_information()
+        int _stt;
+        string _account;
+        string _email;
+        string _status;
+        Image _image;
+        ClientManager client;
+        public Personal_information(int Stt, string account, string Email, string status, Image image_,ClientManager clientTemp)
         {
             InitializeComponent();
+            client = clientTemp;
+            txt_ID.Text = Stt.ToString();
+            txt_username.Text = account;
+            txt_email.Text = Email.Trim();
+            txt_status.Text = status;
+            ptb_avatar.Image = image_;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_MouseClick(object sender, MouseEventArgs e)
-        {
-            txtboxDiaChi.ReadOnly = false;
-            txtboxGioiTinh.ReadOnly = false;
-            txtboxHoTen.ReadOnly = false;
-            txtboxNgaySinh.ReadOnly = false;
-        }
-
-        private void Persional_Ìmormation_Load(object sender, EventArgs e)
-        {
-
-        }
+        //public delegate void UpDate_Information_delegate(int Stt, string account, string Email, string status, Image image_);
+        //public void UpDate_Information(int Stt, string account, string Email, string status, Image image_)
+        //{
+        //    if (txt_ID.InvokeRequired && txt_account.InvokeRequired && txt_email.InvokeRequired && txt_status.InvokeRequired
+        //        && ptb_avatar.InvokeRequired)
+        //    {
+        //        this.Invoke(new UpDate_Information_delegate(UpDate_Information), Stt, account, Email, status, image_);
+        //    }
+        //    else
+        //    {
+        //        txt_ID.Text = Stt.ToString();
+        //        txt_account.Text = account;
+        //        txt_email.Text = Email;
+        //        txt_status.Text = status;
+        //        ptb_avatar.Image = image_;
+        //    }
+        //}
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -96,9 +104,34 @@ namespace Client_UIT
             this.Location = new Point(current_form.X, current_form.Y);
         }
 
-        private void ptb_null_Click(object sender, EventArgs e)
-        {
+        
 
+        private void bbt_changeAvatar_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "png file (*.png)|*.png";
+            if(ofd.ShowDialog()==DialogResult.OK)
+            {
+                ptb_avatar.Image = Image.FromFile(ofd.FileName);
+            }
+        }
+        public delegate void GetData(Image _image, string status);
+        public GetData MyGetValue;
+        private void bbt_ok_Click(object sender, EventArgs e)
+        {
+            byte[] dataPicture = new byte[10000];
+            MemoryStream ms = new MemoryStream();
+            ImageConverter imageConvert = new ImageConverter();
+            dataPicture = (byte[])imageConvert.ConvertTo(ptb_avatar.Image, typeof(byte[]));
+            _Command.Command cmd = new _Command.Command(Enum.CommandType_.ChangeInformation, txt_username.Text, txt_email.Text, dataPicture, txt_status.Text);
+            client.SendCommand(cmd);
+            MyGetValue(ptb_avatar.Image, txt_status.Text);
+            this.Close();
+        }
+
+        private void bbt_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

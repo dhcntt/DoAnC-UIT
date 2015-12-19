@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Chat));
             this.rTB_content = new System.Windows.Forms.RichTextBox();
             this.flp_messeage = new System.Windows.Forms.FlowLayoutPanel();
             this.bbt_gui = new System.Windows.Forms.Button();
@@ -45,17 +46,20 @@
             this.rTB_content.Size = new System.Drawing.Size(516, 96);
             this.rTB_content.TabIndex = 0;
             this.rTB_content.Text = "";
+            this.rTB_content.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rTB_content_KeyPress);
             // 
             // flp_messeage
             // 
             this.flp_messeage.AutoScroll = true;
-            this.flp_messeage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.flp_messeage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.flp_messeage.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_messeage.Location = new System.Drawing.Point(12, 12);
+            this.flp_messeage.Margin = new System.Windows.Forms.Padding(0);
             this.flp_messeage.Name = "flp_messeage";
             this.flp_messeage.Size = new System.Drawing.Size(516, 209);
             this.flp_messeage.TabIndex = 1;
             this.flp_messeage.WrapContents = false;
+            this.flp_messeage.Scroll += new System.Windows.Forms.ScrollEventHandler(this.flp_messeage_Scroll);
             // 
             // bbt_gui
             // 
@@ -120,9 +124,11 @@
             this.Controls.Add(this.bbt_gui);
             this.Controls.Add(this.flp_messeage);
             this.Controls.Add(this.rTB_content);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Chat";
             this.Text = "Chat";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Chat_FormClosed);
+            this.Resize += new System.EventHandler(this.Chat_Resize);
             this.ResumeLayout(false);
 
         }

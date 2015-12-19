@@ -76,6 +76,24 @@ namespace DAO
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public static void Change_information(string username, string email,byte[] image,byte[] status)
+        {
+            SqlConnection con = SQLConnectionData.KetnoiCSDL();
+            SqlCommand cmd = new SqlCommand("ChangeData", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@username", SqlDbType.NChar, 30);
+            cmd.Parameters.Add("@email", SqlDbType.NChar, 30);
+            cmd.Parameters.Add("@image", SqlDbType.Image);
+            cmd.Parameters.Add("@status", SqlDbType.VarBinary,50);
+            cmd.Parameters["@username"].Value = username;
+            cmd.Parameters["@email"].Value = email;
+            cmd.Parameters["@image"].Value = image;
+            cmd.Parameters["@status"].Value = status;
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
     public class FRIEND
     {
@@ -166,6 +184,45 @@ namespace DAO
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+    }
+    public class MESSAGETEXT
+    {
+        public static void Save_message(string _userPrimaryTemp, string _userReference, byte[] _content,byte[] _font, string _time)
+        {
+            SqlConnection con = SQLConnectionData.KetnoiCSDL();
+            SqlCommand cmd = new SqlCommand("savemessage", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@userPrimary", SqlDbType.NChar, 30);
+            cmd.Parameters.Add("@userReferences", SqlDbType.NChar, 30);
+            cmd.Parameters.Add("@contentMessage", SqlDbType.Image);
+            cmd.Parameters.Add("@font", SqlDbType.Image);
+            cmd.Parameters.Add("@Time", SqlDbType.SmallDateTime);
+
+            cmd.Parameters["@userPrimary"].Value = _userPrimaryTemp;
+            cmd.Parameters["@userReferences"].Value = _userReference;
+            cmd.Parameters["@contentMessage"].Value = _content;
+            cmd.Parameters["@font"].Value = _font;
+            cmd.Parameters["@Time"].Value = _time;
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public static DataTable Load_message(int count,string userPrimary,string userReferences)
+        {
+            SqlConnection con = SQLConnectionData.KetnoiCSDL();
+            SqlCommand cmd = new SqlCommand("LoadMessage", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.Int);
+            cmd.Parameters.Add("@userPrimary", SqlDbType.NChar, 30);
+            cmd.Parameters.Add("@userReferences", SqlDbType.NChar, 30);
+            cmd.Parameters["@count"].Value = count;
+            cmd.Parameters["@userPrimary"].Value = userPrimary;
+            cmd.Parameters["@userReferences"].Value = userReferences;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
         }
     }
 }

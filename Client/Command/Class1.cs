@@ -66,6 +66,17 @@ namespace _Command
             get { return _image; }
             set { _image = value; }
         }
+        private string _status;
+
+        public string Status
+        {
+            get { return _status; }
+            set { _status = value; }
+        }
+
+
+
+
         private string _userPrimary;
 
         public string UserPrimary
@@ -109,7 +120,7 @@ namespace _Command
             set { _dt = value; }
         }
         //contructor
-        
+        public int count;
         public Command(CommandType_ type)
         {
             _cmdType = type;
@@ -118,6 +129,7 @@ namespace _Command
         {
             this._cmdType = type;
             this._commandBody = metaData;
+            count = a;
             fontsyle = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);
         }
         public Command(CommandType_ type, string metaData, Font fonttemp)
@@ -147,12 +159,13 @@ namespace _Command
             _commandBody = metaData;
             fontsyle = fonttemp;
         }
-         public Command(CommandType_ type, string username, string email,byte[] image)
+        public Command(CommandType_ type, string username, string email, byte[] image, string status="")
         {
             _cmdType = type;
             _username = username;
             _email = email;
             _image = image;
+            _status = status;
         }
          public Command(CommandType_ type, DataTable dt)
          {

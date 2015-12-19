@@ -17,20 +17,41 @@ namespace Client_UIT
 {
     public partial class Form1 : Form
     {
-        Dangnhap _dangnhapForm;
+        int _stt;
         string _userName;
+        string _email;
+        string _status;
+        Image _image;
+        Dangnhap _dangnhapForm;
         ClientManager client;
-        public  List<FriendList> listFriend;
-        public Form1(Dangnhap _dangnhapTemp, string _userTemp, Image _imageTemp, ClientManager ClientTemp)
+        public List<FriendList> listFriend;
+        public Form1(Dangnhap _dangnhapTemp, int stt, string _userTemp, string Email, Image _imageTemp, string status, ClientManager ClientTemp)
         {
 
             InitializeComponent();
             _dangnhapForm = _dangnhapTemp;
+            _stt = stt;
+            _email = Email;
             _userName = _userTemp;
             client = ClientTemp;
             lbl_user.Text = _userName;
             ptb_avatar.Image = _imageTemp;
-
+            _image = _imageTemp;
+            _status = status;
+            if (status == "\n")
+            {
+                txt_status.Text = "Bạn đang nghĩ gì.... 	";
+            }
+            else
+                txt_status.Text = status;
+            Rectangle r = Screen.PrimaryScreen.WorkingArea;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width, Screen.PrimaryScreen.WorkingArea.Height - this.Height);
+        }
+        public void GetValue(Image _image, string status)
+        {
+            ptb_avatar.Image = _image;
+            txt_status.Text = status;
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -101,11 +122,6 @@ namespace Client_UIT
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void ptb_avatar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ptb_avatar_Click_1(object sender, EventArgs e)
         {
             //OpenFileDialog ofd = new OpenFileDialog();
@@ -115,7 +131,8 @@ namespace Client_UIT
             //    ptb_avatar.Image = Image.FromFile(ofd.FileName);
 
             //}
-            Personal_information ps_if = new Personal_information();
+            Personal_information ps_if = new Personal_information(1214325, _userName, _email, _status, _image, client);
+            ps_if.MyGetValue = new Personal_information.GetData(this.GetValue);
             ps_if.Show();
         }
         /// <summary>
@@ -123,12 +140,13 @@ namespace Client_UIT
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void UpDate_listFriend_delegate( bool kt);
+      
+        public delegate void UpDate_listFriend_delegate(bool kt);
         public void update_listFriend(bool kt)
         {
             if (flp_listFriend.InvokeRequired)
             {
-                this.Invoke(new UpDate_listFriend_delegate(update_listFriend), kt);
+                this.flp_listFriend.Invoke(new UpDate_listFriend_delegate(update_listFriend), new object[] { kt });
             }
             else
             {
@@ -144,16 +162,16 @@ namespace Client_UIT
 
                 for (int i = 0; i < listFriend.Count; i++)
                 {
-                    Friend _friendTemp = new Friend(listFriend[i]._userFriend, listFriend[i].Image, listFriend[i].Status, client);
+                    Friend _friendTemp = new Friend(listFriend[i]._userFriend, listFriend[i].Image, listFriend[i].Status, client, i, listFriend[i].TextStatus);
                     flp_listFriend.Controls.Add(_friendTemp);
-                    //listFriend.Add(_friendTemp);
+
                 }
             }
         }
 
         private void bbt_addfriend_Click(object sender, EventArgs e)
         {
-            FindFriend ff = new FindFriend(client,_userName);
+            FindFriend ff = new FindFriend(client, _userName);
             ff.Show();
 
 

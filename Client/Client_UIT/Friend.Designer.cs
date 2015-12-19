@@ -32,8 +32,10 @@
             this.txt_status = new System.Windows.Forms.Label();
             this.ptb_avatar = new System.Windows.Forms.PictureBox();
             this.ptb_status = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_status)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_username
@@ -55,7 +57,7 @@
             // 
             // ptb_avatar
             // 
-            this.ptb_avatar.Location = new System.Drawing.Point(199, 6);
+            this.ptb_avatar.Location = new System.Drawing.Point(302, 8);
             this.ptb_avatar.Name = "ptb_avatar";
             this.ptb_avatar.Size = new System.Drawing.Size(35, 33);
             this.ptb_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -71,20 +73,30 @@
             this.ptb_status.TabIndex = 0;
             this.ptb_status.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(340, 50);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // Friend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.ptb_avatar);
             this.Controls.Add(this.txt_status);
             this.Controls.Add(this.txt_username);
             this.Controls.Add(this.ptb_status);
+            this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Friend";
-            this.Size = new System.Drawing.Size(238, 48);
+            this.Size = new System.Drawing.Size(340, 50);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Friend_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_status)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Label txt_username;
         private System.Windows.Forms.Label txt_status;
         private System.Windows.Forms.PictureBox ptb_avatar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -27,134 +27,69 @@ namespace Client_UIT
         
         public void Found(string username, string email, Image image)
         {
-            if (ptb_avatar.InvokeRequired)
+            if(panel1.InvokeRequired&&panel2.InvokeRequired&&panel3.InvokeRequired)
             {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
+                this.Invoke(new Found_Delegate(Found), username, email, image);
             }
             else
             {
-                ptb_avatar.Visible = true;
-                ptb_avatar.Image = image;
-            }
-            if (lbl_username.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
-            }
-            else
-            {
-                lbl_username.Visible = true;
-            }
-            if (lbl_username1.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
-            }
-            else
-            {
-                lbl_username1.Visible = true;
-                lbl_username1.Text = username;
-            }
-            if (lbl_email.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
-            }
-            else
-            {
-                lbl_email.Visible = true;
-                
-            }
-            if (lbl_email1.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
-            }
-            else
-            {
-                lbl_email1.Visible = true;
+                panel1.Visible = true;
+                panel2.Visible = false;
+                panel3.Visible = false;
                 lbl_email1.Text = email;
-                }
-            if (lbl_find.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
-            }
-            else
-            {
-                lbl_find.Visible = false;
-            }
-            if (txt_findFriend.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
-            }
-            else
-            {
-                txt_findFriend.Visible = false;
-            }
-            if (bbt_findFriend.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found),username,email, image);
-            }
-            else
-            {
-                bbt_findFriend.Visible = false;
-            }
-            if (bbt_nextfriend.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found), username, email, image);
-            }
-            else
-            {
-                bbt_nextfriend.Visible = true;
-            }
-            if (bbt_addfriend.InvokeRequired)
-            {
-                this.Invoke(new Found_Delegate(Found), username, email, image);
-            }
-            else
-            {
-                bbt_addfriend.Visible = true;
+                lbl_username1.Text = username;
+                ptb_avatar.Image = image;
             }
         }
         public delegate void NotFound_Delegate();
         
         public void Notfound()
         {
-            if (lbl_notfound.InvokeRequired)
+            if (panel1.InvokeRequired && panel2.InvokeRequired && panel3.InvokeRequired)
             {
                 this.Invoke(new NotFound_Delegate(Notfound));
             }
             else
             {
-                lbl_notfound.Visible = true;
+                lbl_notfound.Text = "Không tìm thấy người này!";
+                panel3.Visible = true;
+                panel2.Visible = false;
+                panel1.Visible = false;
+
             }
-            if (lbl_find.InvokeRequired)
+        }
+        public delegate void AddNoticeFailure_Delegate();
+
+        public void AddNoticeFailure()
+        {
+            if (panel1.InvokeRequired && panel2.InvokeRequired && panel3.InvokeRequired)
             {
-                this.Invoke(new NotFound_Delegate(Notfound));
-            }
-            else
-            {
-                lbl_find.Visible = false;
-            }
-            if (txt_findFriend.InvokeRequired)
-            {
-                this.Invoke(new NotFound_Delegate(Notfound));
-            }
-            else
-            {
-                txt_findFriend.Visible = false;
-            }
-            if (bbt_nextfriend.InvokeRequired)
-            {
-                this.Invoke(new NotFound_Delegate(Notfound));
+                this.Invoke(new AddNoticeFailure_Delegate(AddNoticeFailure));
             }
             else
             {
-                bbt_nextfriend.Visible = true;
+                lbl_notfound.Text = "Bạn đã gửi lời mời kết bạn đến người này.Không thể gởi thêm nữa!";
+                panel3.Visible = true;
+                panel2.Visible = false;
+                panel1.Visible = false;
+
             }
-            if ( bbt_findFriend.InvokeRequired)
+        }
+        public delegate void AddFriendFailure_Delegate();
+
+        public void AddFriendFailure()
+        {
+            if (panel1.InvokeRequired && panel2.InvokeRequired && panel3.InvokeRequired)
             {
-                this.Invoke(new NotFound_Delegate(Notfound));
+                this.Invoke(new AddFriendFailure_Delegate(AddFriendFailure));
             }
             else
             {
-                bbt_findFriend.Visible = false;
+                lbl_notfound.Text = "Bạn và người này đã là bạn của nhau.\nKhông thể gởi thêm nữa!";
+                panel3.Visible = true;
+                panel2.Visible = false;
+                panel1.Visible = false;
+
             }
         }
         private void bbt_findFriend_Click(object sender, EventArgs e)
@@ -174,54 +109,29 @@ namespace Client_UIT
         public delegate void AddNoticeSuccess_delegate();
         public void AddNoticeSuccess()
         {
-            if (lbl_notfound.InvokeRequired && ptb_avatar.InvokeRequired && lbl_email.InvokeRequired
-                && lbl_email1.InvokeRequired && lbl_username.InvokeRequired
-                && lbl_username1.InvokeRequired && bbt_addfriend.InvokeRequired)
+            if (panel1.InvokeRequired && panel2.InvokeRequired && panel3.InvokeRequired)
             {
                 this.Invoke(new AddNoticeSuccess_delegate(AddNoticeSuccess));
             }
             else
             {
-                lbl_notfound.Text = "Đã gởi lời mời kết bạn đến người này !";
-                ptb_avatar.Visible = false;
-                lbl_notfound.Visible = true;
-                lbl_email.Visible = false;
-                lbl_email1.Visible = false;
-                lbl_username.Visible = false;
-                lbl_username1.Visible = false;
-                bbt_addfriend.Visible = false;
+                lbl_notfound.Text = "Gởi thành công lời mời kết bạn đến người này !";
+                panel3.Visible = true;
+                panel2.Visible = false;
+                panel1.Visible = false;
+                
             }
 
         }
         private void bbt_nextfriend_Click(object sender, EventArgs e)
         {
-                lbl_notfound.Visible = false;
-
-                lbl_find.Visible = true;
-
-                txt_findFriend.Visible = true;
-            
-                bbt_nextfriend.Visible = false;
-
-                bbt_findFriend.Visible = true;
-                ptb_avatar.Visible = false;
-                lbl_email.Visible = false;
-                lbl_email1.Visible = false;
-                lbl_username.Visible = false;
-                lbl_username1.Visible = false;
-                bbt_addfriend.Visible = false;
+            panel1.Visible = false;
+            panel2.Visible = true;
+            panel3.Visible = false;
         }
 
         private void bbt_addfriend_Click(object sender, EventArgs e)
         {
-            //lbl_notfound.Text = "Đã gởi lời mời kết bạn đến người này !";
-            //ptb_avatar.Visible = false;
-            //lbl_notfound.Visible = true;
-            //lbl_email.Visible = false;
-            //lbl_email1.Visible = false;
-            //lbl_username.Visible = false;
-            //lbl_username1.Visible = false;
-            //bbt_addfriend.Visible = false;
             Command cmd = new Command(CommandType_.AddNotice, lbl_username1.Text, this._username, "1");
             client.SendCommand(cmd);
         }

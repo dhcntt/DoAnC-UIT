@@ -17,14 +17,34 @@ namespace Client_UIT
             InitializeComponent();
             lbl_content.Font = temp;
             lbl_user.Text = user;
-            lbl_content.Text = content;
-        }
-        public Messeage(string user, string content)
-        {
-            InitializeComponent();
-           // lbl_content.Font = temp;
-            lbl_user.Text = user;
-            lbl_content.Text = content;
+            Size size = TextRenderer.MeasureText(content, lbl_content.Font);
+            lbl_content.Width = size.Width;
+            lbl_content.Height = size.Height;
+            if(size.Width>300)
+            {
+                int count = size.Width / 300;
+                int lenght = content.Length/(count+1);
+                int tile = size.Width / content.Length;
+                int sizeText = 300 / tile;
+                for (int i = 0; i < count;i++ )
+                {
+                    content=content.Insert((i + 1) * sizeText + i * 2, "\n");
+                }
+                    this.Width = 300 + 30;
+                lbl_content.Text=content;
+                Size size1 = TextRenderer.MeasureText(lbl_content.Text, lbl_content.Font);
+                this.Height = size1.Height  + 15 + (size.Height / 2 - size1.Height / (count + 1));
+            }
+            else
+            {
+                if(size.Width+30>this.Width)
+                {
+                    this.Width = size.Width+30;
+                }
+                lbl_content.Text = content;
+            }
+            
         }
     }
+    
 }

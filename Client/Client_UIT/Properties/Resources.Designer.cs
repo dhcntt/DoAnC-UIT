@@ -63,6 +63,16 @@ namespace Client_UIT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _400x585 {
+            get {
+                object obj = ResourceManager.GetObject("_400x585", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bbt_dangnhap {
             get {
                 object obj = ResourceManager.GetObject("bbt_dangnhap", resourceCulture);
@@ -206,6 +216,16 @@ namespace Client_UIT.Properties {
         internal static System.Drawing.Bitmap minimize2 {
             get {
                 object obj = ResourceManager.GetObject("minimize2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mờ_hơn {
+            get {
+                object obj = ResourceManager.GetObject("mờ_hơn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -84,6 +84,12 @@
     <Compile Include="Friend.Designer.cs">
       <DependentUpon>Friend.cs</DependentUpon>
     </Compile>
+    <Compile Include="Message1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Message1.Designer.cs">
+      <DependentUpon>Message1.cs</DependentUpon>
+    </Compile>
     <Compile Include="MessageCustom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
     <Compile Include="TextBoxCustom.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Time.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Time.Designer.cs">
+      <DependentUpon>Time.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Friend.resx">
       <DependentUpon>Friend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Message1.resx">
+      <DependentUpon>Message1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MessageCustom.resx">
       <DependentUpon>MessageCustom.cs</DependentUpon>
@@ -161,6 +176,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Time.resx">
+      <DependentUpon>Time.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -253,6 +271,15 @@
       <Project>{c182e804-f738-4e87-ac38-304dc1a14233}</Project>
       <Name>Enum</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\400x585.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nền.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mờ hơn.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

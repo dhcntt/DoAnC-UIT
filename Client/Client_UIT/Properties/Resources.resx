@@ -184,4 +184,10 @@
   <data name="text3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mờ_hơn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mờ hơn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_400x585" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\400x585.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

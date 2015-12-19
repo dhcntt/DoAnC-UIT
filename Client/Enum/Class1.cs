@@ -9,6 +9,8 @@ namespace Enum
     //Các kiểu tin nhắn sẽ nhận và gởi để server hoặc client có thể nhận biết
     public enum CommandType_
     {
+        SaveMessage,
+        LoadMessage,
         Message,//kiểu tin nhắn  cho Server
         MessageFriend,//gởi tin nhắn từ client đến client
         ClientList,//list danh sách bạn
@@ -20,6 +22,7 @@ namespace Enum
         Register,//đăng kí
         RegisterFailure,//đăng kí thất bại
         RegisterSuccess,//đang kí thành công
+        ChangeInformation,//thay đổi thông tin cá nhân
         Status,//thong điệp trạng thái
         Online,//trạng thái online
         Offline,//trạng thái offline

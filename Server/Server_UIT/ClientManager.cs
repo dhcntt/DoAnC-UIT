@@ -50,6 +50,7 @@ namespace Server_UIT
         public Socket socket;//kết nối giữa client-server
         private NetworkStream stream;//dùng để nhận và gởi tin
         private BackgroundWorker bw_receive;//thread dùng để nhận tin nhắn từ
+        bool checkDangNhapSuccess = false;
         public ClientManager(Form1 form1, Socket _temp)
         {
             _form1 = form1;
@@ -73,30 +74,33 @@ namespace Server_UIT
                 if (Form1.lstShowClient[i]._username == user)
                 {
                     Form1.lstShowClient[i].BackColor = System.Drawing.Color.LimeGreen;
-                    Form1.lstShowClient[i]._cm = this;
+                    Form1.lstShowClient[i].client = this;
                     Form1.lstShowClient[i].Online = true;
                 }
             }
         }
-        public void Offline(string user)
+        public void Offline(ClientManager user)
         {
 
             for (int i = 0; i < Form1.lstShowClient.Count; i++)
             {
-                if (Form1.lstShowClient[i]._username == user)
+                if (Form1.lstShowClient[i]._username == user.userName)
                 {
                     //tìm user vừa thoát và làm đỏ ShowClient .
-                    //gán cho CLientManger trong show client là null
-                    Form1.lstShowClient[i].BackColor = System.Drawing.Color.Firebrick;
-                    Form1.lstShowClient[i]._cm = null;
-                    Form1.lstShowClient[i].Online = false;
-
+                    if (Form1.lstShowClient[i].client != null && Form1.lstShowClient[i].Online == true
+                        && Form1.lstShowClient[i].client.ipAdress == user.ipAdress && Form1.lstShowClient[i].client.Port == user.Port)
+                    {
+                        //gán cho CLientManger trong show client là null
+                        Form1.lstShowClient[i].BackColor = System.Drawing.Color.Firebrick;
+                        Form1.lstShowClient[i].client = null;
+                        Form1.lstShowClient[i].Online = false;
+                    }
                 }
             }
             for (int i = 0; i < Form1.listClient.Count; i++)
             {
                 //tìm user vừa thoát kết nối và remove khỏi list client
-                if (Form1.listClient[i].userName == user)
+                if (Form1.listClient[i].userName == user.userName)
                     Form1.listClient.Remove(Form1.listClient[i]);
             }
 
@@ -109,7 +113,7 @@ namespace Server_UIT
                 if (s._username == cm)
                     if (s.Online)
                     {
-                        return s._cm;
+                        return s.client;
 
                     }
                     else
@@ -119,7 +123,28 @@ namespace Server_UIT
             }
             return null;
         }
-
+        void ReadBigData(NetworkStream stream, int lenght, ref byte[] dataPicture)
+        {
+            byte[] bytes = new byte[1024];
+            int count = lenght / 1024;
+            int j = 0;
+            int countTemp = count;
+            while (count != 0)
+            {
+                stream.Read(bytes, 0, 1024);
+                for (int i = 0; i < 1024; i++)
+                {
+                    dataPicture[j * 1024 + i] = bytes[i];
+                }
+                j++;
+                count--;
+            }
+            int byread = stream.Read(bytes, 0, lenght - countTemp * 1024);
+            for (int i = 0; i < byread; i++)
+            {
+                dataPicture[j * 1024 + i] = bytes[i];
+            }
+        }
         //hàm chính trong tiểu trình nhận thông điệp
         public void bw_receive_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -167,11 +192,10 @@ namespace Server_UIT
                             if (IsOnline(this.userName) == null)
                             {
                                 //đăng nhập thành công và gởi danh sách bạn
-                                Command cmd = new Command(CommandType_.LoginSuccess, this.userName, (byte[])dt.Rows[0][5],null);
+                                Command cmd = new Command(CommandType_.LoginSuccess, dt);
                                 SendCommand(cmd);
-                                dt_friend = Khachhang_BUS.Loadds_FRIEND(this.userName);
-                                cmd = new Command(CommandType_.ListFriend, dt_friend);
-                                SendCommand(cmd);
+                                checkDangNhapSuccess = true;
+                               
                                 //nếu chưa kết nối5
                                 Online(this.userName);
                                 ////lưu client vào List  client
@@ -243,6 +267,24 @@ namespace Server_UIT
                             _form1.AddShowClient(usernameTemp);
                         }
                     }
+                    if (cmt == CommandType_.LoadMessage)
+                    {
+
+                        buffer = new byte[4];
+                        stream.Read(buffer, 0, 4);
+                        lengh = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lengh];
+                        stream.Read(data, 0, lengh);
+                        usernameTemp = Encoding.ASCII.GetString(data);
+
+                        buffer = new byte[4];
+                        stream.Read(buffer, 0, 4);
+                        int count = BitConverter.ToInt32(buffer, 0);
+
+                        DataTable dt = Khachhang_BUS.Load_message(count, this.userName,usernameTemp);
+                        Command cmd=new Command(CommandType_.LoadMessage,dt);
+                        this.SendCommand(cmd);
+                    }
                     //nếu thông điệp nhận được là 1 tin nhắn trao đổi với server
                     if (cmt == CommandType_.Message)
                     {
@@ -294,29 +336,38 @@ namespace Server_UIT
                         int lenght = BitConverter.ToInt32(buffer, 0);
                         byte[] metaBuffer = new byte[lenght];
                         stream.Read(metaBuffer, 0, lenght);
+                        byte[] _content = metaBuffer;
                         cmdMetaData = Encoding.ASCII.GetString(metaBuffer);
                         //đọc font
                         stream.Read(buffer, 0, 4);
                         lenght = BitConverter.ToInt32(buffer, 0);
                         metaBuffer = new byte[lenght];
                         stream.Read(metaBuffer, 0, lenght);
+                        byte[] _font = metaBuffer;
                         //convert byte sang font
+                        string _time=DateTime.Now.ToString();
+                        Khachhang_BUS.Save_message(this.userName, usernameTemp, _content, metaBuffer,_time );
+                        
                         MemoryStream s = new MemoryStream(metaBuffer);
                         BinaryFormatter bf = new BinaryFormatter();
                         Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
                         temp = (Font)bf.Deserialize(s);
                         Command cmd = new Command(CommandType_.MessageFriend, this.userName, cmdMetaData, temp);
-                        ClientManager clm=null;
-                        for (int i = 0; i < Form1.listClient.Count;i++ )
+                        ClientManager clm = null;
+                        for (int i = 0; i < Form1.listClient.Count; i++)
                         {
-                            if(Form1.listClient[i].userName==usernameTemp)
+                            if (Form1.listClient[i].userName == usernameTemp)
                             {
                                 clm = Form1.listClient[i];
                                 break;
                             }
                         }
-                        clm.SendCommand(cmd);
+                        if (clm != null)
+                        {
+                            clm.SendCommand(cmd);
+                        }
                     }
+                
                     if (cmt == CommandType_.ListFriend)
                     {
                        dt_friend = Khachhang_BUS.Loadds_FRIEND(this.userName);
@@ -391,6 +442,30 @@ namespace Server_UIT
                             this.SendCommand(cmd);
                         }
                     }
+                    if (cmt == CommandType_.ChangeInformation)
+                    {
+                        stream.Read(buffer, 0, 4);
+                        int lenght = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lenght];
+                        stream.Read(data, 0, lenght);
+                        string _email = Encoding.ASCII.GetString(data);
+
+                        
+                        //đọc avatar
+                        Image image;
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        dataPicture = new byte[lenght];
+                        ReadBigData(stream, lenght, ref dataPicture);
+
+                        //status
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lenght];
+                        stream.Read(data, 0, lenght);
+                        //string _status = Encoding.ASCII.GetString(data);
+                        Khachhang_BUS.Change_information(this.userName, _email, dataPicture, data);
+                    }
                     if (cmt == CommandType_.AddFriend)
                     {
 
@@ -441,26 +516,29 @@ namespace Server_UIT
                 catch
                 {
                     //kết nối bên client bị đóng
-                    Offline(this._userName);
-                    if ((dt_friend=Khachhang_BUS.Loadds_FRIEND(this.userName)) != null)
+                    if (checkDangNhapSuccess)
                     {
-                        int _CountTemp;//lưu số lượng friend của user
-                        _CountTemp = dt_friend.Rows.Count;
-                        for (int i = 0; i < _CountTemp; i++)
+                        Offline(this);
+                        if ((dt_friend = Khachhang_BUS.Loadds_FRIEND(this.userName)) != null)
                         {
-                            ClientManager cmTemp;
-                            //gởi trạng thái của friend
-                            if ((cmTemp = IsOnline(dt_friend.Rows[i][0].ToString())) != null)
+                            int _CountTemp;//lưu số lượng friend của user
+                            _CountTemp = dt_friend.Rows.Count;
+                            for (int i = 0; i < _CountTemp; i++)
                             {
-                                Command _cmd = new Command(CommandType_.Offline, this.userName);
-                                cmTemp.SendCommand(_cmd);
+                                ClientManager cmTemp;
+                                //gởi trạng thái của friend
+                                if ((cmTemp = IsOnline(dt_friend.Rows[i][0].ToString())) != null)
+                                {
+                                    Command _cmd = new Command(CommandType_.Offline, this.userName);
+                                    cmTemp.SendCommand(_cmd);
+                                }
                             }
                         }
                     }
+                    socket.Close();
                 }
             }
             //đóng kết nồi
-            socket.Close();
             //Form1.listClient[1]._userName = "asdas";
         }
         //gởi tin nhắn đi
@@ -545,6 +623,54 @@ namespace Server_UIT
                 stream.Write(metaBuffer, 0, metaBuffer.Length);
                 this.stream.Flush();
             }
+            if(cmd.CommandType==CommandType_.LoadMessage)
+            {
+                buffer = BitConverter.GetBytes((int)CommandType_.LoadMessage);
+                stream.Write(buffer, 0, 4);
+                stream.Flush();
+                int countTemp = cmd.Dt.Rows.Count;
+               
+                buffer = BitConverter.GetBytes((int)countTemp);
+                stream.Write(buffer, 0, 4);
+                stream.Flush();
+                if (countTemp > 0)
+                {
+                    buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][2].ToString().Length);
+                    stream.Write(buffer, 0, 4);
+                    this.stream.Flush();
+                    metaBuffer = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][2].ToString());
+                    this.stream.Write(metaBuffer, 0, cmd.Dt.Rows[0][2].ToString().Length);
+                    this.stream.Flush();
+
+                    for (int i = 0; i < countTemp; i++)
+                    {
+                        metaBuffer = (byte[])cmd.Dt.Rows[i][3];
+                        buffer = BitConverter.GetBytes(metaBuffer.Length);
+                        stream.Write(buffer, 0, 4);
+                        this.stream.Flush();
+                        this.stream.Write(metaBuffer, 0, metaBuffer.Length);
+                        this.stream.Flush();
+
+
+                        //send font
+                        metaBuffer = (byte[])cmd.Dt.Rows[i][4];
+                        buffer = BitConverter.GetBytes(metaBuffer.Length);
+                        stream.Write(buffer, 0, 4);
+                        this.stream.Flush();
+                        stream.Write(metaBuffer, 0, metaBuffer.Length);
+                        this.stream.Flush();
+                        //MemoryStream s = new MemoryStream(metaBuffer);
+                        //BinaryFormatter bf = new BinaryFormatter();
+                        //Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
+                        //temp = (Font)bf.Deserialize(s);
+
+                        buffer = BitConverter.GetBytes((int)cmd.Dt.Rows[i][5]);
+                        stream.Write(buffer, 0, 4);
+                        this.stream.Flush();
+
+                    }
+                }
+            }
             if (cmd.CommandType == CommandType_.MessageFriend)
             {
                 if (cmd.commandBody == null || cmd.commandBody == "")
@@ -589,31 +715,55 @@ namespace Server_UIT
                 buffer = BitConverter.GetBytes((int)CommandType_.LoginSuccess);//gởi tin nhắn là đã chấp nhận kết nối
                 stream.Write(buffer, 0, 4);
                 stream.Flush();
-
-                //gởi tên user qua cho client
-                data = new byte[cmd.Username.Length];
-                buffer = BitConverter.GetBytes(cmd.Username.Length);
+                //gởi stt
+                buffer = BitConverter.GetBytes(int.Parse(cmd.Dt.Rows[0][0].ToString()));
                 stream.Write(buffer, 0, 4);
                 stream.Flush();
-                data = Encoding.ASCII.GetBytes(cmd.Username);
-                stream.Write(data, 0, cmd.Username.Length);
+
+                //gởi tên user qua cho client
+                data = new byte[cmd.Dt.Rows[0][1].ToString().Length];
+                buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][1].ToString().Length);
+                stream.Write(buffer, 0, 4);
+                stream.Flush();
+                data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][1].ToString());
+                stream.Write(data, 0, cmd.Dt.Rows[0][1].ToString().Length);
                 stream.Flush();
 
+
+                //gởi email
+                data = new byte[cmd.Dt.Rows[0][4].ToString().Length];
+                buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][4].ToString().Length);
+                stream.Write(buffer, 0, 4);
+                stream.Flush();
+                data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][4].ToString());
+                stream.Write(data, 0, cmd.Dt.Rows[0][4].ToString().Length);
+                stream.Flush();
 
                 //gởi avatar cho user
 
-                dataPicture = (byte[])cmd.Image_;
+                dataPicture = (byte[])cmd.Dt.Rows[0][5];
                 buffer = BitConverter.GetBytes(dataPicture.Length);
                 stream.Write(buffer, 0, 4);
                 stream.Flush();
                 SendLargeFile(dataPicture, stream);
-                //stream.Write(dataPicture, 0, dataPicture.Length);
                 stream.Flush();
 
-                //gởi list danh sách bạn
+                //gởi status
+                if (cmd.Dt.Rows[0][6].ToString() == "")
+                {
+                    data = Encoding.UTF8.GetBytes("\n");
+                }
+                else
+                    data = (byte[])cmd.Dt.Rows[0][6];
+                buffer = BitConverter.GetBytes(data.Length);
+                stream.Write(buffer, 0, 4);
+                stream.Flush();
+                stream.Write(data, 0, data.Length);
+                stream.Flush();
 
                 
             }
+            
             if(cmd.CommandType==CommandType_.ListFriend)
             {
                 buffer = BitConverter.GetBytes((int)CommandType_.ListFriend);//gởi tin nhắn là đã chấp nhận kết nối
@@ -626,7 +776,7 @@ namespace Server_UIT
                 stream.Write(buffer, 0, 4);
                 stream.Flush();
                 for (int i = 0; i < _CountTemp; i++)
-                {
+                {   
                     //gởi tên userFriend
                     buffer = BitConverter.GetBytes(cmd.Dt.Rows[i][0].ToString().Length);
                     stream.Write(buffer, 0, 4);
@@ -644,10 +794,19 @@ namespace Server_UIT
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
                     SendLargeFile(dataPicture, stream);
-                    //stream.Write(dataPicture, 0, dataPicture.Length);
                     stream.Flush();
 
-
+                    if (cmd.Dt.Rows[i][2].ToString() == "")
+                    {
+                        data = Encoding.UTF8.GetBytes("\n");
+                    }
+                    else
+                        data = (byte[])cmd.Dt.Rows[i][2];
+                    buffer = BitConverter.GetBytes(data.Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    SendLargeFile(data, stream);
+                    stream.Flush();
                     ClientManager cmTemp;
                     //gởi trạng thái của friend
                     if ((cmTemp = IsOnline(cmd.Dt.Rows[i][0].ToString())) != null)
@@ -842,6 +1001,12 @@ namespace Server_UIT
             if (cmd.CommandType == CommandType_.AddNoticeFailure)
             {
                 buffer = BitConverter.GetBytes((int)CommandType_.AddNoticeFailure);
+                stream.Write(buffer, 0, 4);
+                stream.Flush();
+            }
+            if (cmd.CommandType == CommandType_.AddFriendFailure)
+            {
+                buffer = BitConverter.GetBytes((int)CommandType_.AddFriendFailure);//gởi tin nhắn là đã chấp nhận kết nối
                 stream.Write(buffer, 0, 4);
                 stream.Flush();
             }
