@@ -18,6 +18,7 @@ namespace Client_UIT
     {
         public ClientManager _client;
         Font _fontMessage;
+        int load = 1;
         public bool _bSend=true;//chưa gởi
         public bool bLoad = true;
         public bool _bTime = false;
@@ -77,8 +78,16 @@ namespace Client_UIT
                             Messeage ms = new Messeage(this.Text, msTemp.Value.content, msTemp.Value.font);
                             ms.Anchor = AnchorStyles.Left;
                             flp_messeage.Controls.Add(ms);
-                            if(msTemp.Next==null)
-                            flp_messeage.ScrollControlIntoView(ms);
+
+                            if (msTemp.Next == null)
+                            {
+                                if (load == 1)
+                                {
+                                    flp_messeage.ScrollControlIntoView(ms);
+
+                                    load++;
+                                }
+                            }
                             _bSend = true;
                             _bRecive = false;
 
@@ -89,7 +98,14 @@ namespace Client_UIT
                             ms.Anchor = AnchorStyles.Left;
                             flp_messeage.Controls.Add(ms);
                             if (msTemp.Next == null)
-                                flp_messeage.ScrollControlIntoView(ms);
+                            {
+                                if (load == 1)
+                                {
+                                    flp_messeage.ScrollControlIntoView(ms);
+
+                                    load++;
+                                }
+                            }
                         }
                     }
                     if (msTemp.Value.type == 1)
@@ -101,7 +117,14 @@ namespace Client_UIT
                             flp_messeage.Controls.Add(ms);
                             _fontMessage = rTB_content.Font;
                             if (msTemp.Next == null)
-                                flp_messeage.ScrollControlIntoView(ms);
+                            {
+                                if (load == 1)
+                                {
+                                    flp_messeage.ScrollControlIntoView(ms);
+
+                                    load++;
+                                }
+                            }
                             _bSend = false;//đã send và chưa nhận
                             _bRecive = true;
                            
@@ -112,8 +135,16 @@ namespace Client_UIT
                             ms.Anchor = AnchorStyles.Right;
                             flp_messeage.Controls.Add(ms);
                             _fontMessage = rTB_content.Font;
+
                             if (msTemp.Next == null)
-                                flp_messeage.ScrollControlIntoView(ms);
+                            {
+                                if (load == 1)
+                                {
+                                    flp_messeage.ScrollControlIntoView(ms);
+
+                                    load++;
+                                }
+                            }
                             //int a = flp_messeage.VerticalScroll.Value;
                            
                         }

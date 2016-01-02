@@ -52,7 +52,7 @@
             this.lbl_user.AutoSize = true;
             this.lbl_user.BackColor = System.Drawing.Color.Transparent;
             this.lbl_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_user.Location = new System.Drawing.Point(132, 84);
+            this.lbl_user.Location = new System.Drawing.Point(132, 70);
             this.lbl_user.Name = "lbl_user";
             this.lbl_user.Size = new System.Drawing.Size(0, 20);
             this.lbl_user.TabIndex = 1;
@@ -101,8 +101,8 @@
             // 
             // ptb_avatar
             // 
-            this.ptb_avatar.BackColor = System.Drawing.SystemColors.Window;
-            this.ptb_avatar.Location = new System.Drawing.Point(28, 81);
+            this.ptb_avatar.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_avatar.Location = new System.Drawing.Point(28, 67);
             this.ptb_avatar.Name = "ptb_avatar";
             this.ptb_avatar.Size = new System.Drawing.Size(79, 79);
             this.ptb_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -114,7 +114,7 @@
             // 
             this.txt_status.AutoSize = true;
             this.txt_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_status.Location = new System.Drawing.Point(133, 110);
+            this.txt_status.Location = new System.Drawing.Point(133, 96);
             this.txt_status.Name = "txt_status";
             this.txt_status.Size = new System.Drawing.Size(0, 16);
             this.txt_status.TabIndex = 20;
