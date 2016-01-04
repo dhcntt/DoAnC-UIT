@@ -20,3 +20,11 @@ E:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Debug\DTO.pdb
 E:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 E:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Debug\DAO.dll
 E:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Debug\DAO.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\bin\Debug\DAO.dll.config
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\bin\Debug\DAO.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\bin\Debug\DAO.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\bin\Debug\DTO.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\bin\Debug\DTO.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\obj\Debug\DAO.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Server\DAO\obj\Debug\DAO.pdb

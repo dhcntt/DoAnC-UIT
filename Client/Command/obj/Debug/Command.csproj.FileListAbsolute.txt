@@ -5,3 +5,10 @@ E:\HK5\Githup\DoAnC-UIT\Client\Command\bin\Debug\Enum.pdb
 E:\HK5\Githup\DoAnC-UIT\Client\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
 E:\HK5\Githup\DoAnC-UIT\Client\Command\obj\Debug\Command.dll
 E:\HK5\Githup\DoAnC-UIT\Client\Command\obj\Debug\Command.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Client\Command\bin\Debug\Command.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Client\Command\bin\Debug\Command.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Client\Command\bin\Debug\Enum.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Client\Command\bin\Debug\Enum.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Client\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
+\\Mac\Home\Downloads\DoAnC-UIT\Client\Command\obj\Debug\Command.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Client\Command\obj\Debug\Command.pdb

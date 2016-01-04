@@ -23,3 +23,12 @@ E:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Debug\DTO.pdb
 E:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
 E:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Debug\BUS.dll
 E:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Debug\BUS.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\bin\Debug\BUS.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\bin\Debug\BUS.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\bin\Debug\DAO.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\bin\Debug\DTO.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\bin\Debug\DAO.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\bin\Debug\DTO.pdb
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\obj\Debug\BUS.dll
+\\Mac\Home\Downloads\DoAnC-UIT\Server\BUS\obj\Debug\BUS.pdb
