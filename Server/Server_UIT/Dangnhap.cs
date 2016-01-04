@@ -18,7 +18,7 @@ namespace Server_UIT
         }
         void Dang_nhap()
         {
-            if (txt_dangnhap.Text == "zzsuzuki95" && txt_password.Text == "quocnam")
+            if (txt_dangnhap.Text == "" && txt_password.Text == "")
             {
                 Form1 server = new Form1(this, txt_dangnhap.Text);
                 server.Show();

@@ -12,3 +12,11 @@ D:\DoAnC-\Server\DAO\bin\Debug\DTO.pdb
 D:\DoAnC-\Server\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 D:\DoAnC-\Server\DAO\obj\Debug\DAO.dll
 D:\DoAnC-\Server\DAO\obj\Debug\DAO.pdb
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Debug\DAO.dll.config
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Debug\DAO.dll
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Debug\DAO.pdb
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Debug\DTO.dll
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\bin\Debug\DTO.pdb
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Debug\DAO.dll
+E:\HK5\Githup\DoAnC-UIT\Server\DAO\obj\Debug\DAO.pdb

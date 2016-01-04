@@ -73,6 +73,7 @@ namespace Client_UIT
             this.ptb_title.Size = new System.Drawing.Size(402, 50);
             this.ptb_title.TabIndex = 2;
             this.ptb_title.TabStop = false;
+            this.ptb_title.Click += new System.EventHandler(this.ptb_title_Click);
             this.ptb_title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.ptb_title.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 

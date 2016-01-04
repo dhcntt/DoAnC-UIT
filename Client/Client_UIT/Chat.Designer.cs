@@ -35,7 +35,7 @@
             this.bbt_font = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_icon = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rTB_content
@@ -46,6 +46,7 @@
             this.rTB_content.Size = new System.Drawing.Size(516, 96);
             this.rTB_content.TabIndex = 0;
             this.rTB_content.Text = "";
+            this.rTB_content.TextChanged += new System.EventHandler(this.rTB_content_TextChanged);
             this.rTB_content.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rTB_content_KeyPress);
             // 
             // flp_messeage
@@ -60,6 +61,7 @@
             this.flp_messeage.TabIndex = 1;
             this.flp_messeage.WrapContents = false;
             this.flp_messeage.Scroll += new System.Windows.Forms.ScrollEventHandler(this.flp_messeage_Scroll);
+            this.flp_messeage.Paint += new System.Windows.Forms.PaintEventHandler(this.flp_messeage_Paint);
             // 
             // bbt_gui
             // 
@@ -78,7 +80,7 @@
             this.bbt_font.Name = "bbt_font";
             this.bbt_font.Size = new System.Drawing.Size(28, 23);
             this.bbt_font.TabIndex = 3;
-            this.bbt_font.Text = "A";
+            this.bbt_font.Text = "Font";
             this.bbt_font.UseVisualStyleBackColor = true;
             this.bbt_font.Click += new System.EventHandler(this.bbt_font_Click);
             // 
@@ -102,22 +104,23 @@
             this.button3.Text = "A";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_icon
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(46, 227);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "A";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_icon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_icon.Location = new System.Drawing.Point(46, 227);
+            this.btn_icon.Name = "btn_icon";
+            this.btn_icon.Size = new System.Drawing.Size(28, 23);
+            this.btn_icon.TabIndex = 6;
+            this.btn_icon.Text = "I";
+            this.btn_icon.UseVisualStyleBackColor = true;
+            this.btn_icon.Click += new System.EventHandler(this.btn_icon_Click);
             // 
             // Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 389);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btn_icon);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.bbt_font);
@@ -127,7 +130,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Chat";
             this.Text = "Chat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Chat_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Chat_FormClosed);
+            this.Load += new System.EventHandler(this.Chat_Load);
             this.Resize += new System.EventHandler(this.Chat_Resize);
             this.ResumeLayout(false);
 
@@ -141,6 +146,6 @@
         private System.Windows.Forms.Button bbt_font;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_icon;
     }
 }

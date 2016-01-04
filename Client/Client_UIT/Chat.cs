@@ -23,6 +23,7 @@ namespace Client_UIT
         public bool bLoad = true;
         public bool _bTime = false;
         public bool _bRecive = true;//chưa nhận
+        public bool _hien_thi = false;//form co chay hay khong
         public string _usernameReference;
         LinkedListNode<MessageText> display;
         public LinkedList<MessageText> listmessage = new System.Collections.Generic.LinkedList<MessageText>();
@@ -322,6 +323,38 @@ namespace Client_UIT
                     bLoad = false;
                 }
             }
+        }
+
+        private void flp_messeage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_icon_Click(object sender, EventArgs e)
+        {
+            int x = Cursor.Position.X;
+            int y = Cursor.Position.Y;
+            icon _icon = new icon(this, x,y);
+            _icon.ShowDialog();
+            
+        }
+        public void addtext_rTB(string _str)
+        {
+            rTB_content.AppendText(_str);
+        }
+        private void rTB_content_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Chat_Load(object sender, EventArgs e)
+        {
+            _hien_thi = true;
+        }
+
+        private void Chat_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _hien_thi = false;
         }
         
     }

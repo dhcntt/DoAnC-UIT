@@ -305,5 +305,10 @@ namespace Client_UIT
         {
             //int a = 2;
         }
+
+        private void ptb_title_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

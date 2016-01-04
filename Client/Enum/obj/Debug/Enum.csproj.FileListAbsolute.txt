@@ -3,3 +3,8 @@ D:\DoAnC-\Client\Enum\bin\Debug\Enum.pdb
 D:\DoAnC-\Client\Enum\obj\Debug\Enum.dll
 D:\DoAnC-\Client\Enum\obj\Debug\Enum.pdb
 D:\DoAnC-\Client\Enum\obj\Debug\Enum.csprojResolveAssemblyReference.cache
+E:\HK5\Githup\DoAnC-UIT\Client\Enum\bin\Debug\Enum.dll
+E:\HK5\Githup\DoAnC-UIT\Client\Enum\bin\Debug\Enum.pdb
+E:\HK5\Githup\DoAnC-UIT\Client\Enum\obj\Debug\Enum.csprojResolveAssemblyReference.cache
+E:\HK5\Githup\DoAnC-UIT\Client\Enum\obj\Debug\Enum.dll
+E:\HK5\Githup\DoAnC-UIT\Client\Enum\obj\Debug\Enum.pdb

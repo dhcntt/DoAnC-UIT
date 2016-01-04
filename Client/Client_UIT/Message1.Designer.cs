@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.lbl_content = new System.Windows.Forms.Label();
+           
             this.SuspendLayout();
             // 
             // lbl_content
@@ -42,14 +43,20 @@
             this.lbl_content.Size = new System.Drawing.Size(0, 13);
             this.lbl_content.TabIndex = 2;
             // 
+            // richTextBox1
+            // 
+           
+            // 
             // Message1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+           
             this.Controls.Add(this.lbl_content);
             this.Name = "Message1";
-            this.Size = new System.Drawing.Size(127, 19);
+            this.Size = new System.Drawing.Size(127, 28);
+            this.Load += new System.EventHandler(this.Message1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -58,5 +65,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_content;
+        
     }
 }

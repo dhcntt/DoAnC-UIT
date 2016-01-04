@@ -13,7 +13,7 @@ namespace DAO
     {
         public static SqlConnection KetnoiCSDL()
         {
-            SqlConnection con = new SqlConnection("Data Source=WINDOW;Initial Catalog=Server;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=Server;Integrated Security=True");
             return con;
         }
     }

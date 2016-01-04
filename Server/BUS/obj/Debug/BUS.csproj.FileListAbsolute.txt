@@ -14,3 +14,12 @@ D:\DoAnC-\Server\BUS\bin\Debug\DTO.pdb
 D:\DoAnC-\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
 D:\DoAnC-\Server\BUS\obj\Debug\BUS.dll
 D:\DoAnC-\Server\BUS\obj\Debug\BUS.pdb
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Debug\BUS.dll
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Debug\BUS.pdb
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Debug\DAO.dll
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Debug\DTO.dll
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Debug\DAO.pdb
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\bin\Debug\DTO.pdb
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Debug\BUS.dll
+E:\HK5\Githup\DoAnC-UIT\Server\BUS\obj\Debug\BUS.pdb
