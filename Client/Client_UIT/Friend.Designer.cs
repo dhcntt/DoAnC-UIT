@@ -68,7 +68,7 @@
             // 
             this.ptb_status.Location = new System.Drawing.Point(12, 12);
             this.ptb_status.Name = "ptb_status";
-            this.ptb_status.Size = new System.Drawing.Size(25, 25);
+            this.ptb_status.Size = new System.Drawing.Size(20, 29);
             this.ptb_status.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptb_status.TabIndex = 0;
             this.ptb_status.TabStop = false;

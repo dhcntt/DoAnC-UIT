@@ -62,7 +62,6 @@
             this.Controls.Add(this.lbl_user);
             this.Name = "Messeage";
             this.Size = new System.Drawing.Size(127, 37);
-            this.Load += new System.EventHandler(this.Messeage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

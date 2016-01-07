@@ -16,51 +16,78 @@ namespace Client_UIT
         public Messeage(string user, string content, Font temp)
         {
             InitializeComponent();
-        //    lbl_content.Font = temp;
-        //    lbl_user.Text = user;
-        //    Size size = TextRenderer.MeasureText(content, lbl_content.Font);
-        //    lbl_content.Width = size.Width;
-        //    lbl_content.Height = size.Height;
-        //    if (size.Width > 300)
-        //    {
-        //        int count = size.Width / 300;
-        //        int lenght = content.Length / (count + 1);
-        //        int tile = size.Width / content.Length;
-        //        int sizeText = 300 / tile;
-        //        for (int i = 0; i < count; i++)
-        //        {
-        //            content = content.Insert((i + 1) * sizeText + i * 2, "\n");
-        //        }
-        //        this.Width = 300 + 30;
-        //        lbl_content.Text = content;
-        //        Size size1 = TextRenderer.MeasureText(lbl_content.Text, lbl_content.Font);
-        //        this.Height = size1.Height + 15 + (size.Height / 2 - size1.Height / (count + 1));
-        //    }
-        //    else
-        //    {
-        //        if (size.Width + 30 > this.Width)
-        //        {
-        //            this.Width = size.Width + 30;
-        //        }
-        //        lbl_content.Text = content;
-        //    }
+            //    lbl_content.Font = temp;
+            //    lbl_user.Text = user;
+            //    Size size = TextRenderer.MeasureText(content, lbl_content.Font);
+            //    lbl_content.Width = size.Width;
+            //    lbl_content.Height = size.Height;
+            //    if (size.Width > 300)
+            //    {
+            //        int count = size.Width / 300;
+            //        int lenght = content.Length / (count + 1);
+            //        int tile = size.Width / content.Length;
+            //        int sizeText = 300 / tile;
+            //        for (int i = 0; i < count; i++)
+            //        {
+            //            content = content.Insert((i + 1) * sizeText + i * 2, "\n");
+            //        }
+            //        this.Width = 300 + 30;
+            //        lbl_content.Text = content;
+            //        Size size1 = TextRenderer.MeasureText(lbl_content.Text, lbl_content.Font);
+            //        this.Height = size1.Height + 15 + (size.Height / 2 - size1.Height / (count + 1));
+            //    }
+            //    else
+            //    {
+            //        if (size.Width + 30 > this.Width)
+            //        {
+            //            this.Width = size.Width + 30;
+            //        }
+            //        lbl_content.Text = content;
+            //    }
 
-        //}
+            //}
 
             ///////////////////////
-        
             RichTextBox rtb = new RichTextBox();
-           
+            Size size = TextRenderer.MeasureText(content, temp);
+          
+            if (size.Width > 300)
+            {
+                int count = size.Width / 300;
+                int lenght = content.Length / (count + 1);
+                int tile = size.Width / content.Length;
+                int sizeText = 300 / tile;
+                for (int i = 0; i < count; i++)
+                {
+                    content = content.Insert((i + 1) * sizeText + i * 2, "\n");
+                }
+                this.Width = 300 + 30;
+                rtb.Text = content;
+                Size size1 = TextRenderer.MeasureText(lbl_content.Text, lbl_content.Font);
+                this.Height = size1.Height + 15 + (size.Height / 2 - size1.Height / (count + 1));
+            }
+            else
+            {
+                if (size.Width + 30 > this.Width)
+                {
+                    this.Width = size.Width + 30;
+                }
+                rtb.Text = content;
+            }
+
+
+          
+            
             rtb.BorderStyle = BorderStyle.None;
             rtb.Multiline = true;
             int _width = this.Size.Width;
-            this.Size = new System.Drawing.Size(_width, (int)(content.Length + 50));
-            rtb.Location = new System.Drawing.Point(0,20);
+            this.Size = new System.Drawing.Size(this.Width, this.Height);
+            rtb.Location = new System.Drawing.Point(0, 20);
             rtb.Height = this.Size.Height;
             rtb.Width = this.Size.Width;
             lbl_user.Text = user;
             rtb.Font = temp;
-            
+           
             string chuoi_tam;
             for (int i = 0; i < content.Length; i++)
             {
@@ -137,5 +164,5 @@ namespace Client_UIT
 
         }
     }
-    
+
 }

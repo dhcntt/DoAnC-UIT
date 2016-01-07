@@ -14,14 +14,16 @@ namespace Client_UIT
 {
     public partial class FindFriend : Form
     {
+        Form1 frm_main;
         ClientManager client;
         string _username;
-        public FindFriend(ClientManager clientTemp, string _userTemp)
+        public FindFriend(ClientManager clientTemp, string _userTemp,Form1 frm_mainTemp)
         {
             InitializeComponent();
             client = clientTemp;
             client.ff_Form = this;
             _username = _userTemp;
+            frm_main = frm_mainTemp;
         }
         public delegate void Found_Delegate(string username, string email, Image image);
         
@@ -68,7 +70,7 @@ namespace Client_UIT
             }
             else
             {
-                lbl_notfound.Text = "Bạn đã gửi lời mời kết bạn đến người này.Không thể gởi thêm nữa!";
+                lbl_notfound.Text = "Bạn đã gửi lời mời kết bạn đến người này.\nKhông thể gởi thêm nữa!";
                 panel3.Visible = true;
                 panel2.Visible = false;
                 panel1.Visible = false;
@@ -157,6 +159,11 @@ namespace Client_UIT
                     client.SendCommand(cm);
                 }
             }
+        }
+
+        private void FindFriend_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frm_main.ff = null;
         }
     }
 }

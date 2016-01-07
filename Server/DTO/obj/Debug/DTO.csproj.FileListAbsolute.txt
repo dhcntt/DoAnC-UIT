@@ -2,13 +2,4 @@ D:\DoAnC-\Server\DTO\bin\Debug\DTO.dll
 D:\DoAnC-\Server\DTO\bin\Debug\DTO.pdb
 D:\DoAnC-\Server\DTO\obj\Debug\DTO.dll
 D:\DoAnC-\Server\DTO\obj\Debug\DTO.pdb
-E:\HK5\Githup\DoAnC-UIT\Server\DTO\bin\Debug\DTO.dll
-E:\HK5\Githup\DoAnC-UIT\Server\DTO\bin\Debug\DTO.pdb
-E:\HK5\Githup\DoAnC-UIT\Server\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
-E:\HK5\Githup\DoAnC-UIT\Server\DTO\obj\Debug\DTO.dll
-E:\HK5\Githup\DoAnC-UIT\Server\DTO\obj\Debug\DTO.pdb
-\\Mac\Home\Downloads\DoAnC-UIT\Server\DTO\bin\Debug\DTO.dll
-\\Mac\Home\Downloads\DoAnC-UIT\Server\DTO\bin\Debug\DTO.pdb
-\\Mac\Home\Downloads\DoAnC-UIT\Server\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
-\\Mac\Home\Downloads\DoAnC-UIT\Server\DTO\obj\Debug\DTO.dll
-\\Mac\Home\Downloads\DoAnC-UIT\Server\DTO\obj\Debug\DTO.pdb
+D:\DoAnC-\Server\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache

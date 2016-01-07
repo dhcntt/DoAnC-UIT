@@ -40,7 +40,9 @@
             this.flp_listFriend = new System.Windows.Forms.FlowLayoutPanel();
             this.bbt_addfriend = new System.Windows.Forms.Button();
             this.bbt_notice = new System.Windows.Forms.Button();
+            this.showFindFriend = new System.Windows.Forms.FlowLayoutPanel();
             this.txt_findFriend = new Client_UIT.TextBoxCustom();
+            this.bbt_check = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_minimize)).BeginInit();
@@ -125,28 +127,38 @@
             this.flp_listFriend.Location = new System.Drawing.Point(9, 229);
             this.flp_listFriend.Margin = new System.Windows.Forms.Padding(0);
             this.flp_listFriend.Name = "flp_listFriend";
-            this.flp_listFriend.Size = new System.Drawing.Size(348, 405);
+            this.flp_listFriend.Size = new System.Drawing.Size(348, 380);
             this.flp_listFriend.TabIndex = 21;
             // 
             // bbt_addfriend
             // 
+            this.bbt_addfriend.BackgroundImage = global::Client_UIT.Properties.Resources.addfriend;
             this.bbt_addfriend.Location = new System.Drawing.Point(326, 183);
             this.bbt_addfriend.Name = "bbt_addfriend";
-            this.bbt_addfriend.Size = new System.Drawing.Size(34, 23);
+            this.bbt_addfriend.Size = new System.Drawing.Size(34, 31);
             this.bbt_addfriend.TabIndex = 22;
-            this.bbt_addfriend.Text = "button1";
             this.bbt_addfriend.UseVisualStyleBackColor = true;
             this.bbt_addfriend.Click += new System.EventHandler(this.bbt_addfriend_Click);
             // 
             // bbt_notice
             // 
-            this.bbt_notice.Location = new System.Drawing.Point(153, 637);
+            this.bbt_notice.BackColor = System.Drawing.Color.Transparent;
+            this.bbt_notice.BackgroundImage = global::Client_UIT.Properties.Resources.notice;
+            this.bbt_notice.Location = new System.Drawing.Point(174, 612);
             this.bbt_notice.Name = "bbt_notice";
-            this.bbt_notice.Size = new System.Drawing.Size(75, 23);
+            this.bbt_notice.Size = new System.Drawing.Size(32, 27);
             this.bbt_notice.TabIndex = 24;
-            this.bbt_notice.Text = "button3";
-            this.bbt_notice.UseVisualStyleBackColor = true;
+            this.bbt_notice.UseVisualStyleBackColor = false;
             this.bbt_notice.Click += new System.EventHandler(this.bbt_notice_Click);
+            // 
+            // showFindFriend
+            // 
+            this.showFindFriend.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.showFindFriend.Location = new System.Drawing.Point(5, 212);
+            this.showFindFriend.Name = "showFindFriend";
+            this.showFindFriend.Size = new System.Drawing.Size(348, 100);
+            this.showFindFriend.TabIndex = 25;
+            this.showFindFriend.Visible = false;
             // 
             // txt_findFriend
             // 
@@ -161,13 +173,27 @@
             this.txt_findFriend.Text = "Tìm bạn                                            ⌕";
             this.txt_findFriend.WatermarkActive = true;
             this.txt_findFriend.WatermarkText = "Tìm bạn                                            ⌕";
+            this.txt_findFriend.TextChanged += new System.EventHandler(this.txt_findFriend_TextChanged);
+            // 
+            // bbt_check
+            // 
+            this.bbt_check.BackColor = System.Drawing.Color.Transparent;
+            this.bbt_check.BackgroundImage = global::Client_UIT.Properties.Resources.check;
+            this.bbt_check.Location = new System.Drawing.Point(272, 66);
+            this.bbt_check.Name = "bbt_check";
+            this.bbt_check.Size = new System.Drawing.Size(26, 24);
+            this.bbt_check.TabIndex = 26;
+            this.bbt_check.UseVisualStyleBackColor = false;
+            this.bbt_check.Click += new System.EventHandler(this.bbt_check_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Client_UIT.Properties.Resources.mờ_hơn;
-            this.ClientSize = new System.Drawing.Size(360, 664);
+            this.ClientSize = new System.Drawing.Size(360, 639);
+            this.Controls.Add(this.bbt_check);
+            this.Controls.Add(this.showFindFriend);
             this.Controls.Add(this.bbt_notice);
             this.Controls.Add(this.txt_findFriend);
             this.Controls.Add(this.bbt_addfriend);
@@ -207,6 +233,8 @@
         private System.Windows.Forms.Button bbt_addfriend;
         private TextBoxCustom txt_findFriend;
         private System.Windows.Forms.Button bbt_notice;
+        private System.Windows.Forms.FlowLayoutPanel showFindFriend;
+        private System.Windows.Forms.Button bbt_check;
     }
 }
 

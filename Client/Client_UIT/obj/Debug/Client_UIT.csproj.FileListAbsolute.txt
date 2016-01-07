@@ -1,26 +1,77 @@
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\bin\Debug\Client_UIT.exe.config
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\bin\Debug\Client_UIT.exe
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\bin\Debug\Client_UIT.pdb
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\bin\Debug\Command.dll
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\bin\Debug\Enum.dll
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\bin\Debug\Command.pdb
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\bin\Debug\Enum.pdb
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.csprojResolveAssemblyReference.cache
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Chat.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Dangnhap.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.FindFriend.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Form1.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Form_Notice.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Friend.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Message1.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.MessageCustom.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Messeage.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Notice.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Personal_information.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Properties.Resources.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Register.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.Time.resources
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.csproj.GenerateResource.Cache
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.exe
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.pdb
-E:\HK5\Githup\DoAnC-UIT\Client\Client_UIT\obj\Debug\Client_UIT.icon.resources
+D:\DoAnC-\Client\Client_UIT\bin\Debug\Client_UIT.exe.config
+D:\DoAnC-\Client\Client_UIT\bin\Debug\Client_UIT.exe
+D:\DoAnC-\Client\Client_UIT\bin\Debug\Client_UIT.pdb
+D:\DoAnC-\Client\Client_UIT\bin\Debug\Command.dll
+D:\DoAnC-\Client\Client_UIT\bin\Debug\Enum.dll
+D:\DoAnC-\Client\Client_UIT\bin\Debug\Command.pdb
+D:\DoAnC-\Client\Client_UIT\bin\Debug\Enum.pdb
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.csprojResolveAssemblyReference.cache
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Chat.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Dangnhap.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.FindFriend.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Form1.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Form_Notice.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Friend.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Message1.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.MessageCustom.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Messeage.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Notice.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Personal_information.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Properties.Resources.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Register.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Time.resources
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.csproj.GenerateResource.Cache
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.exe
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.pdb
+D:\Projects\DoAnC-\Client\Client_UIT\bin\Debug\Client_UIT.exe.config
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.exe
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.pdb
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.csprojResolveAssemblyReference.cache
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Chat.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Dangnhap.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.FindFriend.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Form1.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Form_Notice.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Friend.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Message1.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.MessageCustom.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Messeage.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Notice.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Personal_information.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Properties.Resources.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Register.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.Time.resources
+D:\Projects\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.csproj.GenerateResource.Cache
+D:\Projects\DoAnC-\Client\Client_UIT\bin\Debug\Client_UIT.exe
+D:\Projects\DoAnC-\Client\Client_UIT\bin\Debug\Client_UIT.pdb
+D:\Projects\DoAnC-\Client\Client_UIT\bin\Debug\Command.dll
+D:\Projects\DoAnC-\Client\Client_UIT\bin\Debug\Enum.dll
+D:\Projects\DoAnC-\Client\Client_UIT\bin\Debug\Command.pdb
+D:\Projects\DoAnC-\Client\Client_UIT\bin\Debug\Enum.pdb
+D:\DoAnC-\Client\Client_UIT\obj\Debug\Client_UIT.icon.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\bin\Debug\Client_UIT.exe.config
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.exe
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.pdb
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\bin\Debug\Client_UIT.exe
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\bin\Debug\Client_UIT.pdb
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\bin\Debug\Command.dll
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\bin\Debug\Enum.dll
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\bin\Debug\Command.pdb
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\bin\Debug\Enum.pdb
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Chat.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Dangnhap.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.FindFriend.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Form1.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Form_Notice.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Friend.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.icon.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Message1.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.MessageCustom.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Messeage.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Notice.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Personal_information.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Properties.Resources.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Register.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.Time.resources
+C:\Users\Tran Minh Tri\Desktop\Client\Client_UIT\obj\Debug\Client_UIT.csproj.GenerateResource.Cache

@@ -16,19 +16,19 @@ namespace Client_UIT
         int location_x, location_y;
         static int size_y = 119;
         string _image;
-        public icon(Chat _fmchat,int x, int y)
+        public icon(Chat _fmchat, int x, int y)
         {
             InitializeComponent();
             location_x = x;
             location_y = y;
             _chat = _fmchat;
-           
+
         }
 
         private void icon_Load(object sender, EventArgs e)
         {
             this.SuspendLayout();
-            this.Location = new System.Drawing.Point(location_x,location_y-size_y);
+            this.Location = new System.Drawing.Point(location_x, location_y - size_y);
             this.ResumeLayout();
         }
 
@@ -100,6 +100,12 @@ namespace Client_UIT
             _image = ":10";
             _chat.addtext_rTB(_image);
             this.Close();
+        }
+
+        private void icon_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _chat.FocusRTB();
+            _chat._icon = null;
         }
     }
 }

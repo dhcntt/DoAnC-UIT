@@ -18,6 +18,7 @@ namespace Client_UIT
 {
     public partial class Form1 : Form
     {
+        public FindFriend ff;
         int _stt;
         string _userName;
         string _email;
@@ -26,6 +27,7 @@ namespace Client_UIT
         Dangnhap _dangnhapForm;
         ClientManager client;
         public List<FriendList> listFriend;
+        bool checkFormClose = true;
         public Image RoundCorners(Image StartImage, int CornerRadius, Color BackgroundColor)
         {
             CornerRadius *= 2;
@@ -63,6 +65,13 @@ namespace Client_UIT
             }
             else
                 txt_status.Text = status;
+            
+            var pic = new Bitmap(this.bbt_addfriend.BackgroundImage, new Size(this.bbt_addfriend.Width, this.bbt_addfriend.Height));
+            this.bbt_addfriend.BackgroundImage = pic;
+            var picture = new Bitmap(this.bbt_notice.BackgroundImage, new Size(this.bbt_notice.Width, this.bbt_notice.Height));
+            this.bbt_notice.BackgroundImage = picture;
+            var picture1 = new Bitmap(this.bbt_check.BackgroundImage, new Size(this.bbt_notice.Width, this.bbt_notice.Height));
+            this.bbt_check.BackgroundImage = picture1;
             Rectangle r = Screen.PrimaryScreen.WorkingArea;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width, Screen.PrimaryScreen.WorkingArea.Height - this.Height);
@@ -74,7 +83,10 @@ namespace Client_UIT
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _dangnhapForm.Close();
+            if (checkFormClose)
+            {
+                _dangnhapForm.Close();
+            }
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -190,10 +202,9 @@ namespace Client_UIT
 
         private void bbt_addfriend_Click(object sender, EventArgs e)
         {
-            FindFriend ff = new FindFriend(client, _userName);
+            if(ff==null)
+            ff = new FindFriend(client, _userName,this);
             ff.Show();
-
-
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
@@ -208,6 +219,60 @@ namespace Client_UIT
             client.Notice_frm = frm_notice;
             Command cmd = new Command(Enum.CommandType_.LoadNotice);
             client.SendCommand(cmd);
+        }
+
+        private void txt_findFriend_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_findFriend.Text != "")
+            {
+                List<Control> listControls = showFindFriend.Controls.Cast<Control>().ToList();
+                foreach (Control control in listControls)
+                {
+                    showFindFriend.Controls.Remove(control);
+                    control.Dispose();
+                }
+                List<FriendList> listFriendtemp = new List<FriendList>();
+                foreach (var s in listFriend)
+                {
+                    if (s._userFriend.IndexOf(txt_findFriend.Text) != -1)
+                    {
+                        listFriendtemp.Add(s);
+                    }
+                }
+                if (listFriendtemp.Count == 0)
+                {
+                    showFindFriend.Visible = false;
+                }
+                else
+                {
+                    for (int i = 0; i < listFriendtemp.Count; i++)
+                    {
+                        Friend _friendTemp = new Friend(listFriendtemp[i]._userFriend, listFriendtemp[i].Image, listFriendtemp[i].Status, client, i, listFriendtemp[i].TextStatus);
+                        showFindFriend.Controls.Add(_friendTemp);
+
+                    }
+                    showFindFriend.Visible = true;
+                    showFindFriend.Height = listFriendtemp.Count * 50;
+                }
+            }
+            else
+            {
+                showFindFriend.Visible = false;
+            }
+        }
+
+        private void bbt_check_Click(object sender, EventArgs e)
+        {
+            checkFormClose = false;
+            _dangnhapForm.Client._check = false;
+            _dangnhapForm.Client = null;
+            this.client = null;
+            
+            _dangnhapForm.socket.Close();
+            this.Close();
+            _dangnhapForm.LoadPanel();
+            _dangnhapForm.Show();
+            
         }
     }
 }

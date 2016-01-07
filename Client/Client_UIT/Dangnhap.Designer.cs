@@ -73,7 +73,6 @@ namespace Client_UIT
             this.ptb_title.Size = new System.Drawing.Size(402, 50);
             this.ptb_title.TabIndex = 2;
             this.ptb_title.TabStop = false;
-            this.ptb_title.Click += new System.EventHandler(this.ptb_title_Click);
             this.ptb_title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.ptb_title.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
@@ -108,11 +107,11 @@ namespace Client_UIT
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.txt_dangnhap);
             this.panel1.Controls.Add(this.txt_password);
-            this.panel1.Controls.Add(this.ptb_dangki);
             this.panel1.Controls.Add(this.checkBox3);
             this.panel1.Controls.Add(this.checkBox4);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.ptb_dangnhap);
+            this.panel1.Controls.Add(this.ptb_dangki);
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Location = new System.Drawing.Point(35, 82);
             this.panel1.Name = "panel1";

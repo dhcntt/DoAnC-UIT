@@ -282,43 +282,31 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\400x585.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\nền.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mờ hơn.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1.png" />
+    <None Include="Resources\addfriend.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2.png" />
+    <None Include="Resources\notice.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\8.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\check.png" />
     <None Include="Resources\9.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\8.png" />
+    <None Include="Resources\7.png" />
+    <None Include="Resources\6.png" />
+    <None Include="Resources\5.png" />
+    <None Include="Resources\1.png" />
     <None Include="Resources\10.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\4.png" />
+    <Content Include="check.png" />
+    <Content Include="Resources\400x585.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

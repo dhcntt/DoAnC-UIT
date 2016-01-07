@@ -29,61 +29,67 @@ namespace Client_UIT
 
         private void bbt_register_Click(object sender, EventArgs e)
         {
-            if (txt_password.Text != txt_confirm.Text)
+            if (txt_account.Text.Length < 8 || txt_password.Text.Length < 8 || txt_username.Text.Length < 8)
             {
-                MessageBox.Show("Mật khẩu xác nhận không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageCustom.Show("Độ dài tên người dùng hoặc tài khoản \n ,mật khẩu phải lớn hơn 8 kí tự!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
             }
             else
             {
-                try
+                if (txt_password.Text != txt_confirm.Text)
                 {
-                    NetworkStream stream = new NetworkStream(socket);
-                    byte[] buffer = new byte[4];
-                    //sen command type
-                    buffer = BitConverter.GetBytes((int)CommandType_.Register);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    //send username
-                    buffer = BitConverter.GetBytes(txt_username.Text.Length);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    byte[] data = new byte[txt_username.Text.Length];
-                    data = Encoding.ASCII.GetBytes(txt_username.Text);
-                    stream.Write(data, 0, txt_username.Text.Length);
-                    stream.Flush();
-                    //send account
-                    buffer = BitConverter.GetBytes(txt_account.Text.Length);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    data = new byte[txt_account.Text.Length];
-                    data = Encoding.ASCII.GetBytes(txt_account.Text);
-                    stream.Write(data, 0, txt_account.Text.Length);
-                    stream.Flush();
-                    //send password
-                    buffer = BitConverter.GetBytes(txt_password.Text.Length);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    data = new byte[txt_password.Text.Length];
-                    data = Encoding.ASCII.GetBytes(txt_password.Text);
-                    stream.Write(data, 0, txt_password.Text.Length);
-                    stream.Flush();
-                    //sen email
-                    buffer = BitConverter.GetBytes(txt_email.Text.Length);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    data = new byte[txt_email.Text.Length];
-                    data = Encoding.ASCII.GetBytes(txt_email.Text);
-                    stream.Write(data, 0, txt_email.Text.Length);
-                    stream.Flush();
-
+                    MessageCustom.Show("Mật khẩu xác nhận không đúng", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Server đang bảo trì,không thể đăng kí!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        NetworkStream stream = new NetworkStream(socket);
+                        byte[] buffer = new byte[4];
+                        //sen command type
+                        buffer = BitConverter.GetBytes((int)CommandType_.Register);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        //send username
+                        buffer = BitConverter.GetBytes(txt_username.Text.Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        byte[] data = new byte[txt_username.Text.Length];
+                        data = Encoding.ASCII.GetBytes(txt_username.Text);
+                        stream.Write(data, 0, txt_username.Text.Length);
+                        stream.Flush();
+                        //send account
+                        buffer = BitConverter.GetBytes(txt_account.Text.Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = new byte[txt_account.Text.Length];
+                        data = Encoding.ASCII.GetBytes(txt_account.Text);
+                        stream.Write(data, 0, txt_account.Text.Length);
+                        stream.Flush();
+                        //send password
+                        buffer = BitConverter.GetBytes(txt_password.Text.Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = new byte[txt_password.Text.Length];
+                        data = Encoding.ASCII.GetBytes(txt_password.Text);
+                        stream.Write(data, 0, txt_password.Text.Length);
+                        stream.Flush();
+                        //sen email
+                        buffer = BitConverter.GetBytes(txt_email.Text.Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = new byte[txt_email.Text.Length];
+                        data = Encoding.ASCII.GetBytes(txt_email.Text);
+                        stream.Write(data, 0, txt_email.Text.Length);
+                        stream.Flush();
+
+                    }
+                    catch
+                    {
+                        MessageCustom.Show("Server đang bảo trì,không thể đăng kí!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                    }
                 }
             }
         }
-
         private void txt_username_TextChanged(object sender, EventArgs e)
         {
 

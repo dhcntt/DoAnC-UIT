@@ -14,6 +14,24 @@ namespace Client_UIT
         /// <summary>
         /// Gets or Sets the text that will be presented as the watermak hint
         /// </summary>
+        public TextBoxCustom()
+            : base()
+        {
+            this._watermarkActive = true;
+            this.Text = _watermarkText;
+            this.ForeColor = Color.Gray;
+
+            GotFocus += (source, e) =>
+            {
+                RemoveWatermak();
+            };
+
+            LostFocus += (source, e) =>
+            {
+                ApplyWatermark();
+            };
+            _lost = new lostFocus(ApplyWatermark);
+        }
         public string WatermarkText
         {
             get { return _watermarkText; }
@@ -59,24 +77,6 @@ namespace Client_UIT
             this.Text = _watermarkText;
             }
 
-        }
-        public TextBoxCustom()
-            : base()
-        {
-            this._watermarkActive = true;
-            this.Text = _watermarkText;
-            this.ForeColor = Color.Gray;
-
-            GotFocus += (source, e) =>
-            {
-                RemoveWatermak();
-            };
-
-            LostFocus += (source, e) =>
-            {
-                ApplyWatermark();
-            };
-            _lost = new lostFocus(ApplyWatermark);
         }
         public delegate void lostFocus();
         public lostFocus _lost;

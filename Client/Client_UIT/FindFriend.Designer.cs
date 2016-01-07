@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindFriend));
             this.lbl_find = new System.Windows.Forms.Label();
             this.bbt_findFriend = new System.Windows.Forms.Button();
             this.lbl_notfound = new System.Windows.Forms.Label();
@@ -40,9 +41,9 @@
             this.bbt_addfriend = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txt_findFriend = new Client_UIT.TextBoxCustom();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txt_findFriend = new Client_UIT.TextBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -171,6 +172,19 @@
             this.panel2.Size = new System.Drawing.Size(407, 235);
             this.panel2.TabIndex = 12;
             // 
+            // txt_findFriend
+            // 
+            this.txt_findFriend.Bpassword = false;
+            this.txt_findFriend.ForeColor = System.Drawing.Color.Gray;
+            this.txt_findFriend.Location = new System.Drawing.Point(154, 35);
+            this.txt_findFriend.Name = "txt_findFriend";
+            this.txt_findFriend.NullText = false;
+            this.txt_findFriend.Size = new System.Drawing.Size(134, 20);
+            this.txt_findFriend.TabIndex = 0;
+            this.txt_findFriend.WatermarkActive = true;
+            this.txt_findFriend.WatermarkText = "";
+            this.txt_findFriend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_findFriend_KeyPress);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(324, 229);
@@ -191,19 +205,6 @@
             this.panel3.TabIndex = 14;
             this.panel3.Visible = false;
             // 
-            // txt_findFriend
-            // 
-            this.txt_findFriend.Bpassword = false;
-            this.txt_findFriend.ForeColor = System.Drawing.Color.Gray;
-            this.txt_findFriend.Location = new System.Drawing.Point(154, 35);
-            this.txt_findFriend.Name = "txt_findFriend";
-            this.txt_findFriend.NullText = false;
-            this.txt_findFriend.Size = new System.Drawing.Size(134, 20);
-            this.txt_findFriend.TabIndex = 0;
-            this.txt_findFriend.WatermarkActive = true;
-            this.txt_findFriend.WatermarkText = "";
-            this.txt_findFriend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_findFriend_KeyPress);
-            // 
             // FindFriend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,8 +213,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FindFriend";
-            this.Text = "FindFriend";
+            this.Text = "Thêm bạn";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindFriend_FormClosed);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FindFriend_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).EndInit();
             this.panel1.ResumeLayout(false);

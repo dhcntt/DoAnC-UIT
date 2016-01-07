@@ -10,17 +10,20 @@ using System.Windows.Forms;
 using _Command;
 using System.Net;
 using System.Net.Sockets;
-using System.Collections.Generic;
 
 namespace Client_UIT
 {
     public partial class Chat : Form
     {
+        double weight;
+        double hight;
+        public icon _icon;
         public ClientManager _client;
         Font _fontMessage;
         int load = 1;
         public bool _bSend=true;//chưa gởi
         public bool bLoad = true;
+        public bool bLoadMessage = true;
         public bool _bTime = false;
         public bool _bRecive = true;//chưa nhận
         public bool _hien_thi = false;//form co chay hay khong
@@ -33,7 +36,9 @@ namespace Client_UIT
             _client = ClientTemp;
             //_usernameMain = usermain;
             _usernameReference = userReferrence;
-            _fontMessage = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);           
+            _fontMessage = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular);
+            weight = this.Width;
+            hight = this.Height;
         }
 
         public delegate void UpDate_message_delegate(bool kt);
@@ -162,52 +167,68 @@ namespace Client_UIT
 
         public void Receive(string userFriend, string content, Font _fontTemp)
         {
-            if (flp_messeage.InvokeRequired)
+            if (bLoadMessage)
             {
-                this.Invoke(new Receive_delagate(Receive),userFriend,content,_fontTemp);
+                MessageText mst = new MessageText(content, _fontTemp, 2);
+                listmessage.AddLast(mst);
+                Command cmd = new Command(Enum.CommandType_.LoadMessage, userFriend, listmessage.Count);
+                _client.SendCommand(cmd);
+                bLoadMessage = false;
             }
             else
             {
-                if (_bSend && _bRecive)//chưa gởi và chưa nhận
+                if (flp_messeage.InvokeRequired)
                 {
-                    string _time = DateTime.Now.ToString();
-                    Button a = new Button();
-                    a.Width =490 ;
-                    a.Text = _time;
-                    a.BackColor = System.Drawing.Color.Transparent;
-                    a.Dock = DockStyle.None;
-                    a.FlatAppearance.BorderSize = 0;
-                    a.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    a.Enabled = false;
-                    flp_messeage.Controls.Add(a);
-                }
-                if (_bRecive)
-                {
-                    Messeage ms = new Messeage(userFriend, content, _fontTemp);
-                    ms.Anchor = AnchorStyles.Left;
-                    flp_messeage.Controls.Add(ms);
-                   flp_messeage.ScrollControlIntoView(ms);
-                   _bSend = true;
-                   _bRecive = false;
-                   MessageText mst = new MessageText(content, _fontTemp, 2);
-                   listmessage.AddLast(mst);
+                    this.Invoke(new Receive_delagate(Receive), userFriend, content, _fontTemp);
                 }
                 else
                 {
-                    Message1 ms = new Message1( content, _fontTemp);
-                    ms.Anchor = AnchorStyles.Left;
-                    flp_messeage.Controls.Add(ms);
-                    flp_messeage.ScrollControlIntoView(ms);
-                    MessageText mst = new MessageText(content, _fontTemp, 2);
-                    listmessage.AddLast(mst);
+                    if (_bSend && _bRecive)//chưa gởi và chưa nhận
+                    {
+                        string _time = DateTime.Now.ToString();
+                        Button a = new Button();
+                        a.Width = 490;
+                        a.Text = _time;
+                        a.BackColor = System.Drawing.Color.Transparent;
+                        a.Dock = DockStyle.None;
+                        a.FlatAppearance.BorderSize = 0;
+                        a.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                        a.Enabled = false;
+                        flp_messeage.Controls.Add(a);
+                    }
+                    if (_bRecive)
+                    {
+                        Messeage ms = new Messeage(userFriend, content, _fontTemp);
+                        ms.Anchor = AnchorStyles.Left;
+                        flp_messeage.Controls.Add(ms);
+                        flp_messeage.ScrollControlIntoView(ms);
+                        _bSend = true;
+                        _bRecive = false;
+                        MessageText mst = new MessageText(content, _fontTemp, 2);
+                        listmessage.AddLast(mst);
+                    }
+                    else
+                    {
+                        Message1 ms = new Message1(content, _fontTemp);
+                        ms.Anchor = AnchorStyles.Left;
+                        flp_messeage.Controls.Add(ms);
+                        flp_messeage.ScrollControlIntoView(ms);
+                        MessageText mst = new MessageText(content, _fontTemp, 2);
+                        listmessage.AddLast(mst);
+                    }
                 }
             }
+        }
+        public void FocusRTB()
+        {
+            this.rTB_content.Focus();
         }
         void SendMessage()
         {
             if (_client.socket.Connected)
             {
-                if (rTB_content.Text != "\n")
+                rTB_content.Text = rTB_content.Text.Trim();
+                if (rTB_content.Text != "\n" && rTB_content.Text != "")
                 {
                     //chưa gởi hoặc đã nhận thì gởi message
                     if (_bSend && _bRecive)//chưa gởi và chưa nhận
@@ -277,12 +298,16 @@ namespace Client_UIT
         }
         private void bbt_gui_Click(object sender, EventArgs e)
         {
+            if (_icon != null)
+                _icon.Close();
             SendMessage();   
         }
 
 
         private void bbt_font_Click(object sender, EventArgs e)
         {
+            if (_icon != null)
+                _icon.Close();
             FontDialog fontTemp = new FontDialog();
             if (fontTemp.ShowDialog() == DialogResult.OK)
             {
@@ -297,6 +322,8 @@ namespace Client_UIT
         {
             var formchat=ClientManager.IsShow(_usernameReference);
             ClientManager.listFormChat.Remove(formchat);
+            if (_icon != null)
+                _icon.Close();
         }
 
         private void rTB_content_KeyPress(object sender, KeyPressEventArgs e)
@@ -309,6 +336,16 @@ namespace Client_UIT
 
         private void Chat_Resize(object sender, EventArgs e)
         {
+            double w = this.Width / weight;
+            double h = this.Height / hight;
+            List<Control> listControls = this.Controls.Cast<Control>().ToList();
+            foreach(var s in listControls)
+            {
+                s.Width = Convert.ToInt16((double)s.Width * w);
+                s.Height = Convert.ToInt16((double)s.Height * w);
+            }
+            weight = this.Width;
+            hight = this.Height;
         }
 
         private void flp_messeage_Scroll(object sender, ScrollEventArgs e)
@@ -334,8 +371,9 @@ namespace Client_UIT
         {
             int x = Cursor.Position.X;
             int y = Cursor.Position.Y;
-            icon _icon = new icon(this, x,y);
-            _icon.ShowDialog();
+            if(_icon==null)
+            _icon = new icon(this, x,y);
+            _icon.Show();
             
         }
         public void addtext_rTB(string _str)
@@ -355,6 +393,24 @@ namespace Client_UIT
         private void Chat_FormClosing(object sender, FormClosingEventArgs e)
         {
             _hien_thi = false;
+        }
+
+        private void flp_messeage_Click(object sender, EventArgs e)
+        {
+            if(_icon!=null)
+            _icon.Close();
+        }
+
+        private void Chat_Click(object sender, EventArgs e)
+        {
+            if (_icon != null)
+                _icon.Close();
+        }
+
+        private void rTB_content_Click(object sender, EventArgs e)
+        {
+            if (_icon != null)
+                _icon.Close();
         }
         
     }

@@ -18,7 +18,13 @@ namespace Client_UIT
     {
         public Socket socket=null;//kết nối giữa client-server
         NetworkStream stream;
-        ClientManager client = null;
+        private ClientManager client = null;
+
+        public ClientManager Client
+        {
+            get { return client; }
+            set { client = value; }
+        }
         IPEndPoint IPep;
         public Dangnhap()
         {
@@ -300,15 +306,14 @@ namespace Client_UIT
         {
             this.ptb_title.Focus();
         }
-
+        public void LoadPanel()
+        {
+            panel1.Visible=true;
+            panel2.Visible=false;
+        }
         private void Dangnhap_Load(object sender, EventArgs e)
         {
-            //int a = 2;
-        }
-
-        private void ptb_title_Click(object sender, EventArgs e)
-        {
-
+           
         }
     }
 }

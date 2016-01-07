@@ -39,7 +39,6 @@
             this.txt_password = new System.Windows.Forms.TextBox();
             this.txt_confirm = new System.Windows.Forms.TextBox();
             this.txt_email = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.ptb_dk_rgt = new System.Windows.Forms.PictureBox();
             this.ptb_mini_rgt = new System.Windows.Forms.PictureBox();
             this.ptb_canel_rgt = new System.Windows.Forms.PictureBox();
@@ -125,6 +124,7 @@
             this.txt_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_password.Location = new System.Drawing.Point(132, 288);
             this.txt_password.Name = "txt_password";
+            this.txt_password.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(140, 13);
             this.txt_password.TabIndex = 7;
             // 
@@ -133,6 +133,7 @@
             this.txt_confirm.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_confirm.Location = new System.Drawing.Point(132, 332);
             this.txt_confirm.Name = "txt_confirm";
+            this.txt_confirm.PasswordChar = '*';
             this.txt_confirm.Size = new System.Drawing.Size(140, 13);
             this.txt_confirm.TabIndex = 8;
             // 
@@ -143,16 +144,6 @@
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(140, 13);
             this.txt_email.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(322, 204);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "sa";
             // 
             // ptb_dk_rgt
             // 
@@ -206,7 +197,7 @@
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(-1, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(382, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(382, 34);
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -217,11 +208,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Client_UIT.Properties.Resources.Form_DK;
+            this.BackgroundImage = global::Client_UIT.Properties.Resources.mờ_hơn;
             this.ClientSize = new System.Drawing.Size(382, 482);
             this.Controls.Add(this.ptb_canel_rgt);
             this.Controls.Add(this.ptb_mini_rgt);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_email);
             this.Controls.Add(this.txt_confirm);
             this.Controls.Add(this.txt_password);
@@ -260,7 +250,6 @@
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.TextBox txt_confirm;
         private System.Windows.Forms.TextBox txt_email;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox ptb_dk_rgt;
         private System.Windows.Forms.PictureBox ptb_mini_rgt;
         private System.Windows.Forms.PictureBox ptb_canel_rgt;

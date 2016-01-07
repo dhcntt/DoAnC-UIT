@@ -46,6 +46,7 @@
             this.rTB_content.Size = new System.Drawing.Size(516, 96);
             this.rTB_content.TabIndex = 0;
             this.rTB_content.Text = "";
+            this.rTB_content.Click += new System.EventHandler(this.rTB_content_Click);
             this.rTB_content.TextChanged += new System.EventHandler(this.rTB_content_TextChanged);
             this.rTB_content.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rTB_content_KeyPress);
             // 
@@ -61,6 +62,7 @@
             this.flp_messeage.TabIndex = 1;
             this.flp_messeage.WrapContents = false;
             this.flp_messeage.Scroll += new System.Windows.Forms.ScrollEventHandler(this.flp_messeage_Scroll);
+            this.flp_messeage.Click += new System.EventHandler(this.flp_messeage_Click);
             this.flp_messeage.Paint += new System.Windows.Forms.PaintEventHandler(this.flp_messeage_Paint);
             // 
             // bbt_gui
@@ -93,6 +95,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "A";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // button3
             // 
@@ -103,6 +106,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "A";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             // 
             // btn_icon
             // 
@@ -133,6 +137,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Chat_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Chat_FormClosed);
             this.Load += new System.EventHandler(this.Chat_Load);
+            this.Click += new System.EventHandler(this.Chat_Click);
             this.Resize += new System.EventHandler(this.Chat_Resize);
             this.ResumeLayout(false);
 

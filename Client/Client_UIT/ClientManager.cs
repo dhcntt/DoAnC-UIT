@@ -27,6 +27,8 @@ namespace Client_UIT
         public string _content;
         public string _time;
 
+       
+
         public Notice_List(int stt, string userPrimary, string userReference, string type, string time)
         {
 
@@ -65,6 +67,7 @@ namespace Client_UIT
         public Socket socket;//kết nối giữa client-server
         private NetworkStream stream;//dùng để nhận và gởi tin
         private BackgroundWorker bw_receive;//thread dùng để nhận tin nhắn từ
+        public bool _check = true;
         BinaryFormatter bf = new BinaryFormatter();
         public ClientManager(Dangnhap _dangnhap, Socket _temp)
         {
@@ -119,51 +122,96 @@ namespace Client_UIT
             bool check_addMessage = false;
             while (socket.Connected)
             {
-                //try
-                //{
-                //đọc thông điệp server chuyễn đến
-                stream.Read(buffer, 0, 4);
-                CommandType_ cmt = (CommandType_)BitConverter.ToInt32(buffer, 0);
-                if (cmt == CommandType_.Message)
+                try
                 {
-
-                    string cmdMetaData = "";
-                    buffer = new byte[4];
-                    //đọc nội dung tin nhắn
+                    //đọc thông điệp server chuyễn đến
                     stream.Read(buffer, 0, 4);
-                    int lenght = BitConverter.ToInt32(buffer, 0);
-                    byte[] metaBuffer = new byte[lenght];
-                    stream.Read(metaBuffer, 0, lenght);
-                    cmdMetaData = Encoding.ASCII.GetString(metaBuffer);
-                    //đọc font
-                    stream.Read(buffer, 0, 4);
-                    lenght = BitConverter.ToInt32(buffer, 0);
-                    metaBuffer = new byte[lenght];
-                    stream.Read(metaBuffer, 0, lenght);
-                    MemoryStream s = new MemoryStream(metaBuffer);
-                    BinaryFormatter bf = new BinaryFormatter();
-                    Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
-                    temp = (Font)bf.Deserialize(s);
-                    Chat chatForm = null;
-                    _frmMain.Invoke(new Action(delegate()
+                    CommandType_ cmt = (CommandType_)BitConverter.ToInt32(buffer, 0);
+                    if (cmt == CommandType_.Message)
                     {
-                        if ((chatForm = IsShow("Server")) == null)
-                        {
-                            chatForm = new Chat(this, "Server");
-                            chatForm.Text = "Server";
-                            chatForm.Show();
-                            listFormChat.Add(chatForm);
-                        }
-                    }));
-                    chatForm.Receive("Server",cmdMetaData, temp);
-                }//end message
 
-                if (cmt == CommandType_.LoadMessage)
-                {
-                    buffer = new byte[4];
-                    stream.Read(buffer, 0, 4);
-                    int count = BitConverter.ToInt16(buffer, 0);
-                    if (count > 0)
+                        string cmdMetaData = "";
+                        buffer = new byte[4];
+                        //đọc nội dung tin nhắn
+                        stream.Read(buffer, 0, 4);
+                        int lenght = BitConverter.ToInt32(buffer, 0);
+                        byte[] metaBuffer = new byte[lenght];
+                        stream.Read(metaBuffer, 0, lenght);
+                        cmdMetaData = Encoding.ASCII.GetString(metaBuffer);
+                        //đọc font
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        metaBuffer = new byte[lenght];
+                        stream.Read(metaBuffer, 0, lenght);
+                        MemoryStream s = new MemoryStream(metaBuffer);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
+                        temp = (Font)bf.Deserialize(s);
+                        Chat chatForm = null;
+                        _frmMain.Invoke(new Action(delegate()
+                        {
+                            if ((chatForm = IsShow("Server")) == null)
+                            {
+                                chatForm = new Chat(this, "Server");
+                                chatForm.Text = "Server";
+                                chatForm.Show();
+                                listFormChat.Add(chatForm);
+                            }
+                        }));
+                        chatForm.Receive("Server", cmdMetaData, temp);
+                    }//end message
+
+                    if (cmt == CommandType_.LoadMessage)
+                    {
+                        buffer = new byte[4];
+                        stream.Read(buffer, 0, 4);
+                        int count = BitConverter.ToInt16(buffer, 0);
+                        if (count > 0)
+                        {
+                            buffer = new byte[4];
+                            stream.Read(buffer, 0, 4);
+                            int lengh = BitConverter.ToInt32(buffer, 0);
+                            data = new byte[lengh];
+                            stream.Read(data, 0, lengh);
+                            usernameTemp = Encoding.ASCII.GetString(data);
+                            LinkedList<MessageText> listmessageTemp = new System.Collections.Generic.LinkedList<MessageText>();
+                            for (int i = 0; i < count; i++)
+                            {
+                                buffer = new byte[4];
+                                stream.Read(buffer, 0, 4);
+                                lengh = BitConverter.ToInt32(buffer, 0);
+                                data = new byte[lengh];
+                                stream.Read(data, 0, lengh);
+                                string content = Encoding.ASCII.GetString(data);
+
+
+                                stream.Read(buffer, 0, 4);
+                                int lenght = BitConverter.ToInt32(buffer, 0);
+                                data = new byte[lenght];
+                                stream.Read(data, 0, lenght);
+                                MemoryStream s = new MemoryStream(data);
+                                s.Position = 0;
+                                BinaryFormatter bf = new BinaryFormatter();
+                                Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
+                                temp = (Font)bf.Deserialize(s);
+
+                                buffer = new byte[4];
+                                stream.Read(buffer, 0, 4);
+                                int type = BitConverter.ToInt16(buffer, 0);
+                                MessageText mst = new MessageText(content, temp, type);
+
+                                listmessageTemp.AddLast(mst);
+
+                            }
+                            foreach (var s in listmessageTemp)
+                            {
+                                IsShow(usernameTemp).listmessage.AddFirst(s);
+                            }
+                            IsShow(usernameTemp).update_message(true);
+
+                        }
+                    }
+                    if (cmt == CommandType_.MessageFriend)
                     {
                         buffer = new byte[4];
                         stream.Read(buffer, 0, 4);
@@ -171,348 +219,307 @@ namespace Client_UIT
                         data = new byte[lengh];
                         stream.Read(data, 0, lengh);
                         usernameTemp = Encoding.ASCII.GetString(data);
-                        LinkedList<MessageText> listmessageTemp = new System.Collections.Generic.LinkedList<MessageText>();
-                        for (int i = 0; i < count; i++)
+
+                        //đọc nội dung tin nhắn
+                        string cmdMetaData = "";
+                        buffer = new byte[4];
+                        stream.Read(buffer, 0, 4);
+                        int lenght = BitConverter.ToInt32(buffer, 0);
+                        byte[] metaBuffer = new byte[lenght];
+                        stream.Read(metaBuffer, 0, lenght);
+                        cmdMetaData = Encoding.UTF8.GetString(metaBuffer);
+                        //đọc font
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        metaBuffer = new byte[lenght];
+                        stream.Read(metaBuffer, 0, lenght);
+                        //convert byte sang font
+                        MemoryStream s = new MemoryStream(metaBuffer);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
+                        temp = (Font)bf.Deserialize(s);
+                        Chat chatForm = null;
+                        _frmMain.Invoke(new Action(delegate()
                         {
-                            buffer = new byte[4];
-                            stream.Read(buffer, 0, 4);
-                            lengh = BitConverter.ToInt32(buffer, 0);
-                            data = new byte[lengh];
-                            stream.Read(data, 0, lengh);
-                            string content = Encoding.ASCII.GetString(data);
+                            if ((chatForm = IsShow(usernameTemp)) == null)
+                            {
+                                chatForm = new Chat(this, usernameTemp);
+                                chatForm.Text = usernameTemp;
+                                //Command cmd = new Command(CommandType_.LoadMessage, usernameTemp, 0);
+                                // this.SendCommand(cmd);
+                                chatForm.Show();
+                                listFormChat.Add(chatForm);
+                            }
+                        }));
+                        chatForm.Receive(usernameTemp, cmdMetaData, temp);
+                    }
+                    if (cmt == CommandType_.LoginSuccess)
+                    {
+                        stream.Read(buffer, 0, 4);
+                        int stt = BitConverter.ToInt32(buffer, 0);
+
+                        byte[] dataPicture;
+                        //đọc tên username
+                        stream.Read(buffer, 0, 4);
+                        int lenght = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lenght];
+                        stream.Read(data, 0, lenght);
+                        string username = Encoding.ASCII.GetString(data);
+                        this._userName = username;
 
 
+                        //nhận email
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lenght];
+                        stream.Read(data, 0, lenght);
+                        string email = Encoding.ASCII.GetString(data);
+
+
+                        //đọc avatar
+                        Image image;
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        dataPicture = new byte[lenght];
+                        ReadBigData(stream, lenght, ref dataPicture);
+                        MemoryStream mem = new MemoryStream(dataPicture);
+                        image = Image.FromStream(mem);
+
+                        //đọc status
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lenght];
+                        ReadBigData(stream, lenght, ref data);
+                        string status = Encoding.UTF8.GetString(data);
+
+                        //Đăng nhập thành công
+                        //Khởi tạo form chính
+                        //dangnhapForm.KillThreard();
+                        if (_frmMain == null)
+                        {
+                            dangnhapForm.Invoke(new Action(delegate()
+                            {
+
+                                {
+                                    _frmMain = new Form1(dangnhapForm, 1, this._userName, email, image, status, this);
+                                    _frmMain.Text = "Frozen";
+                                    _frmMain.Show();
+                                    dangnhapForm.Hide();
+                                }
+                            }));
+
+                        }
+                        Command cmd = new Command(CommandType_.ListFriend, this._userName);
+                        this.SendCommand(cmd);
+                        //load list friend
+                        //đọc thông tin list Friend
+                        //Thread.Sleep(2000);
+                        //--Đọc số lượng friend của user 
+
+
+
+                    }//End LoginSuccess
+                    if (cmt == CommandType_.ListFriend)
+                    {
+                        stream.Read(buffer, 0, 4);
+                        int _CountTemp;
+                        _CountTemp = BitConverter.ToInt32(buffer, 0);
+                        _frmMain.listFriend = new List<FriendList>();
+                        for (int i = 0; i < _CountTemp; i++)
+                        {
+                            //đọc useer friend
+                            //int a = _abc;
                             stream.Read(buffer, 0, 4);
                             int lenght = BitConverter.ToInt32(buffer, 0);
                             data = new byte[lenght];
                             stream.Read(data, 0, lenght);
-                            MemoryStream s = new MemoryStream(data);
-                            s.Position = 0;
-                            BinaryFormatter bf = new BinaryFormatter();
-                            Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
-                            temp = (Font)bf.Deserialize(s);
+                            string usernameFriend = Encoding.ASCII.GetString(data);
 
-                            buffer = new byte[4];
+
+
+                            //đọc avatar friend
+                            Image _avatarFriend;
                             stream.Read(buffer, 0, 4);
-                            int type = BitConverter.ToInt16(buffer, 0);
-                            MessageText mst = new MessageText(content, temp, type);
-
-                            listmessageTemp.AddLast(mst);
-
-                        }
-                        foreach (var s in listmessageTemp)
-                        {
-                            IsShow(usernameTemp).listmessage.AddFirst(s);
-                        }
-                        IsShow(usernameTemp).update_message(true);
-                        
-                    }
-                }
-                if (cmt == CommandType_.MessageFriend)
-                {
-                    buffer = new byte[4];
-                    stream.Read(buffer, 0, 4);
-                    int lengh = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lengh];
-                    stream.Read(data, 0, lengh);
-                    usernameTemp = Encoding.ASCII.GetString(data);
-
-                    //đọc nội dung tin nhắn
-                    string cmdMetaData = "";
-                    buffer = new byte[4];
-                    stream.Read(buffer, 0, 4);
-                    int lenght = BitConverter.ToInt32(buffer, 0);
-                    byte[] metaBuffer = new byte[lenght];
-                    stream.Read(metaBuffer, 0, lenght);
-                    cmdMetaData = Encoding.UTF8.GetString(metaBuffer);
-                    //đọc font
-                    stream.Read(buffer, 0, 4);
-                    lenght = BitConverter.ToInt32(buffer, 0);
-                    metaBuffer = new byte[lenght];
-                    stream.Read(metaBuffer, 0, lenght);
-                    //convert byte sang font
-                    MemoryStream s = new MemoryStream(metaBuffer);
-                    BinaryFormatter bf = new BinaryFormatter();
-                    Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
-                    temp = (Font)bf.Deserialize(s);
-                    Chat chatForm = null;
-                    _frmMain.Invoke(new Action(delegate()
-                    {
-                        if ((chatForm = IsShow(usernameTemp)) == null)
-                        {
-                            chatForm = new Chat(this, usernameTemp);
-                            chatForm.Text = usernameTemp;
-                           //Command cmd = new Command(CommandType_.LoadMessage, usernameTemp, 0);
-                           // this.SendCommand(cmd);
-                            chatForm.Show();
-                            listFormChat.Add(chatForm);
-                        }
-                    }));
-                    chatForm.Receive(usernameTemp,cmdMetaData, temp);
-                }
-                if (cmt == CommandType_.LoginSuccess)
-                {
-                    stream.Read(buffer, 0, 4);
-                    int stt = BitConverter.ToInt32(buffer, 0);
-
-                    byte[] dataPicture;
-                    //đọc tên username
-                    stream.Read(buffer, 0, 4);
-                    int lenght = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lenght];
-                    stream.Read(data, 0, lenght);
-                    string username = Encoding.ASCII.GetString(data);
-                    this._userName = username;
+                            lenght = BitConverter.ToInt32(buffer, 0);
+                            byte[] dataPicture = new byte[lenght];
+                            ReadBigData(stream, lenght, ref dataPicture);
+                            MemoryStream memTemp = new MemoryStream(dataPicture);
+                            _avatarFriend = Image.FromStream(memTemp);
 
 
-                    //nhận email
-                    stream.Read(buffer, 0, 4);
-                    lenght = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lenght];
-                    stream.Read(data, 0, lenght);
-                    string email = Encoding.ASCII.GetString(data);
+                            stream.Read(buffer, 0, 4);
+                            lenght = BitConverter.ToInt32(buffer, 0);
+                            data = new byte[lenght];
+                            ReadBigData(stream, lenght, ref data);
+                            string _status = Encoding.UTF8.GetString(data);
 
-
-                    //đọc avatar
-                    Image image;
-                    stream.Read(buffer, 0, 4);
-                    lenght = BitConverter.ToInt32(buffer, 0);
-                    dataPicture = new byte[lenght];
-                    ReadBigData(stream, lenght, ref dataPicture);
-                    MemoryStream mem = new MemoryStream(dataPicture);
-                    image = Image.FromStream(mem);
-
-                    //đọc status
-                    stream.Read(buffer, 0, 4);
-                    lenght = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lenght];
-                    ReadBigData(stream, lenght, ref data);
-                    string status = Encoding.UTF8.GetString(data);
-
-                    //Đăng nhập thành công
-                    //Khởi tạo form chính
-                    //dangnhapForm.KillThreard();
-                    if (_frmMain == null)
-                    {
-                        dangnhapForm.Invoke(new Action(delegate()
-                        {
-
+                            //đọc trạng thái của friend này
+                            stream.Read(buffer, 0, 4);
+                            CommandType_ status = (CommandType_)BitConverter.ToInt32(buffer, 0);
+                            FriendList friendTemp;
+                            if (status == CommandType_.Online)
                             {
-                                _frmMain = new Form1(dangnhapForm, 1, this._userName, email, image, status, this);
-                                _frmMain.Text = "Frozen";
-                                _frmMain.Show();
-                                dangnhapForm.Hide();
+                                friendTemp = new FriendList(usernameFriend, _avatarFriend, true, _status);
                             }
-                        }));
-
+                            else
+                            {
+                                friendTemp = new FriendList(usernameFriend, _avatarFriend, false, _status);
+                            }
+                            _frmMain.listFriend.Add(friendTemp);
+                        }
+                        _frmMain.update_listFriend(true);
                     }
-                    Command cmd = new Command(CommandType_.ListFriend, this._userName);
-                    this.SendCommand(cmd);
-                    //load list friend
-                    //đọc thông tin list Friend
-                    //Thread.Sleep(2000);
-                    //--Đọc số lượng friend của user 
-
-
-
-                }//End LoginSuccess
-                if (cmt == CommandType_.ListFriend)
-                {
-                    stream.Read(buffer, 0, 4);
-                    int _CountTemp;
-                    _CountTemp = BitConverter.ToInt32(buffer, 0);
-                    _frmMain.listFriend = new List<FriendList>();
-                    for (int i = 0; i < _CountTemp; i++)
+                    if (cmt == CommandType_.Found)
                     {
-                        //đọc useer friend
-                        //int a = _abc;
+                        stream.Read(buffer, 0, 4);
+                        int lenght = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lenght];
+                        stream.Read(data, 0, lenght);
+                        string username = Encoding.ASCII.GetString(data);
+
+
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        data = new byte[lenght];
+                        stream.Read(data, 0, lenght);
+                        string email = Encoding.ASCII.GetString(data);
+
+                        byte[] dataPicture;
+                        //đọc avatar
+                        Image image;
+                        stream.Read(buffer, 0, 4);
+                        lenght = BitConverter.ToInt32(buffer, 0);
+                        dataPicture = new byte[lenght];
+                        ReadBigData(stream, lenght, ref dataPicture);
+                        MemoryStream mem = new MemoryStream(dataPicture);
+                        image = Image.FromStream(mem);
+                        ff_Form.Found(username, email, image);
+                    }
+                    if (cmt == CommandType_.NotFound)
+                    {
+                        ff_Form.Notfound();
+                    }
+                    if (cmt == CommandType_.NameExists)
+                    {
+                        MessageCustom.Show("Tài khoản bạn đã được đang nhập bởi người khác!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                        dangnhapForm.ChangePanel();
+                    }
+                    if (cmt == CommandType_.Failure)
+                    {
+                        MessageCustom.Show("Tài khoản hoặc mật khẩu không đúng!", "Error", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                        dangnhapForm.ChangePanel();
+                    }
+                    if (cmt == CommandType_.RegisterFailure)
+                    {
+                        MessageCustom.Show("Tài khoản hoặc tên người dùng đã tồn tại!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                    }
+                    if (cmt == CommandType_.RegisterSuccess)
+                    {
+                        MessageCustom.Show("Đăng kí thành công!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                    }
+                    if (cmt == CommandType_.Online)
+                    {
                         stream.Read(buffer, 0, 4);
                         int lenght = BitConverter.ToInt32(buffer, 0);
                         data = new byte[lenght];
                         stream.Read(data, 0, lenght);
                         string usernameFriend = Encoding.ASCII.GetString(data);
-
-
-
-                        //đọc avatar friend
-                        Image _avatarFriend;
-                        stream.Read(buffer, 0, 4);
-                        lenght = BitConverter.ToInt32(buffer, 0);
-                        byte[] dataPicture = new byte[lenght];
-                        ReadBigData(stream, lenght, ref dataPicture);
-                        MemoryStream memTemp = new MemoryStream(dataPicture);
-                        _avatarFriend = Image.FromStream(memTemp);
-
-
-                        stream.Read(buffer, 0, 4);
-                        lenght = BitConverter.ToInt32(buffer, 0);
-                        data = new byte[lenght];
-                        ReadBigData(stream, lenght, ref data);
-                        string _status = Encoding.UTF8.GetString(data);
-
-                        //đọc trạng thái của friend này
-                        stream.Read(buffer, 0, 4);
-                        CommandType_ status = (CommandType_)BitConverter.ToInt32(buffer, 0);
-                        FriendList friendTemp;
-                        if (status == CommandType_.Online)
+                        foreach (var s in _frmMain.listFriend)
                         {
-                            friendTemp = new FriendList(usernameFriend, _avatarFriend, true, _status);
+                            if (s._userFriend == usernameFriend)
+                            {
+                                s.Status = true;
+                            }
                         }
-                        else
-                        {
-                            friendTemp = new FriendList(usernameFriend, _avatarFriend, false, _status);
-                        }
-                        _frmMain.listFriend.Add(friendTemp);
+                        _frmMain.update_listFriend(true);
                     }
-                    _frmMain.update_listFriend(true);
-                }
-                if (cmt == CommandType_.Found)
-                {
-                    stream.Read(buffer, 0, 4);
-                    int lenght = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lenght];
-                    stream.Read(data, 0, lenght);
-                    string username = Encoding.ASCII.GetString(data);
-
-
-                    stream.Read(buffer, 0, 4);
-                    lenght = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lenght];
-                    stream.Read(data, 0, lenght);
-                    string email = Encoding.ASCII.GetString(data);
-
-                    byte[] dataPicture;
-                    //đọc avatar
-                    Image image;
-                    stream.Read(buffer, 0, 4);
-                    lenght = BitConverter.ToInt32(buffer, 0);
-                    dataPicture = new byte[lenght];
-                    ReadBigData(stream, lenght, ref dataPicture);
-                    MemoryStream mem = new MemoryStream(dataPicture);
-                    image = Image.FromStream(mem);
-                    ff_Form.Found(username, email, image);
-                }
-                if (cmt == CommandType_.NotFound)
-                {
-                    ff_Form.Notfound();
-                }
-                if (cmt == CommandType_.NameExists)
-                {
-                    MessageCustom.Show("Tài khoản bạn đã được đang nhập bởi người khác!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-                    dangnhapForm.ChangePanel();
-                }
-                if (cmt == CommandType_.Failure)
-                {
-                    MessageCustom.Show("Tài khoản hoặc mật khẩu không đúng!", "Error", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-                    dangnhapForm.ChangePanel();
-                }
-                if (cmt == CommandType_.RegisterFailure)
-                {
-                    MessageCustom.Show("Tài khoản hoặc tên người dùng đã tồn tại!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-                }
-                if (cmt == CommandType_.RegisterSuccess)
-                {
-                    MessageCustom.Show("Đăng kí thành công!", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-                }
-                if (cmt == CommandType_.Online)
-                {
-                    stream.Read(buffer, 0, 4);
-                    int lenght = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lenght];
-                    stream.Read(data, 0, lenght);
-                    string usernameFriend = Encoding.ASCII.GetString(data);
-                    foreach (var s in _frmMain.listFriend)
+                    if (cmt == CommandType_.Offline)
                     {
-                        if (s._userFriend == usernameFriend)
-                        {
-                            s.Status = true;
-                        }
-                    }
-                    _frmMain.update_listFriend(true);
-                }
-                if (cmt == CommandType_.Offline)
-                {
-                    stream.Read(buffer, 0, 4);
-                    int lenght = BitConverter.ToInt32(buffer, 0);
-                    data = new byte[lenght];
-                    stream.Read(data, 0, lenght);
-                    string usernameFriend = Encoding.ASCII.GetString(data);
-                    foreach (var s in _frmMain.listFriend)
-                    {
-                        if (s._userFriend == usernameFriend)
-                        {
-                            s.Status = false;
-                        }
-                    }
-                    _frmMain.update_listFriend(true);
-                }
-                //load toàn bộ thông báo
-                if (cmt == CommandType_.LoadNotice)
-                {
-                    stream.Read(buffer, 0, 4);
-                    int count = BitConverter.ToInt32(buffer, 0);
-                    for (int i = 0; i < count; i++)
-                    {
-
-                        stream.Read(buffer, 0, 4);
-                        int _stt = BitConverter.ToInt32(buffer, 0);
-
                         stream.Read(buffer, 0, 4);
                         int lenght = BitConverter.ToInt32(buffer, 0);
                         data = new byte[lenght];
                         stream.Read(data, 0, lenght);
-                        string _userPrimary = Encoding.ASCII.GetString(data);
-
-                        stream.Read(buffer, 0, 4);
-                        lenght = BitConverter.ToInt32(buffer, 0);
-                        data = new byte[lenght];
-                        stream.Read(data, 0, lenght);
-                        string _userReference = Encoding.ASCII.GetString(data);
-
-                        stream.Read(buffer, 0, 4);
-                        lenght = BitConverter.ToInt32(buffer, 0);
-                        data = new byte[lenght];
-                        stream.Read(data, 0, lenght);
-                        string _type = Encoding.ASCII.GetString(data);
-
-                        stream.Read(buffer, 0, 4);
-                        lenght = BitConverter.ToInt32(buffer, 0);
-                        data = new byte[lenght];
-                        stream.Read(data, 0, lenght);
-                        string _content = Encoding.ASCII.GetString(data);
-
-                        stream.Read(buffer, 0, 4);
-                        lenght = BitConverter.ToInt32(buffer, 0);
-                        data = new byte[lenght];
-                        stream.Read(data, 0, lenght);
-                        string _time = Encoding.ASCII.GetString(data);
-                        Notice_List noticeTemp = new Notice_List(_stt, _userPrimary, _userReference, _type, _time);
-                        Notice_frm.listNotice.Add(noticeTemp);
+                        string usernameFriend = Encoding.ASCII.GetString(data);
+                        foreach (var s in _frmMain.listFriend)
+                        {
+                            if (s._userFriend == usernameFriend)
+                            {
+                                s.Status = false;
+                            }
+                        }
+                        _frmMain.update_listFriend(true);
                     }
-                    Notice_frm.update_Notice(false);
+                    //load toàn bộ thông báo
+                    if (cmt == CommandType_.LoadNotice)
+                    {
+                        stream.Read(buffer, 0, 4);
+                        int count = BitConverter.ToInt32(buffer, 0);
+                        for (int i = 0; i < count; i++)
+                        {
+
+                            stream.Read(buffer, 0, 4);
+                            int _stt = BitConverter.ToInt32(buffer, 0);
+
+                            stream.Read(buffer, 0, 4);
+                            int lenght = BitConverter.ToInt32(buffer, 0);
+                            data = new byte[lenght];
+                            stream.Read(data, 0, lenght);
+                            string _userPrimary = Encoding.ASCII.GetString(data);
+
+                            stream.Read(buffer, 0, 4);
+                            lenght = BitConverter.ToInt32(buffer, 0);
+                            data = new byte[lenght];
+                            stream.Read(data, 0, lenght);
+                            string _userReference = Encoding.ASCII.GetString(data);
+
+                            stream.Read(buffer, 0, 4);
+                            lenght = BitConverter.ToInt32(buffer, 0);
+                            data = new byte[lenght];
+                            stream.Read(data, 0, lenght);
+                            string _type = Encoding.ASCII.GetString(data);
+
+                            stream.Read(buffer, 0, 4);
+                            lenght = BitConverter.ToInt32(buffer, 0);
+                            data = new byte[lenght];
+                            stream.Read(data, 0, lenght);
+                            string _content = Encoding.ASCII.GetString(data);
+
+                            stream.Read(buffer, 0, 4);
+                            lenght = BitConverter.ToInt32(buffer, 0);
+                            data = new byte[lenght];
+                            stream.Read(data, 0, lenght);
+                            string _time = Encoding.ASCII.GetString(data);
+                            Notice_List noticeTemp = new Notice_List(_stt, _userPrimary, _userReference, _type, _time);
+                            Notice_frm.listNotice.Add(noticeTemp);
+                        }
+                        Notice_frm.update_Notice(false);
+                    }
+                    if (cmt == CommandType_.DeleteNoticeSuccess)
+                    {
+                        Notice_frm.update_Notice(true);
+                    }
+                    if (cmt == CommandType_.AddNoticeSuccess)
+                    {
+                        ff_Form.AddNoticeSuccess();
+                    }
+                    if (cmt == CommandType_.AddNoticeFailure)
+                    {
+                        ff_Form.AddNoticeFailure();
+                    }
+                    if (cmt == CommandType_.AddFriendFailure)
+                    {
+                        ff_Form.AddFriendFailure();
+                    }
                 }
-                if (cmt == CommandType_.DeleteNoticeSuccess)
+                catch
                 {
-                    Notice_frm.update_Notice(true);
+                    if (_check)
+                    {
+                        MessageCustom.Show("Server đang bảo trì !", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                        socket.Close();
+                        dangnhapForm.Client = null;
+                    }
                 }
-                if (cmt == CommandType_.AddNoticeSuccess)
-                {
-                    ff_Form.AddNoticeSuccess();
-                }
-                if (cmt == CommandType_.AddNoticeFailure)
-                {
-                    ff_Form.AddNoticeFailure();
-                }
-                if (cmt == CommandType_.AddFriendFailure)
-                {
-                    ff_Form.AddFriendFailure();
-                }
-                //}
-                //catch
-                //{
-                //    MessageCustom.Show("Server đang bảo trì !", "Thông báo", new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-                //    socket.Close();
-                //}
             }//end while
         }
 

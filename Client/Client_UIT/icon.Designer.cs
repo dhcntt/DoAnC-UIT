@@ -160,6 +160,7 @@
             this.Name = "icon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.icon_FormClosed);
             this.Load += new System.EventHandler(this.icon_Load);
             this.ResumeLayout(false);
 

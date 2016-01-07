@@ -13,7 +13,7 @@ namespace Client_UIT
     public partial class Message1 : UserControl
     {
         string _image_icon;
-        public Message1( string content,Font temp)
+        public Message1(string content, Font temp)
         {
             InitializeComponent();
             //lbl_content.Font = temp;
@@ -46,24 +46,57 @@ namespace Client_UIT
 
             ////////////////
             RichTextBox rtb = new RichTextBox();
+            Size size = TextRenderer.MeasureText(content, temp);
+
+            if (size.Width > 300)
+            {
+                int count = size.Width / 300;
+                int lenght = content.Length / (count + 1);
+                int tile = size.Width / content.Length;
+                int sizeText = 300 / tile;
+                for (int i = 0; i < count; i++)
+                {
+                    content = content.Insert((i + 1) * sizeText + i * 2, "\n");
+                }
+                this.Width = 300 + 50;
+                //rtb.Text = content;
+                Size size1 = TextRenderer.MeasureText(content, temp);
+                this.Height = size1.Height + 25 + (size.Height / 2 - size1.Height / (count + 1));
+            }
+            else
+            {
+                if (size.Width + 30 > this.Width)
+                {
+                    this.Width = size.Width + 50;
+                  
+                }
+                else
+                {
+                    this.Height += 10;
+                }
+                //rtb.Text = content;
+            }
+
             rtb.BorderStyle = BorderStyle.None;
             rtb.Multiline = true;
             int _width = this.Size.Width;
-            this.Size = new System.Drawing.Size(_width, (int)(content.Length  + 30));
-            rtb.Height = this.Size.Height;
-            rtb.Width = this.Size.Width;
+            this.Size = new System.Drawing.Size(this.Width,this.Height);
+            rtb.Height = this.Height;
+            rtb.Width = this.Width;
             rtb.Font = temp;
-            
+           
             string chuoi_tam;
             for (int i = 0; i < content.Length; i++)
             {
                 chuoi_tam = "";
-                if (content[i] == ':' && i+2<content.Length)
+                if (content[i] == ':' && i + 2 < content.Length)
                 {
                     chuoi_tam += content[i + 1];
                     chuoi_tam += content[i + 2];
                     if (image_name(chuoi_tam))
                     {
+                        rtb.Height += 50;
+                        this.Height += 10;
                         Bitmap myBitmap = new Bitmap(_image_icon);
                         //// Copy bitmap vào clipboard.
                         Clipboard.SetDataObject(myBitmap);
@@ -78,20 +111,22 @@ namespace Client_UIT
                         }
                         i += 2;
                     }
-                    else {
+                    else
+                    {
                         string a = "";
                         a += content[i];
                         rtb.AppendText(a);
                     }
                 }
-                else {
+                else
+                {
                     string a = "";
                     a += content[i];
                     rtb.AppendText(a);
                 }
             }
 
-           // rtb.Text = content;
+            // rtb.Text = content;
             this.Controls.Add(rtb);
             rtb.ReadOnly = true;
         }
