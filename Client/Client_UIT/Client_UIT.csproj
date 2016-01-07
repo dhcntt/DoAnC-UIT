@@ -305,7 +305,6 @@
     <None Include="Resources\2.png" />
     <None Include="Resources\3.png" />
     <None Include="Resources\4.png" />
-    <Content Include="check.png" />
     <Content Include="Resources\400x585.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

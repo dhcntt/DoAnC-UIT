@@ -1,46 +1,23 @@
-D:\DoAnC-\Server\Server_UIT\bin\Debug\Server_UIT.exe.config
-D:\DoAnC-\Server\Server_UIT\bin\Debug\Server_UIT.exe
-D:\DoAnC-\Server\Server_UIT\bin\Debug\Server_UIT.pdb
-D:\DoAnC-\Server\Server_UIT\bin\Debug\BUS.dll
-D:\DoAnC-\Server\Server_UIT\bin\Debug\Command.dll
-D:\DoAnC-\Server\Server_UIT\bin\Debug\DTO.dll
-D:\DoAnC-\Server\Server_UIT\bin\Debug\Enum.dll
-D:\DoAnC-\Server\Server_UIT\bin\Debug\DAO.dll
-D:\DoAnC-\Server\Server_UIT\bin\Debug\Command.pdb
-D:\DoAnC-\Server\Server_UIT\bin\Debug\Enum.pdb
-D:\DoAnC-\Server\Server_UIT\bin\Debug\BUS.pdb
-D:\DoAnC-\Server\Server_UIT\bin\Debug\DTO.pdb
-D:\DoAnC-\Server\Server_UIT\bin\Debug\DAO.pdb
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.Dangnhap.resources
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.Form1.resources
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.Chat.resources
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.Messeage.resources
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.Properties.Resources.resources
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.ShowClient.resources
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.csproj.GenerateResource.Cache
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.exe
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.pdb
-D:\DoAnC-\Server\Server_UIT\obj\Debug\Server_UIT.csprojResolveAssemblyReference.cache
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\Server_UIT.exe.config
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.exe
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\Server_UIT.exe
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\Server_UIT.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\BUS.dll
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\Command.dll
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\DTO.dll
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\Enum.dll
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\DAO.dll
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\Command.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\Enum.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\BUS.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\DTO.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\bin\Debug\DAO.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.csprojResolveAssemblyReference.cache
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.Dangnhap.resources
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.Form1.resources
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.Chat.resources
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.Messeage.resources
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.Properties.Resources.resources
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.ShowClient.resources
-C:\Users\Tran Minh Tri\Desktop\Server\Server_UIT\obj\Debug\Server_UIT.csproj.GenerateResource.Cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\Server_UIT.exe.config
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\Server_UIT.exe
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\Server_UIT.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\BUS.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\Command.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\DTO.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\Enum.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\DAO.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\Command.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\Enum.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\BUS.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\DTO.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\bin\Debug\DAO.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.Dangnhap.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.Form1.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.Chat.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.Messeage.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.Properties.Resources.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.ShowClient.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.csproj.GenerateResource.Cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.exe
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\Server_UIT\obj\Debug\Server_UIT.pdb

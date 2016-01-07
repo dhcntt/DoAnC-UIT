@@ -1,0 +1,7 @@
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Release\Command.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Release\Command.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Release\Enum.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Release\Enum.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\obj\Release\Command.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\obj\Release\Command.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\obj\Release\Command.pdb

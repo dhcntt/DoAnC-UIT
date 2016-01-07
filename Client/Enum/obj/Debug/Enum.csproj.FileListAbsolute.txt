@@ -1,5 +1,5 @@
-D:\DoAnC-\Client\Enum\bin\Debug\Enum.dll
-D:\DoAnC-\Client\Enum\bin\Debug\Enum.pdb
-D:\DoAnC-\Client\Enum\obj\Debug\Enum.dll
-D:\DoAnC-\Client\Enum\obj\Debug\Enum.pdb
-D:\DoAnC-\Client\Enum\obj\Debug\Enum.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Enum\bin\Debug\Enum.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Enum\bin\Debug\Enum.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Enum\obj\Debug\Enum.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Enum\obj\Debug\Enum.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Enum\obj\Debug\Enum.pdb

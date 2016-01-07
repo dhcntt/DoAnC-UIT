@@ -1,25 +1,9 @@
-C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\BUS.dll
-C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\BUS.pdb
-C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\DAO.dll
-C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\bin\Debug\DAO.pdb
-C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
-C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.dll
-C:\Users\nam\Documents\Visual Studio 2013\Projects\Server_UIT\BUS\obj\Debug\BUS.pdb
-D:\DoAnC-\Server\BUS\bin\Debug\BUS.dll
-D:\DoAnC-\Server\BUS\bin\Debug\BUS.pdb
-D:\DoAnC-\Server\BUS\bin\Debug\DAO.dll
-D:\DoAnC-\Server\BUS\bin\Debug\DTO.dll
-D:\DoAnC-\Server\BUS\bin\Debug\DAO.pdb
-D:\DoAnC-\Server\BUS\bin\Debug\DTO.pdb
-D:\DoAnC-\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
-D:\DoAnC-\Server\BUS\obj\Debug\BUS.dll
-D:\DoAnC-\Server\BUS\obj\Debug\BUS.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\bin\Debug\BUS.dll
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\bin\Debug\BUS.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\bin\Debug\DAO.dll
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\bin\Debug\DTO.dll
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\bin\Debug\DAO.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\bin\Debug\DTO.pdb
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\obj\Debug\BUS.dll
-C:\Users\Tran Minh Tri\Desktop\Server\BUS\obj\Debug\BUS.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\bin\Debug\BUS.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\bin\Debug\BUS.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\bin\Debug\DAO.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\bin\Debug\DTO.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\bin\Debug\DAO.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\bin\Debug\DTO.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\obj\Debug\BUS.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Server\BUS\obj\Debug\BUS.pdb

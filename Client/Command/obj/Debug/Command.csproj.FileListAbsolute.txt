@@ -1,7 +1,7 @@
-D:\DoAnC-\Client\Command\bin\Debug\Command.dll
-D:\DoAnC-\Client\Command\bin\Debug\Command.pdb
-D:\DoAnC-\Client\Command\bin\Debug\Enum.dll
-D:\DoAnC-\Client\Command\bin\Debug\Enum.pdb
-D:\DoAnC-\Client\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
-D:\DoAnC-\Client\Command\obj\Debug\Command.dll
-D:\DoAnC-\Client\Command\obj\Debug\Command.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Debug\Command.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Debug\Command.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Debug\Enum.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\bin\Debug\Enum.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\obj\Debug\Command.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\obj\Debug\Command.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Command\obj\Debug\Command.pdb

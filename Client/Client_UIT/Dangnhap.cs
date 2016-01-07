@@ -51,6 +51,8 @@ namespace Client_UIT
             if (txt_password.NullText == false || txt_dangnhap.NullText == false)
             {
                 MessageCustom.Show("Vui lòng nhập tài khoản và mật khẩu \n chính xác  để đăng nhập! ","Thông báo đăng nhập",new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+                panel1.Visible = true;
+                panel2.Visible = false;
                 
             }
             else

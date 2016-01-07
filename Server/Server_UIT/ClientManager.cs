@@ -291,7 +291,15 @@ namespace Server_UIT
                         //đọc nội dung tin nhắn
                         string cmdMetaData = "";
                         buffer = new byte[4];
-                        stream.Read(buffer, 0, 4);
+                        if( stream.Read(buffer, 0, 4) == 0)
+                        {
+                            // nó read = 0 co' nghia~ la`ben kia da ngat ket noi
+                            int a = 5;
+                            //cái này là server
+                            //ko thấy lỗi đâu
+                            //bên client đọc
+                        }
+                        
                         int lenght = BitConverter.ToInt32(buffer, 0);
                         byte[] metaBuffer = new byte[lenght];
                         stream.Read(metaBuffer, 0, lenght);
@@ -555,30 +563,30 @@ namespace Server_UIT
         }
         void SendLargeFile(byte[] data, NetworkStream stream)
         {
-           
-            byte[] bytes=new byte[1024];
-            int count = data.Length/1024;
+
+            byte[] bytes = new byte[1024];
+            int count = data.Length / 1024;
             int j = 0;
-            int countTemp=count;
-            while(count!=0)
+            int countTemp = count;
+            while (count != 0)
             {
                 for (int i = 0; i < 1024; i++)
                 {
-                    bytes[i]=data[j * 1024 + i];
+                    bytes[i] = data[j * 1024 + i];
                 }
                 stream.Write(bytes, 0, 1024);
                 stream.Flush();
                 j++;
                 count--;
             }
-            int byread = data.Length-countTemp*1024;
+            int byread = data.Length - countTemp * 1024;
             for (int i = 0; i < byread; i++)
             {
                 bytes[i] = data[j * 1024 + i];
             }
             stream.Write(bytes, 0, byread);
             stream.Flush();
-        
+
         }
         System.Threading.Semaphore semaphor = new System.Threading.Semaphore(1, 1);
         //hàm chạy trong tiểu trình
@@ -591,424 +599,432 @@ namespace Server_UIT
             byte[] dataPicture;
             int lenght;
             semaphor.WaitOne();
-            if (cmd.CommandType == CommandType_.Message)
+            try
             {
-                if (cmd.commandBody == null || cmd.commandBody == "")
-                    cmd.commandBody = "\n";
-                metaBuffer = Encoding.ASCII.GetBytes(cmd.commandBody);
-
-                //gởi thông điệp là tin nhắn cho bên nhận biết
-                buffer = BitConverter.GetBytes((int)CommandType_.Message);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                //gởi nội dung tin nhắn
-                buffer = BitConverter.GetBytes(metaBuffer.Length);
-                stream.Write(buffer, 0, 4);
-                this.stream.Flush();
-                this.stream.Write(metaBuffer, 0, cmd.commandBody.Length);
-                this.stream.Flush();
-
-                //convert font để gởi
-                MemoryStream s = new MemoryStream();
-                BinaryFormatter bf = new BinaryFormatter();
-                bf.Serialize(s, cmd.Fontsyle);
-
-                //send font
-                metaBuffer = new byte[1024];
-                metaBuffer = s.ToArray();
-                buffer = BitConverter.GetBytes(metaBuffer.Length);
-                stream.Write(buffer, 0, 4);
-                this.stream.Flush();
-                stream.Write(metaBuffer, 0, metaBuffer.Length);
-                this.stream.Flush();
-            }
-            if(cmd.CommandType==CommandType_.LoadMessage)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.LoadMessage);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                int countTemp = cmd.Dt.Rows.Count;
-               
-                buffer = BitConverter.GetBytes((int)countTemp);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                if (countTemp > 0)
+                if (cmd.CommandType == CommandType_.Message)
                 {
-                    buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][2].ToString().Length);
+                    if (cmd.commandBody == null || cmd.commandBody == "")
+                        cmd.commandBody = "\n";
+                    metaBuffer = Encoding.ASCII.GetBytes(cmd.commandBody);
+
+                    //gởi thông điệp là tin nhắn cho bên nhận biết
+                    buffer = BitConverter.GetBytes((int)CommandType_.Message);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+
+                    //gởi nội dung tin nhắn
+                    buffer = BitConverter.GetBytes(metaBuffer.Length);
                     stream.Write(buffer, 0, 4);
                     this.stream.Flush();
-                    metaBuffer = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][2].ToString());
-                    this.stream.Write(metaBuffer, 0, cmd.Dt.Rows[0][2].ToString().Length);
+                    this.stream.Write(metaBuffer, 0, cmd.commandBody.Length);
                     this.stream.Flush();
 
-                    for (int i = 0; i < countTemp; i++)
+                    //convert font để gởi
+                    MemoryStream s = new MemoryStream();
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(s, cmd.Fontsyle);
+
+                    //send font
+                    metaBuffer = new byte[1024];
+                    metaBuffer = s.ToArray();
+                    buffer = BitConverter.GetBytes(metaBuffer.Length);
+                    stream.Write(buffer, 0, 4);
+                    this.stream.Flush();
+                    stream.Write(metaBuffer, 0, metaBuffer.Length);
+                    this.stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.LoadMessage)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.LoadMessage);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    int countTemp = cmd.Dt.Rows.Count;
+
+                    buffer = BitConverter.GetBytes((int)countTemp);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    if (countTemp > 0)
                     {
-                        metaBuffer = (byte[])cmd.Dt.Rows[i][3];
-                        buffer = BitConverter.GetBytes(metaBuffer.Length);
+                        buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][2].ToString().Length);
                         stream.Write(buffer, 0, 4);
                         this.stream.Flush();
-                        this.stream.Write(metaBuffer, 0, metaBuffer.Length);
+                        metaBuffer = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][2].ToString());
+                        this.stream.Write(metaBuffer, 0, cmd.Dt.Rows[0][2].ToString().Length);
                         this.stream.Flush();
 
+                        for (int i = 0; i < countTemp; i++)
+                        {
+                            metaBuffer = (byte[])cmd.Dt.Rows[i][3];
+                            buffer = BitConverter.GetBytes(metaBuffer.Length);
+                            stream.Write(buffer, 0, 4);
+                            this.stream.Flush();
+                            this.stream.Write(metaBuffer, 0, metaBuffer.Length);
+                            this.stream.Flush();
 
-                        //send font
-                        metaBuffer = (byte[])cmd.Dt.Rows[i][4];
-                        buffer = BitConverter.GetBytes(metaBuffer.Length);
-                        stream.Write(buffer, 0, 4);
-                        this.stream.Flush();
-                        stream.Write(metaBuffer, 0, metaBuffer.Length);
-                        this.stream.Flush();
-                        //MemoryStream s = new MemoryStream(metaBuffer);
-                        //BinaryFormatter bf = new BinaryFormatter();
-                        //Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
-                        //temp = (Font)bf.Deserialize(s);
 
-                        buffer = BitConverter.GetBytes((int)cmd.Dt.Rows[i][5]);
-                        stream.Write(buffer, 0, 4);
-                        this.stream.Flush();
+                            //send font
+                            metaBuffer = (byte[])cmd.Dt.Rows[i][4];
+                            buffer = BitConverter.GetBytes(metaBuffer.Length);
+                            stream.Write(buffer, 0, 4);
+                            this.stream.Flush();
+                            stream.Write(metaBuffer, 0, metaBuffer.Length);
+                            this.stream.Flush();
+                            //MemoryStream s = new MemoryStream(metaBuffer);
+                            //BinaryFormatter bf = new BinaryFormatter();
+                            //Font temp = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular);
+                            //temp = (Font)bf.Deserialize(s);
 
+                            buffer = BitConverter.GetBytes((int)cmd.Dt.Rows[i][5]);
+                            stream.Write(buffer, 0, 4);
+                            this.stream.Flush();
+
+                        }
                     }
                 }
-            }
-            if (cmd.CommandType == CommandType_.MessageFriend)
-            {
-                if (cmd.commandBody == null || cmd.commandBody == "")
-                    cmd.commandBody = "\n";
-                metaBuffer = Encoding.ASCII.GetBytes(cmd.commandBody);
-
-                //gởi thông điệp là tin nhắn cho bên nhận biết
-                buffer = BitConverter.GetBytes((int)CommandType_.MessageFriend);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                buffer = BitConverter.GetBytes((int)cmd.Username.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                data = Encoding.ASCII.GetBytes(cmd.Username);
-                stream.Write(data, 0, data.Length);
-                stream.Flush();
-
-                //gởi nội dung tin nhắn
-                buffer = BitConverter.GetBytes(metaBuffer.Length);
-                stream.Write(buffer, 0, 4);
-                this.stream.Flush();
-                this.stream.Write(metaBuffer, 0, cmd.commandBody.Length);
-                this.stream.Flush();
-
-                //convert font để gởi
-                MemoryStream s = new MemoryStream();
-                BinaryFormatter bf = new BinaryFormatter();
-                bf.Serialize(s, cmd.Fontsyle);
-
-                //send font
-                metaBuffer = new byte[1024];
-                metaBuffer = s.ToArray();
-                buffer = BitConverter.GetBytes(metaBuffer.Length);
-                stream.Write(buffer, 0, 4);
-                this.stream.Flush();
-                stream.Write(metaBuffer, 0, metaBuffer.Length);
-                this.stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.LoginSuccess)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.LoginSuccess);//gởi tin nhắn là đã chấp nhận kết nối
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                //gởi stt
-                buffer = BitConverter.GetBytes(int.Parse(cmd.Dt.Rows[0][0].ToString()));
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                //gởi tên user qua cho client
-                data = new byte[cmd.Dt.Rows[0][1].ToString().Length];
-                buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][1].ToString().Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][1].ToString());
-                stream.Write(data, 0, cmd.Dt.Rows[0][1].ToString().Length);
-                stream.Flush();
-
-
-                //gởi email
-                data = new byte[cmd.Dt.Rows[0][4].ToString().Length];
-                buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][4].ToString().Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][4].ToString());
-                stream.Write(data, 0, cmd.Dt.Rows[0][4].ToString().Length);
-                stream.Flush();
-
-                //gởi avatar cho user
-
-                dataPicture = (byte[])cmd.Dt.Rows[0][5];
-                buffer = BitConverter.GetBytes(dataPicture.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                SendLargeFile(dataPicture, stream);
-                stream.Flush();
-
-                //gởi status
-                if (cmd.Dt.Rows[0][6].ToString() == "")
+                if (cmd.CommandType == CommandType_.MessageFriend)
                 {
-                    data = Encoding.UTF8.GetBytes("\n");
-                }
-                else
-                    data = (byte[])cmd.Dt.Rows[0][6];
-                buffer = BitConverter.GetBytes(data.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                stream.Write(data, 0, data.Length);
-                stream.Flush();
+                    if (cmd.commandBody == null || cmd.commandBody == "")
+                        cmd.commandBody = "\n";
+                    metaBuffer = Encoding.ASCII.GetBytes(cmd.commandBody);
 
-                
-            }
-            
-            if(cmd.CommandType==CommandType_.ListFriend)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.ListFriend);//gởi tin nhắn là đã chấp nhận kết nối
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                int _CountTemp;//lưu số lượng friend của user
-                _CountTemp = cmd.Dt.Rows.Count;
-                buffer = BitConverter.GetBytes(_CountTemp);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                for (int i = 0; i < _CountTemp; i++)
-                {   
-                    //gởi tên userFriend
-                    buffer = BitConverter.GetBytes(cmd.Dt.Rows[i][0].ToString().Length);
+                    //gởi thông điệp là tin nhắn cho bên nhận biết
+                    buffer = BitConverter.GetBytes((int)CommandType_.MessageFriend);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
-                    data = new byte[cmd.Dt.Rows[i][0].ToString().Length];
-                    data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[i][0].ToString());
-                    stream.Write(data, 0, cmd.Dt.Rows[i][0].ToString().Length);
+
+                    buffer = BitConverter.GetBytes((int)cmd.Username.Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    data = Encoding.ASCII.GetBytes(cmd.Username);
+                    stream.Write(data, 0, data.Length);
                     stream.Flush();
 
+                    //gởi nội dung tin nhắn
+                    buffer = BitConverter.GetBytes(metaBuffer.Length);
+                    stream.Write(buffer, 0, 4);
+                    this.stream.Flush();
+                    this.stream.Write(metaBuffer, 0, cmd.commandBody.Length);
+                    this.stream.Flush();
+
+                    //convert font để gởi
+                    MemoryStream s = new MemoryStream();
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(s, cmd.Fontsyle);
+
+                    //send font
+                    metaBuffer = new byte[1024];
+                    metaBuffer = s.ToArray();
+                    buffer = BitConverter.GetBytes(metaBuffer.Length);
+                    stream.Write(buffer, 0, 4);
+                    this.stream.Flush();
+                    stream.Write(metaBuffer, 0, metaBuffer.Length);
+                    this.stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.LoginSuccess)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.LoginSuccess);//gởi tin nhắn là đã chấp nhận kết nối
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    //gởi stt
+                    buffer = BitConverter.GetBytes(int.Parse(cmd.Dt.Rows[0][0].ToString()));
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+
+                    //gởi tên user qua cho client
+                    data = new byte[cmd.Dt.Rows[0][1].ToString().Length];
+                    buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][1].ToString().Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][1].ToString());
+                    stream.Write(data, 0, cmd.Dt.Rows[0][1].ToString().Length);
+                    stream.Flush();
+
+
+                    //gởi email
+                    data = new byte[cmd.Dt.Rows[0][4].ToString().Length];
+                    buffer = BitConverter.GetBytes(cmd.Dt.Rows[0][4].ToString().Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[0][4].ToString());
+                    stream.Write(data, 0, cmd.Dt.Rows[0][4].ToString().Length);
+                    stream.Flush();
 
                     //gởi avatar cho user
 
-                    dataPicture = (byte[])cmd.Dt.Rows[i][1];
+                    dataPicture = (byte[])cmd.Dt.Rows[0][5];
                     buffer = BitConverter.GetBytes(dataPicture.Length);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
                     SendLargeFile(dataPicture, stream);
-                    stream.Flush();
+                    //stream.Flush();
 
-                    if (cmd.Dt.Rows[i][2].ToString() == "")
+                    //gởi status
+                    if (cmd.Dt.Rows[0][6].ToString() == "")
                     {
                         data = Encoding.UTF8.GetBytes("\n");
                     }
                     else
-                        data = (byte[])cmd.Dt.Rows[i][2];
+                        data = (byte[])cmd.Dt.Rows[0][6];
                     buffer = BitConverter.GetBytes(data.Length);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
-                    SendLargeFile(data, stream);
+                    stream.Write(data, 0, data.Length);
                     stream.Flush();
-                    ClientManager cmTemp;
-                    //gởi trạng thái của friend
-                    if ((cmTemp = IsOnline(cmd.Dt.Rows[i][0].ToString())) != null)
-                    {
-                        buffer = BitConverter.GetBytes((int)CommandType_.Online);
-                        stream.Write(buffer, 0, 4);
-                        stream.Flush();
-                        Command _cmd = new Command(CommandType_.Online, this.userName);
-                        cmTemp.SendCommand(_cmd);
 
-                    }
-                    else
-                    {
-                        buffer = BitConverter.GetBytes((int)CommandType_.Offline);
-                        stream.Write(buffer, 0, 4);
-                        stream.Flush();
-                    }
+
                 }
-            }
-            if (cmd.CommandType == CommandType_.NameExists)
-            {
-                //client này đã kết nối ,gởi tin nhắn đăng nhập đã tồn tại
-                buffer = BitConverter.GetBytes((int)CommandType_.NameExists);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.Failure)
-            {
-                //nếu tài khoản hoặc mật khẩu không đúng
-                buffer = BitConverter.GetBytes((int)CommandType_.Failure);//gởi tin nhắn là kết nối ko thành công
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.Register)
-            {
 
-            }
-            if (cmd.CommandType == CommandType_.RegisterSuccess)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.RegisterSuccess);//gởi tin nhắn là đăng kí thành công
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.RegisterFailure)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.RegisterFailure);//gởi tin nhắn là đăng kí thất bại
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.Online)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.Online);//gởi tin nhắn là đăng kí thất bại
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                buffer = BitConverter.GetBytes(cmd.Username.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                data = new byte[cmd.Username.Length];
-                data = Encoding.ASCII.GetBytes(cmd.Username);
-                stream.Write(data, 0, cmd.Username.Length);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.Offline)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.Offline);//gởi tin nhắn là đăng kí thất bại
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                buffer = BitConverter.GetBytes(cmd.Username.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                data = new byte[cmd.Username.Length];
-                data = Encoding.ASCII.GetBytes(cmd.Username);
-                stream.Write(data, 0, cmd.Username.Length);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.Found)
-            {
-                //gởi thông điệp là tin nhắn cho bên nhận biết
-                buffer = BitConverter.GetBytes((int)CommandType_.Found);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                //gởi tên username
-                data = new byte[cmd.Username.Length];
-                buffer = BitConverter.GetBytes(cmd.Username.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                data = Encoding.ASCII.GetBytes(cmd.Username);
-                stream.Write(data, 0, cmd.Username.Length);
-                stream.Flush();
-
-                //gởi email
-                data = new byte[cmd.Email.Length];
-                buffer = BitConverter.GetBytes(cmd.Email.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                data = Encoding.ASCII.GetBytes(cmd.Email);
-                stream.Write(data, 0, cmd.Email.Length);
-                stream.Flush();
-
-                //gởi avatar 
-
-                dataPicture = (byte[])cmd.Image_;
-                buffer = BitConverter.GetBytes(dataPicture.Length);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                SendLargeFile(dataPicture, stream);
-                //stream.Write(dataPicture, 0, dataPicture.Length);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.NotFound)
-            {
-                //gởi thông điệp là tin nhắn cho bên nhận biết
-                buffer = BitConverter.GetBytes((int)CommandType_.NotFound);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.LoadNotice)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.LoadNotice);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-                DataTable dt = cmd.Dt;
-                buffer = BitConverter.GetBytes(dt.Rows.Count);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-
-                for(int i=0;i<dt.Rows.Count;i++)
+                if (cmd.CommandType == CommandType_.ListFriend)
                 {
-                    //stt
-                    buffer = BitConverter.GetBytes((int)dt.Rows[i][0]);
+                    buffer = BitConverter.GetBytes((int)CommandType_.ListFriend);//gởi tin nhắn là đã chấp nhận kết nối
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
 
-                    //userPrimary
-                    data = new byte[dt.Rows[i][1].ToString().Length];
-                    buffer = BitConverter.GetBytes(dt.Rows[i][1].ToString().Length);
+                    int _CountTemp;//lưu số lượng friend của user
+                    _CountTemp = cmd.Dt.Rows.Count;
+                    buffer = BitConverter.GetBytes(_CountTemp);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
-                    data = Encoding.ASCII.GetBytes(dt.Rows[i][1].ToString());
-                    stream.Write(data, 0, dt.Rows[i][1].ToString().Length);
-                    stream.Flush();
+                    for (int i = 0; i < _CountTemp; i++)
+                    {
+                        
+                        //gởi tên userFriend
+                        buffer = BitConverter.GetBytes(cmd.Dt.Rows[i][0].ToString().Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = new byte[cmd.Dt.Rows[i][0].ToString().Length];
+                        data = Encoding.ASCII.GetBytes(cmd.Dt.Rows[i][0].ToString());
+                        stream.Write(data, 0, cmd.Dt.Rows[i][0].ToString().Length);
+                        stream.Flush();
 
-                    data = new byte[dt.Rows[i][2].ToString().Length];
-                    buffer = BitConverter.GetBytes(dt.Rows[i][2].ToString().Length);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    data = Encoding.ASCII.GetBytes(dt.Rows[i][2].ToString());
-                    stream.Write(data, 0, dt.Rows[i][2].ToString().Length);
-                    stream.Flush();
 
-                    data = new byte[dt.Rows[i][3].ToString().Length];
-                    buffer = BitConverter.GetBytes(dt.Rows[i][3].ToString().Length);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    data = Encoding.ASCII.GetBytes(dt.Rows[i][3].ToString());
-                    stream.Write(data, 0, dt.Rows[i][3].ToString().Length);
-                    stream.Flush();
+                        //gởi avatar cho user
 
-                    data = new byte[dt.Rows[i][4].ToString().Length];
-                    buffer = BitConverter.GetBytes(dt.Rows[i][4].ToString().Length);
-                    stream.Write(buffer, 0, 4);
-                    stream.Flush();
-                    data = Encoding.ASCII.GetBytes(dt.Rows[i][4].ToString());
-                    stream.Write(data, 0, dt.Rows[i][4].ToString().Length);
-                    stream.Flush();
+                        dataPicture = (byte[])cmd.Dt.Rows[i][1];
+                        buffer = BitConverter.GetBytes(dataPicture.Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        SendLargeFile(dataPicture, stream);
+                        //stream.Flush();
 
-                    data = new byte[dt.Rows[i][5].ToString().Length];
-                    buffer = BitConverter.GetBytes(dt.Rows[i][5].ToString().Length);
+                        if (cmd.Dt.Rows[i][2].ToString() == "")
+                        {
+                            data = Encoding.UTF8.GetBytes("\n");
+                        }
+                        else
+                            data = (byte[])cmd.Dt.Rows[i][2];
+                        buffer = BitConverter.GetBytes(data.Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        SendLargeFile(data, stream);
+                        //stream.Flush();
+                        ClientManager cmTemp;
+                        //gởi trạng thái của friend
+                        if ((cmTemp = IsOnline(cmd.Dt.Rows[i][0].ToString())) != null)
+                        {
+                            buffer = BitConverter.GetBytes((int)CommandType_.Online);
+                            stream.Write(buffer, 0, 4);
+                            stream.Flush();
+                            Command _cmd = new Command(CommandType_.Online, this.userName);
+                            cmTemp.SendCommand(_cmd);
+
+                        }
+                        else
+                        {
+                            buffer = BitConverter.GetBytes((int)CommandType_.Offline);
+                            stream.Write(buffer, 0, 4);
+                            stream.Flush();
+                        }
+                    }
+                }
+                if (cmd.CommandType == CommandType_.NameExists)
+                {
+                    //client này đã kết nối ,gởi tin nhắn đăng nhập đã tồn tại
+                    buffer = BitConverter.GetBytes((int)CommandType_.NameExists);
                     stream.Write(buffer, 0, 4);
                     stream.Flush();
-                    data = Encoding.ASCII.GetBytes(dt.Rows[i][5].ToString());
-                    stream.Write(data, 0, dt.Rows[i][5].ToString().Length);
+                }
+                if (cmd.CommandType == CommandType_.Failure)
+                {
+                    //nếu tài khoản hoặc mật khẩu không đúng
+                    buffer = BitConverter.GetBytes((int)CommandType_.Failure);//gởi tin nhắn là kết nối ko thành công
+                    stream.Write(buffer, 0, 4);
                     stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.Register)
+                {
 
                 }
+                if (cmd.CommandType == CommandType_.RegisterSuccess)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.RegisterSuccess);//gởi tin nhắn là đăng kí thành công
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.RegisterFailure)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.RegisterFailure);//gởi tin nhắn là đăng kí thất bại
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.Online)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.Online);//gởi tin nhắn là đăng kí thất bại
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+
+                    buffer = BitConverter.GetBytes(cmd.Username.Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    data = new byte[cmd.Username.Length];
+                    data = Encoding.ASCII.GetBytes(cmd.Username);
+                    stream.Write(data, 0, cmd.Username.Length);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.Offline)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.Offline);//gởi tin nhắn là đăng kí thất bại
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+
+                    buffer = BitConverter.GetBytes(cmd.Username.Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    data = new byte[cmd.Username.Length];
+                    data = Encoding.ASCII.GetBytes(cmd.Username);
+                    stream.Write(data, 0, cmd.Username.Length);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.Found)
+                {
+                    //gởi thông điệp là tin nhắn cho bên nhận biết
+                    buffer = BitConverter.GetBytes((int)CommandType_.Found);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+
+                    //gởi tên username
+                    data = new byte[cmd.Username.Length];
+                    buffer = BitConverter.GetBytes(cmd.Username.Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    data = Encoding.ASCII.GetBytes(cmd.Username);
+                    stream.Write(data, 0, cmd.Username.Length);
+                    stream.Flush();
+
+                    //gởi email
+                    data = new byte[cmd.Email.Length];
+                    buffer = BitConverter.GetBytes(cmd.Email.Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    data = Encoding.ASCII.GetBytes(cmd.Email);
+                    stream.Write(data, 0, cmd.Email.Length);
+                    stream.Flush();
+
+                    //gởi avatar 
+
+                    dataPicture = (byte[])cmd.Image_;
+                    buffer = BitConverter.GetBytes(dataPicture.Length);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    SendLargeFile(dataPicture, stream);
+                    //stream.Write(dataPicture, 0, dataPicture.Length);
+                    //stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.NotFound)
+                {
+                    //gởi thông điệp là tin nhắn cho bên nhận biết
+                    buffer = BitConverter.GetBytes((int)CommandType_.NotFound);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.LoadNotice)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.LoadNotice);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                    DataTable dt = cmd.Dt;
+                    buffer = BitConverter.GetBytes(dt.Rows.Count);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        //stt
+                        buffer = BitConverter.GetBytes((int)dt.Rows[i][0]);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+
+                        //userPrimary
+                        data = new byte[dt.Rows[i][1].ToString().Length];
+                        buffer = BitConverter.GetBytes(dt.Rows[i][1].ToString().Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = Encoding.ASCII.GetBytes(dt.Rows[i][1].ToString());
+                        stream.Write(data, 0, dt.Rows[i][1].ToString().Length);
+                        stream.Flush();
+
+                        data = new byte[dt.Rows[i][2].ToString().Length];
+                        buffer = BitConverter.GetBytes(dt.Rows[i][2].ToString().Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = Encoding.ASCII.GetBytes(dt.Rows[i][2].ToString());
+                        stream.Write(data, 0, dt.Rows[i][2].ToString().Length);
+                        stream.Flush();
+
+                        data = new byte[dt.Rows[i][3].ToString().Length];
+                        buffer = BitConverter.GetBytes(dt.Rows[i][3].ToString().Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = Encoding.ASCII.GetBytes(dt.Rows[i][3].ToString());
+                        stream.Write(data, 0, dt.Rows[i][3].ToString().Length);
+                        stream.Flush();
+
+                        data = new byte[dt.Rows[i][4].ToString().Length];
+                        buffer = BitConverter.GetBytes(dt.Rows[i][4].ToString().Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = Encoding.ASCII.GetBytes(dt.Rows[i][4].ToString());
+                        stream.Write(data, 0, dt.Rows[i][4].ToString().Length);
+                        stream.Flush();
+
+                        data = new byte[dt.Rows[i][5].ToString().Length];
+                        buffer = BitConverter.GetBytes(dt.Rows[i][5].ToString().Length);
+                        stream.Write(buffer, 0, 4);
+                        stream.Flush();
+                        data = Encoding.ASCII.GetBytes(dt.Rows[i][5].ToString());
+                        stream.Write(data, 0, dt.Rows[i][5].ToString().Length);
+                        stream.Flush();
+
+                    }
+                }
+                if (cmd.CommandType == CommandType_.DeleteNoticeSuccess)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.DeleteNoticeSuccess);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.AddNoticeSuccess)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.AddNoticeSuccess);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.AddNoticeFailure)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.AddNoticeFailure);
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                }
+                if (cmd.CommandType == CommandType_.AddFriendFailure)
+                {
+                    buffer = BitConverter.GetBytes((int)CommandType_.AddFriendFailure);//gởi tin nhắn là đã chấp nhận kết nối
+                    stream.Write(buffer, 0, 4);
+                    stream.Flush();
+                }
             }
-            if (cmd.CommandType == CommandType_.DeleteNoticeSuccess)
+            catch
             {
-                buffer = BitConverter.GetBytes((int)CommandType_.DeleteNoticeSuccess);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.AddNoticeSuccess)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.AddNoticeSuccess);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.AddNoticeFailure)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.AddNoticeFailure);
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
-            }
-            if (cmd.CommandType == CommandType_.AddFriendFailure)
-            {
-                buffer = BitConverter.GetBytes((int)CommandType_.AddFriendFailure);//gởi tin nhắn là đã chấp nhận kết nối
-                stream.Write(buffer, 0, 4);
-                stream.Flush();
+
             }
             semaphor.Release();
         }

@@ -1,0 +1,52 @@
+D:\DoAnC-\Client\Client_UIT\bin\Release\Client_UIT.exe.config
+D:\DoAnC-\Client\Client_UIT\bin\Release\Client_UIT.exe
+D:\DoAnC-\Client\Client_UIT\bin\Release\Client_UIT.pdb
+D:\DoAnC-\Client\Client_UIT\bin\Release\Command.dll
+D:\DoAnC-\Client\Client_UIT\bin\Release\Enum.dll
+D:\DoAnC-\Client\Client_UIT\bin\Release\Command.pdb
+D:\DoAnC-\Client\Client_UIT\bin\Release\Enum.pdb
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.csprojResolveAssemblyReference.cache
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Chat.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Dangnhap.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.FindFriend.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Form1.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Form_Notice.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Friend.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.icon.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Message1.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.MessageCustom.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Messeage.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Notice.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Personal_information.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Properties.Resources.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Register.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.Time.resources
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.csproj.GenerateResource.Cache
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.exe
+D:\DoAnC-\Client\Client_UIT\obj\Release\Client_UIT.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\bin\Release\Client_UIT.exe.config
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.exe
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\bin\Release\Client_UIT.exe
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\bin\Release\Client_UIT.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\bin\Release\Command.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\bin\Release\Enum.dll
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\bin\Release\Command.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\bin\Release\Enum.pdb
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.csprojResolveAssemblyReference.cache
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Chat.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Dangnhap.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.FindFriend.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Form1.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Form_Notice.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Friend.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.icon.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Message1.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.MessageCustom.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Messeage.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Notice.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Personal_information.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Properties.Resources.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Register.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.Time.resources
+C:\Users\Tran Minh Tri\Desktop\Source project\Client\Client_UIT\obj\Release\Client_UIT.csproj.GenerateResource.Cache
